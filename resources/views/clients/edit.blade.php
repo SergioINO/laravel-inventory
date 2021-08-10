@@ -1,4 +1,4 @@
-@extends('layouts.app', ['page' => 'Edit Client', 'pageSlug' => 'clients', 'section' => 'clients'])
+@extends('layouts.app', ['page' => 'Editar Cliente', 'pageSlug' => 'clients', 'section' => 'clients'])
 
 @section('content')
     <div class="container-fluid mt--7">
@@ -31,7 +31,7 @@
                                     <div class="col-1">
                                         <label class="form-control-label" for="input-document_type">{{ __('Tipo') }}</label>
                                         <select name="document_type" id="input-document_type" class="form-control form-control-alternative{{ $errors->has('name') ? ' is-invalid' : '' }}" required>
-                                            @foreach (['V', 'E', 'P', 'RIF'] as $document_type)
+                                            @foreach (['V', 'E', 'P'] as $document_type)
                                                 @if($document_type == old('document') or $document_type == $client->document_type)
                                                     <option value="{{$document_type}}" selected>{{$document_type}}</option>
                                                 @else

@@ -1,4 +1,4 @@
-@extends('layouts.app', ['page' => __('Method Management'), 'pageSlug' => 'methods', 'section' => 'transactions'])
+@extends('layouts.app', ['page' => __('Gestión del método'), 'pageSlug' => 'methods', 'section' => 'transactions'])
 
 @section('content')
     <div class="container-fluid mt--7">
