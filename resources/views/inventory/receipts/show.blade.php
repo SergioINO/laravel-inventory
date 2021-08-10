@@ -1,4 +1,4 @@
-@extends('layouts.app', ['page' => 'Manage Receipt', 'pageSlug' => 'receipts', 'section' => 'inventory'])
+@extends('layouts.app', ['page' => 'Gestión de recibos', 'pageSlug' => 'receipts', 'section' => 'inventory'])
 
 
 @section('content')
@@ -10,7 +10,7 @@
                 <div class="card-header">
                     <div class="row">
                         <div class="col-8">
-                            <h4 class="card-title">Receipt Summary</h4>
+                            <h4 class="card-title">Resumen de recibos</h4>
                         </div>
                         @if (!$receipt->finalized_at)
                             <div class="col-4 text-right">
@@ -19,12 +19,12 @@
                                         @csrf
                                         @method('delete')
                                         <button type="submit" class="btn btn-sm btn-primary">
-                                            Delete Receipt
+                                            Eliminar Recibo
                                         </button>
                                     </form>
                                 @else
-                                    <button type="button" class="btn btn-sm btn-primary" onclick="confirm('ATTENTION: At the end of this receipt you will not be able to load more products in it.') ? window.location.replace('{{ route('receipts.finalize', $receipt) }}') : ''">
-                                        Finalize Receipt
+                                    <button type="button" class="btn btn-sm btn-primary" onclick="confirm('ATENCIÓN: Al final de este recibo no podrá cargar más productos en él.') ? window.location.replace('{{ route('receipts.finalize', $receipt) }}') : ''">
+                                        Finalizar recibo
                                     </button>
                                 @endif
                             </div>
@@ -35,14 +35,14 @@
                     <table class="table">
                         <thead>
                             <th>ID</th>
-                            <th>Date</th>
-                            <th>Title</th>
-                            <th>User</th>
-                            <th>Provider</th>
-                            <th>products</th>
+                            <th>Fecha</th>
+                            <th>Título</th>
+                            <th>Usuario</th>
+                            <th>Proveedor</th>
+                            <th>Productos</th>
                             <th>Stock</th>
-                            <th>Defective Stock</th>
-                            <th>Status</th>
+                            <th>Stock Defectuoso</th>
+                            <th>Estado</th>
                         </thead>
                         <tbody>
                             <tr>
@@ -60,7 +60,7 @@
                                 <td>{{ $receipt->products->count() }}</td>
                                 <td>{{ $receipt->products->sum('stock') }}</td>
                                 <td>{{ $receipt->products->sum('stock_defective') }}</td>
-                                <td>{!! $receipt->finalized_at ? 'Finalized' : '<span style="color:red; font-weight:bold;">TO FINALIZE</span>' !!}</td>
+                                <td>{!! $receipt->finalized_at ? 'Finalized' : '<span style="color:red; font-weight:bold;">PARA FINALIZAR</span>' !!}</td>
                             </tr>
                         </tbody>
                     </table>
@@ -75,11 +75,11 @@
                 <div class="card-header">
                     <div class="row">
                         <div class="col-8">
-                            <h4 class="card-title">products: {{ $receipt->products->count() }}</h4>
+                            <h4 class="card-title">Productos: {{ $receipt->products->count() }}</h4>
                         </div>
                         @if (!$receipt->finalized_at)
                             <div class="col-4 text-right">
-                                <a href="{{ route('receipts.product.add', ['receipt' => $receipt]) }}" class="btn btn-sm btn-primary">Add</a>
+                                <a href="{{ route('receipts.product.add', ['receipt' => $receipt]) }}" class="btn btn-sm btn-primary">Agregar</a>
                             </div>
                         @endif
                     </div>
@@ -87,10 +87,10 @@
                 <div class="card-body">
                     <table class="table">
                         <thead>
-                            <th>Category</th>
-                            <th>Product</th>
+                            <th>Categoría</th>
+                            <th>Producto</th>
                             <th>Stock</th>
-                            <th>Defective Stock</th>
+                            <th>Stock Defectuoso</th>
                             <th>Total Stock</th>
                             <th></th>
                         </thead>
@@ -104,7 +104,7 @@
                                     <td>{{ $received_product->stock + $received_product->stock_defective }}</td>
                                     <td class="td-actions text-right">
                                         @if(!$receipt->finalized_at)
-                                            <a href="{{ route('receipts.product.edit', ['receipt' => $receipt, 'receivedproduct' => $received_product]) }}" class="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="Edit Pedido">
+                                            <a href="{{ route('receipts.product.edit', ['receipt' => $receipt, 'receivedproduct' => $received_product]) }}" class="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="Editar Pedido">
                                                 <i class="tim-icons icon-pencil"></i>
                                             </a>
                                             <form action="{{ route('receipts.product.destroy', ['receipt' => $receipt, 'receivedproduct' => $received_product]) }}" method="post" class="d-inline">

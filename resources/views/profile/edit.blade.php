@@ -5,7 +5,7 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">
-                    <h5 class="title">Edit Profile</h5>
+                    <h5 class="title">Editar perfil</h5>
                 </div>
                 <form method="post" action="{{ route('profile.update') }}" autocomplete="off">
                     <div class="card-body">
@@ -15,7 +15,7 @@
                             @include('alerts.success')
 
                             <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }}">
-                                <label>Name</label>
+                                <label>Nombre</label>
                                 <input type="text" name="name" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="Name" value="{{ old('name', auth()->user()->name) }}">
                                 @include('alerts.feedback', ['field' => 'name'])
                             </div>
@@ -27,7 +27,7 @@
                             </div>
                     </div>
                     <div class="card-footer">
-                        <button type="submit" class="btn btn-fill btn-primary">Save</button>
+                        <button type="submit" class="btn btn-fill btn-primary">Guardar</button>
                     </div>
                 </form>
             </div>
@@ -44,23 +44,23 @@
                         @include('alerts.success', ['key' => 'password_status'])
 
                         <div class="form-group{{ $errors->has('old_password') ? ' has-danger' : '' }}">
-                            <label>Current password</label>
+                            <label>Contraseña actual</label>
                             <input type="password" name="old_password" class="form-control{{ $errors->has('old_password') ? ' is-invalid' : '' }}" placeholder="Current password" value="" required>
                             @include('alerts.feedback', ['field' => 'old_password'])
                         </div>
 
                         <div class="form-group{{ $errors->has('password') ? ' has-danger' : '' }}">
-                            <label>New Password</label>
+                            <label>Nueva Contraseña</label>
                             <input type="password" name="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" placeholder="New password" value="" required>
                             @include('alerts.feedback', ['field' => 'password'])
                         </div>
                         <div class="form-group">
-                            <label>Confirm new password</label>
+                            <label>Confirmar nueva contraseña</label>
                             <input type="password" name="password_confirmation" class="form-control" placeholder="Confirm new password" value="" required>
                         </div>
                     </div>
                     <div class="card-footer">
-                        <button type="submit" class="btn btn-fill btn-primary">Change Password</button>
+                        <button type="submit" class="btn btn-fill btn-primary">Cambiar Contraseña</button>
                     </div>
                 </form>
             </div>

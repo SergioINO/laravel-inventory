@@ -1,4 +1,4 @@
-@extends('layouts.app', ['page' => 'Receipts', 'pageSlug' => 'receipts', 'section' => 'inventory'])
+@extends('layouts.app', ['page' => 'Recibos', 'pageSlug' => 'receipts', 'section' => 'inventory'])
 
 @section('content')
     @include('alerts.success')
@@ -7,10 +7,10 @@
             <div class="card-header">
                 <div class="row">
                     <div class="col-8">
-                        <h4 class="card-title">Receipts</h4>
+                        <h4 class="card-title">Recibos</h4>
                     </div>
                     <div class="col-4 text-right">
-                        <a href="{{ route('receipts.create') }}" class="btn btn-sm btn-primary">New Receipt</a>
+                        <a href="{{ route('receipts.create') }}" class="btn btn-sm btn-primary">Nuevo Recibo</a>
                     </div>
                 </div>
             </div>
@@ -18,13 +18,13 @@
                 <div class="">
                     <table class="table">
                         <thead>
-                            <th>Date</th>
-                            <th>Title</th>
-                            <th>Provider</th>
-                            <th>products</th>
+                            <th>Fecha</th>
+                            <th>Título</th>
+                            <th>Proveedor</th>
+                            <th>Productos</th>
                             <th>Stock</th>
-                            <th>Defective Stock</th>
-                            <th>Status</th>
+                            <th>Stock Defectuoso</th>
+                            <th>Estado</th>
                             <th></th>
                         </thead>
                         <tbody>
@@ -44,9 +44,9 @@
                                     <td>{{ $receipt->products->sum('stock_defective') }}</td>
                                     <td>
                                         @if($receipt->finalized_at)
-                                            FINALIZED
+                                            FINALIZADO
                                         @else
-                                            <span style="color:red; font-weight:bold;">TO FINALIZE</span>
+                                            <span style="color:red; font-weight:bold;">PARA FINALIZAR</span>
                                         @endif
                                     </td>
                                     <td class="td-actions text-right">

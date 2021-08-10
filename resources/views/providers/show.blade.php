@@ -1,23 +1,23 @@
-@extends('layouts.app', ['page' => 'Provider Information', 'pageSlug' => 'providers', 'section' => 'providers'])
+@extends('layouts.app', ['page' => 'Información del proveedor', 'pageSlug' => 'providers', 'section' => 'providers'])
 
 @section('content')
     <div class="row">
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title">Provider Information</h4>
+                    <h4 class="card-title">Información del proveedor</h4>
                 </div>
                 <div class="card-body">
                     <table class="table">
                         <thead>
                             <th>ID</th>
-                            <th>Name</th>
-                            <th>Description</th>
+                            <th>Nombre</th>
+                            <th>Descripción</th>
                             <th>Email</th>
-                            <th>Telephone</th>
-                            <th>Payment information</th>
-                            <th>Payments Made</th>
-                            <th>Total Payment</th>
+                            <th>Telefono</th>
+                            <th>Información de pago</th>
+                            <th>Pagos realizados</th>
+                            <th>Pago total</th>
                         </thead>
                         <tbody>
                             <tr>
@@ -40,17 +40,17 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title">Latest Payments</h4>
+                    <h4 class="card-title">Últimos pagos</h4>
                 </div>
                 <div class="card-body">
                     <table class="table">
                         <thead>
-                            <th>Date</th>
+                            <th>Fecha</th>
                             <th>ID</th>
-                            <th>Title</th>
-                            <th>Method</th>
-                            <th>Amount</th>
-                            <th>Reference</th>
+                            <th>Título</th>
+                            <th>Método</th>
+                            <th>Cantidad</th>
+                            <th>Referencia</th>
                         </thead>
                         <tbody>
                             @foreach ($transactions as $transaction)
@@ -73,17 +73,17 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title">Latest Receipts</h4>
+                    <h4 class="card-title">Últimos recibos</h4>
                 </div>
                 <div class="card-body">
                     <table class="table">
                         <thead>
-                            <th>Date</th>
+                            <th>Fecha</th>
                             <th>ID</th>
-                            <th>Title</th>
-                            <th>products</th>
+                            <th>Título</th>
+                            <th>Productos</th>
                             <th>Stock</th>
-                            <th>Defective Stock</th>
+                            <th>Stock Defectuoso</th>
                             <th>Total Stock</th>
                             <th></th>
                         </thead>

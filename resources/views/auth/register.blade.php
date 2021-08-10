@@ -6,7 +6,7 @@
             <div class="card card-register card-white">
                 <div class="card-header">
                     <img class="card-img" src="{{ asset('assets') }}/img/card-primary.png" alt="Card image">
-                    <h4 class="card-title">Register</h4>
+                    <h4 class="card-title">Registrar</h4>
                 </div>
                 <form class="form" method="post" action="{{ route('register') }}">
                     @csrf
@@ -51,13 +51,13 @@
                             <label class="form-check-label">
                                 <input class="form-check-input {{ $errors->has('agree_terms_and_conditions') ? ' is-invalid' : '' }}" name="agree_terms_and_conditions"  type="checkbox"  {{ old('agree_terms_and_conditions') ? 'checked' : '' }}>
                                 <span class="form-check-sign"></span>
-                                I confirm that I am human.
+                                Confirmo que soy humano.
                                 @include('alerts.feedback', ['field' => 'agree_terms_and_conditions'])
                             </label>
                         </div>
                     </div>
                     <div class="card-footer">
-                        <button type="submit" class="btn btn-primary btn-round btn-lg">Sign up</button>
+                        <button type="submit" class="btn btn-primary btn-round btn-lg">Iniciar</button>
                     </div>
                 </form>
             </div>

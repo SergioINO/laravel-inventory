@@ -7,10 +7,10 @@
                 <div class="card-header">
                     <div class="row">
                         <div class="col-8">
-                            <h4 class="card-title">Clients</h4>
+                            <h4 class="card-title">Listado Clientes</h4>
                         </div>
                         <div class="col-4 text-right">
-                            <a href="{{ route('clients.create') }}" class="btn btn-sm btn-primary">Add Client</a>
+                            <a href="{{ route('clients.create') }}" class="btn btn-sm btn-primary">Agregar Cliente</a>
                         </div>
                     </div>
                 </div>
@@ -20,12 +20,12 @@
                     <div class="">
                         <table class="table tablesorter " id="">
                             <thead class=" text-primary">
-                                <th>Name</th>
-                                <th>Email / Telephone</th>
+                                <th>Nombre</th>
+                                <th>Email / Telefono</th>
                                 <th>Balance</th>
-                                <th>Purchases</th>
-                                <th>Total Payment</th>
-                                <th>Last purchase</th>
+                                <th>Compras</th>
+                                <th>Total Pagos</th>
+                                <th>Ultima Compra</th>
                                 <th></th>
                             </thead>
                             <tbody>
@@ -50,16 +50,16 @@
                                         <td>{{ format_money($client->transactions->sum('amount')) }}</td>
                                         <td>{{ ($client->sales->sortByDesc('created_at')->first()) ? date('d-m-y', strtotime($client->sales->sortByDesc('created_at')->first()->created_at)) : 'N/A' }}</td>
                                         <td class="td-actions text-right">
-                                            <a href="{{ route('clients.show', $client) }}" class="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="More Details">
+                                            <a href="{{ route('clients.show', $client) }}" class="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="Mas detalle">
                                                 <i class="tim-icons icon-zoom-split"></i>
                                             </a>
-                                            <a href="{{ route('clients.edit', $client) }}" class="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="Edit Client">
+                                            <a href="{{ route('clients.edit', $client) }}" class="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="Editar Cliente">
                                                 <i class="tim-icons icon-pencil"></i>
                                             </a>
                                             <form action="{{ route('clients.destroy', $client) }}" method="post" class="d-inline">
                                                 @csrf
                                                 @method('delete')
-                                                <button type="button" class="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="Delete Client" onclick="confirm('Estás seguro que quieres eliminar a este Client? Los registros de sus compras y Transactions no serán eliminados.') ? this.parentElement.submit() : ''">
+                                                <button type="button" class="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="Eliminar Cliente" onclick="confirm('Estás seguro que quieres eliminar a este Cliente? Los registros de sus compras y Transacciones no serán eliminados.') ? this.parentElement.submit() : ''">
                                                     <i class="tim-icons icon-simple-remove"></i>
                                                 </button>
                                             </form>

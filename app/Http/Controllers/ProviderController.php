@@ -43,7 +43,7 @@ class ProviderController extends Controller
 
         return redirect()
             ->route('providers.index')
-            ->withStatus('Successfully Registered Vendor.');
+            ->withStatus('Proveedor registrado con éxito!.');
     }
 
     /**
@@ -86,7 +86,7 @@ class ProviderController extends Controller
 
         return redirect()
             ->route('providers.index')
-            ->withStatus('Provider updated successfully.');
+            ->withStatus('Proveedor actualizado con éxito!.');
     }
 
     /**
@@ -101,6 +101,6 @@ class ProviderController extends Controller
 
         return redirect()
             ->route('providers.index')
-            ->withStatus('Provider removed successfully.');
+            ->withStatus('Proveedor eliminado con éxito!.');
     }
 }

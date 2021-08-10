@@ -7,28 +7,28 @@
                 <div class="card-header ">
                     <div class="row">
                         <div class="col-sm-6 text-left">
-                            <h5 class="card-category">Total sales</h5>
-                            <h2 class="card-title">Annual yield</h2>
+                            <h5 class="card-category">Total ventas</h5>
+                            <h2 class="card-title">Rendimiento anual</h2>
                         </div>
                         <div class="col-sm-6">
                             <div class="btn-group btn-group-toggle float-right" data-toggle="buttons">
                             <label class="btn btn-sm btn-primary btn-simple active" id="0">
                                 <input type="radio" name="options" checked>
-                                <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">Products</span>
+                                <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">Productos</span>
                                 <span class="d-block d-sm-none">
                                     <i class="tim-icons icon-single-02"></i>
                                 </span>
                             </label>
                             <label class="btn btn-sm btn-primary btn-simple" id="1">
                                 <input type="radio" class="d-none d-sm-none" name="options">
-                                <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">Purchases</span>
+                                <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">Compras</span>
                                 <span class="d-block d-sm-none">
                                     <i class="tim-icons icon-gift-2"></i>
                                 </span>
                             </label>
                             <label class="btn btn-sm btn-primary btn-simple" id="2">
                                 <input type="radio" class="d-none" name="options">
-                                <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">Clients</span>
+                                <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">Clientes</span>
                                 <span class="d-block d-sm-none">
                                     <i class="tim-icons icon-tap-02"></i>
                                 </span>
@@ -50,7 +50,7 @@
         <div class="col-lg-4">
             <div class="card card-chart">
                 <div class="card-header">
-                    <h5 class="card-category">Last Month Income</h5>
+                    <h5 class="card-category">Ingresos del último mes</h5>
                     <h3 class="card-title"><i class="tim-icons icon-money-coins text-primary"></i>{{ format_money($semesterincomes) }}</h3>
                 </div>
                 <div class="card-body">
@@ -63,7 +63,7 @@
         <div class="col-lg-4">
             <div class="card card-chart">
                 <div class="card-header">
-                    <h5 class="card-category">Monthly Balance</h5>
+                    <h5 class="card-category">Balance mensual</h5>
                     <h3 class="card-title"><i class="tim-icons icon-bank text-info"></i> {{ format_money($monthlybalance) }}</h3>
                 </div>
                 <div class="card-body">
@@ -76,7 +76,7 @@
         <div class="col-lg-4">
             <div class="card card-chart">
                 <div class="card-header">
-                    <h5 class="card-category">Expenditures Last Month</h5>
+                    <h5 class="card-category">Gastos del último mes</h5>
                     <h3 class="card-title"><i class="tim-icons icon-paper text-success"></i> {{ format_money($semesterexpenses) }}</h3>
                 </div>
                 <div class="card-body">
@@ -94,10 +94,10 @@
                 <div class="card-header">
                     <div class="row">
                         <div class="col-8">
-                            <h4 class="card-title">Pending Sales</h4>
+                            <h4 class="card-title">Ventas pendientes</h4>
                         </div>
                         <div class="col-4 text-right">
-                            <a href="{{ route('sales.create') }}" class="btn btn-sm btn-primary">New Sale</a>
+                            <a href="{{ route('sales.create') }}" class="btn btn-sm btn-primary">Nueva venta</a>
                         </div>
                     </div>
                 </div>
@@ -107,16 +107,16 @@
                             <thead>
                                 <tr>
                                     <th>
-                                        Date
+                                        Fecha
                                     </th>
                                     <th>
-                                        Client
+                                        Cliente
                                     </th>
                                     <th>
-                                        Products
+                                        Productos
                                     </th>
                                     <th>
-                                        Paid out
+                                        Pagado
                                     </th>
                                     <th>
                                         Total
@@ -152,11 +152,11 @@
                 <div class="card-header">
                 <div class="row">
                         <div class="col-8">
-                            <h4 class="card-title">Latest Transactions</h4>
+                            <h4 class="card-title">Últimas transacciones</h4>
                         </div>
                         <div class="col-4 text-right">
                             <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#transactionModal">
-                                New Transaction
+                                Nueva transacción
                             </button>
                         </div>
                     </div>
@@ -167,13 +167,13 @@
                             <thead>
                                 <tr>
                                     <th>
-                                        Category
+                                        Categoría
                                     </th>
                                     <th>
-                                        Title
+                                        Título
                                     </th>
                                     <th>
-                                        Medium
+                                        Medio
                                     </th>
                                     <th>
                                         Total

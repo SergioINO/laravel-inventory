@@ -28,7 +28,8 @@
                                 </div>
 
                                 <div class="form-group{{ $errors->has('product_category_id') ? ' has-danger' : '' }}">
-                                    <label class="form-control-label" for="input-name">Category</label>
+                                    <label class="form-control-label" for="input-name">
+                                        Species</label>
                                     <select name="product_category_id" id="input-category" class="form-select form-control-alternative{{ $errors->has('name') ? ' is-invalid' : '' }}" required>
                                         @foreach ($categories as $category)
                                             @if($category['id'] == old('document'))

@@ -7,10 +7,10 @@
                 <div class="card-header">
                     <div class="row">
                         <div class="col-8">
-                            <h4 class="card-title">{{ __('Users') }}</h4>
+                            <h4 class="card-title">{{ __('Usuarios') }}</h4>
                         </div>
                         <div class="col-4 text-right">
-                            <a href="{{ route('users.create') }}" class="btn btn-sm btn-primary">{{ __('Add user') }}</a>
+                            <a href="{{ route('users.create') }}" class="btn btn-sm btn-primary">{{ __('Agregar Usuario') }}</a>
                         </div>
                     </div>
                 </div>
@@ -20,9 +20,9 @@
                     <div class="">
                         <table class="table tablesorter " id="">
                             <thead class=" text-primary">
-                                <th scope="col">{{ __('Name') }}</th>
+                                <th scope="col">{{ __('Nombre') }}</th>
                                 <th scope="col">{{ __('Email') }}</th>
-                                <th scope="col">{{ __('Creation Date') }}</th>
+                                <th scope="col">{{ __('Fecha de creación') }}</th>
                                 <th scope="col"></th>
                             </thead>
                             <tbody>
@@ -50,7 +50,7 @@
                                                                 </button>
                                                             </form>
                                                         @else
-                                                            <a class="dropdown-item" href="{{ route('profile.edit', $user->id) }}">{{ __('Edit') }}</a>
+                                                            <a class="dropdown-item" href="{{ route('profile.edit', $user->id) }}">{{ __('Editar') }}</a>
                                                         @endif
                                                     </div>
                                                 </div>
