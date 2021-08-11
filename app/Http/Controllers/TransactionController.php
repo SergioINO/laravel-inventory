@@ -118,11 +118,11 @@ class TransactionController extends Controller
         if ($request->get('client_id')) {
             switch ($request->get('type')) {
                 case 'income':
-                    $request->merge(['title' => 'Payment Received from Customer ID: ' . $request->get('client_id')]);
+                    $request->merge(['title' => 'Pago recibido de ID de cliente: ' . $request->get('client_id')]);
                     break;
 
                 case 'expense':
-                    $request->merge(['title' => 'Customer ID Return Payment: ' . $request->get('client_id')]);
+                    $request->merge(['title' => 'Identificación del cliente Pago de la devolución: ' . $request->get('client_id')]);
 
                     if ($request->get('amount') > 0) {
                         $request->merge(['amount' => (float) $request->get('amount') * (-1)]);
@@ -137,7 +137,7 @@ class TransactionController extends Controller
 
             return redirect()
                 ->route('clients.show', $request->get('client_id'))
-                ->withStatus('Successfully registered transaction.');
+                ->withStatus('Transacción registrada con éxito!.');
         }
 
         switch ($request->get('type')) {
@@ -150,7 +150,7 @@ class TransactionController extends Controller
 
                 return redirect()
                     ->route('transactions.type', ['type' => 'expense'])
-                    ->withStatus('Expense recorded successfully.');
+                    ->withStatus('Gasto registrado con éxito!.');
 
             case 'payment':
                 if ($request->get('amount') > 0) {
@@ -161,19 +161,19 @@ class TransactionController extends Controller
 
                 return redirect()
                     ->route('transactions.type', ['type' => 'payment'])
-                    ->withStatus('Payment registered successfully.');
+                    ->withStatus('Pago registrado con éxito!.');
 
             case 'income':
                 $transaction->create($request->all());
 
                 return redirect()
                     ->route('transactions.type', ['type' => 'income'])
-                    ->withStatus('Login successfully registered.');
+                    ->withStatus('Inicio de sesión registrado con éxito!.');
 
             default:
                 return redirect()
                     ->route('transactions.index')
-                    ->withStatus('Successfully registered transaction.');
+                    ->withStatus('Transacción registrada con éxito!.');
         }
     }
 
@@ -225,7 +225,7 @@ class TransactionController extends Controller
                 }
                 return redirect()
                     ->route('transactions.type', ['type' => 'expense'])
-                    ->withStatus('Expense updated sucessfully.');
+                    ->withStatus('Gasto actualizado con éxito!.');
 
             case 'payment':
                 if ($request->get('amount') > 0) {
@@ -234,17 +234,17 @@ class TransactionController extends Controller
 
                 return redirect()
                     ->route('transactions.type', ['type' => 'payment'])
-                    ->withStatus('Payment updated satisfactorily.');
+                    ->withStatus('Pago actualizado satisfactoriamente!.');
 
             case 'income':
                 return redirect()
                     ->route('transactions.type', ['type' => 'income'])
-                    ->withStatus('Login successfully updated.');
+                    ->withStatus('Inicio de sesión actualizado satisfactoriamente!.');
 
             default:
                 return redirect()
                     ->route('transactions.index')
-                    ->withStatus('Transaction updated successfully.');
+                    ->withStatus('Transacción actualizada satisfactoriamente!.');
         }
     }
 
@@ -262,7 +262,7 @@ class TransactionController extends Controller
         //}
 
         if ($transaction->transfer) {
-            return back()->withStatus('You cannot remove a transaction from a transfer. You must delete the transfer to delete its records.');
+            return back()->withStatus('No se puede eliminar una transacción de una transferencia. Debe eliminar la transferencia para borrar sus registros.');
         }
 
         $type = $transaction->type;
@@ -270,16 +270,16 @@ class TransactionController extends Controller
 
         switch ($type) {
             case 'expense':
-                return back()->withStatus('Expenditure successfully removed.');
+                return back()->withStatus('Gasto eliminado con éxito!.');
 
             case 'payment':
-                return back()->withStatus('Payment successfully removed.');
+                return back()->withStatus('Pago eliminado con éxito!.');
 
             case 'income':
-                return back()->withStatus('Entry successfully removed.');
+                return back()->withStatus('Entrada eliminada con éxito!.');
 
             default:
-                return back()->withStatus('Transaction deleted successfully.');
+                return back()->withStatus('Transacción eliminada con éxito!.');
         }
     }
 }

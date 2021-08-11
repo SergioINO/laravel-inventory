@@ -1,4 +1,4 @@
-@extends('layouts.app', ['page' => 'Transfers', 'pageSlug' => 'transfers', 'section' => 'transactions'])
+@extends('layouts.app', ['page' => 'Transferencias', 'pageSlug' => 'transfers', 'section' => 'transactions'])
 
 @section('content')
     @include('alerts.success')
@@ -8,11 +8,11 @@
                 <div class="card-header">
                 <div class="row">
                         <div class="col-8">
-                            <h4 class="card-title">Transfers</h4>
+                            <h4 class="card-title">Transferencia</h4>
                         </div>
                         <div class="col-4 text-right">
                             <a href="{{ route('transfer.create') }}" class="btn btn-sm btn-primary">
-                                Register Transfer
+                                Registrar Transferencia
                             </a>
                         </div>
                     </div>
@@ -20,13 +20,13 @@
                 <div class="card-body">
                     <table class="table">
                         <thead class=" text-primary">
-                            <th>Date</th>
-                            <th>Title</th>
-                            <th>Sender Method</th>
-                            <th>Receiver Method</th>
-                            <th>Reference</th>
-                            <th>Amount Sent</th>
-                            <th>Amount Received</th>
+                            <th>Fecha</th>
+                            <th>Título</th>
+                            <th>Método de envío</th>
+                            <th>Método de recepción</th>
+                            <th>Referencia</th>
+                            <th>Cantidad enviada</th>
+                            <th>Cantidad recibida</th>
                             <th></th>
                         </thead>
                         <tbody>
@@ -43,7 +43,7 @@
                                         <form action="{{ route('transfer.destroy', $transfer) }}" method="post" class="d-inline">
                                             @csrf
                                             @method('delete')
-                                            <button type="button" class="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="Delete Transfer" onclick="confirm('Are you sure you want to delete this transfer? There will be no record left.') ? this.parentElement.submit() : ''">
+                                            <button type="button" class="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="Eliminar" onclick="confirm('¿Estás seguro de que quieres borrar esta transferencia? No quedará ningún registro.') ? this.parentElement.submit() : ''">
                                                 <i class="tim-icons icon-simple-remove"></i>
                                             </button>
                                         </form>

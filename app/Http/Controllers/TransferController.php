@@ -66,7 +66,7 @@ class TransferController extends Controller
 
         return redirect()
             ->route('transfer.index')
-            ->withStatus('Transaction registered successfully.');
+            ->withStatus('Transacción registrada con éxito!.');
     }
 
     /**
@@ -80,6 +80,6 @@ class TransferController extends Controller
         $transfer->delete();
 
         return back()
-            ->withStatus('The transfer and its associated transactions have been successfully removed.');
+            ->withStatus('La transferencia y sus transacciones asociadas han sido eliminadas con éxito!.');
     }
 }

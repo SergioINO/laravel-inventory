@@ -1,22 +1,22 @@
-@extends('layouts.app', ['page' => 'Inventory Statistics', 'pageSlug' => 'istats', 'section' => 'inventory'])
+@extends('layouts.app', ['page' => 'Estadísticas del inventario', 'pageSlug' => 'istats', 'section' => 'inventory'])
 
 @section('content')
     <div class="row">
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title">Statistics by Quantity (TOP 15)</h4>
+                    <h4 class="card-title">Estadísticas por cantidad (TOP 15)</h4>
                 </div>
                 <div class="card-body">
                     <table class="table">
                         <thead>
                             <th>ID</th>
-                            <th>Category</th>
-                            <th>Name</th>
+                            <th>Categoría</th>
+                            <th>Nombre</th>
                             <th>Stock</th>
-                            <th>Annual Sales</th>
-                            <th>Average Price</th>
-                            <th>Annual Income</th>
+                            <th>Ventas anuales</th>
+                            <th>Precio medio</th>
+                            <th>Ingresos anuales</th>
                             <th></th>
                         </thead>
                         <tbody>
@@ -30,7 +30,7 @@
                                     <td>{{ format_money(round($soldproduct->avg_price, 2)) }}</td>
                                     <td>{{ format_money($soldproduct->incomes) }}</td>
                                     <td class="td-actions text-right">
-                                        <a href="{{ route('products.show', $soldproduct->product) }}" class="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="More Details">
+                                        <a href="{{ route('products.show', $soldproduct->product) }}" class="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="Detalles">
                                             <i class="tim-icons icon-zoom-split"></i>
                                         </a>
                                     </td>
@@ -46,17 +46,17 @@
         <div class="col-md-6">
             <div class="card card-tasks">
                 <div class="card-header">
-                    <h4 class="card-title">Statistics by Income (TOP 15)</h4>
+                    <h4 class="card-title">Estadísticas por ingresos (TOP 15)</h4>
                 </div>
                 <div class="card-body">
                     <div class="table-full-width table-responsive">
                         <table class="table">
                             <thead>
                                 <th>ID</th>
-                                <th>Category</th>
-                                <th>Name</th>
-                                <th>Sold</th>
-                                <th>Income</th>
+                                <th>Categoría</th>
+                                <th>Nombre</th>
+                                <th>Vendido</th>
+                                <th>Ingresos</th>
                             </thead>
                             <tbody>
                                 @foreach ($soldproductsbyincomes as $soldproduct)
@@ -77,17 +77,17 @@
         <div class="col-md-6">
             <div class="card card-tasks">
                 <div class="card-header">
-                    <h4 class="card-title">Statistics by Average Price (TOP 15)</h4>
+                    <h4 class="card-title">Estadísticas por precio medio (TOP 15)</h4>
                 </div>
                 <div class="card-body">
                     <div class="table-full-width table-responsive">
                         <table class="table">
                             <thead>
                                 <th>ID</th>
-                                <th>Category</th>
-                                <th>Name</th>
-                                <th>Sold</th>
-                                <th>Average Price</th>
+                                <th>Categoría</th>
+                                <th>Nombre</th>
+                                <th>Vendido</th>
+                                <th>Precio medio</th>
                             </thead>
                             <tbody>
                                 @foreach ($soldproductsbyavgprice as $soldproduct)

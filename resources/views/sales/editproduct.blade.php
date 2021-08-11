@@ -1,4 +1,4 @@
-@extends('layouts.app', ['page' => 'Edit Product', 'pageSlug' => 'sales', 'section' => 'transactions'])
+@extends('layouts.app', ['page' => 'Editar Producto', 'pageSlug' => 'sales', 'section' => 'transactions'])
 
 @section('content')
         <div class="row">
@@ -7,10 +7,10 @@
                     <div class="card-header">
                         <div class="row align-items-center">
                             <div class="col-8">
-                                <h3 class="mb-0">Edit Product</h3>
+                                <h3 class="mb-0">Editar Producto</h3>
                             </div>
                             <div class="col-4 text-right">
-                                <a href="{{ route('sales.show', $sale) }}" class="btn btn-sm btn-primary">Back to List</a>
+                                <a href="{{ route('sales.show', $sale) }}" class="btn btn-sm btn-primary">Atrás</a>
                             </div>
                         </div>
                     </div>
@@ -22,7 +22,7 @@
                             <div class="pl-lg-4">
                                 <input type="hidden" name="sale_id" value="{{ $sale->id }}">
                                 <div class="form-group{{ $errors->has('product_id') ? ' has-danger' : '' }}">
-                                    <label class="form-control-label" for="input-product">Product</label>
+                                    <label class="form-control-label" for="input-product">Producto</label>
                                     <select name="product_id" id="input-product" class="form-select form-control-alternative{{ $errors->has('product_id') ? ' is-invalid' : '' }}" required>
                                         @foreach ($products as $product)
                                             @if($product['id'] == old('product_id') or $product['id'] == $soldproduct->product_id )
@@ -36,25 +36,25 @@
                                 </div>
 
                                 <div class="form-group{{ $errors->has('product_id') ? ' has-danger' : '' }}">
-                                    <label class="form-control-label" for="input-price">Price per Unit</label>
+                                    <label class="form-control-label" for="input-price">Precio por unidad</label>
                                     <input type="number" name="price" id="input-price" step=".01" class="form-control form-control-alternative{{ $errors->has('product_id') ? ' is-invalid' : '' }}" value="{{ old('price', $soldproduct->price) }}" required>
                                     @include('alerts.feedback', ['field' => 'product_id'])
                                 </div>
 
                                 <div class="form-group{{ $errors->has('product_id') ? ' has-danger' : '' }}">
-                                    <label class="form-control-label" for="input-qty">Quantity</label>
+                                    <label class="form-control-label" for="input-qty">Cantidad</label>
                                     <input type="number" name="qty" id="input-qty" class="form-control form-control-alternative{{ $errors->has('product_id') ? ' is-invalid' : '' }}" value="{{ old('qty', $soldproduct->qty) }}" required>
                                     @include('alerts.feedback', ['field' => 'product_id'])
                                 </div>
 
                                 <div class="form-group{{ $errors->has('product_id') ? ' has-danger' : '' }}">
-                                    <label class="form-control-label" for="input-total">Total Amount</label>
+                                    <label class="form-control-label" for="input-total">Cantidad Total</label>
                                     <input type="text" name="total_amount" id="input-total" class="form-control form-control-alternative{{ $errors->has('product_id') ? ' is-invalid' : '' }}" value="{{ old('total_amount', $soldproduct->total_amount) }}" disabled>
                                     @include('alerts.feedback', ['field' => 'product_id'])
                                 </div>
 
                                 <div class="text-center">
-                                    <button type="submit" class="btn btn-success mt-4">Continue</button>
+                                    <button type="submit" class="btn btn-success mt-4">Continuar</button>
                                 </div>
                             </div>
                         </form>

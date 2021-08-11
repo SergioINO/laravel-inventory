@@ -1,4 +1,4 @@
-@extends('layouts.app', ['page' => 'Sales', 'pageSlug' => 'sales', 'section' => 'transactions'])
+@extends('layouts.app', ['page' => 'Ventas', 'pageSlug' => 'sales', 'section' => 'transactions'])
 
 @section('content')
     @include('alerts.success')
@@ -8,10 +8,10 @@
                 <div class="card-header">
                     <div class="row">
                         <div class="col-8">
-                            <h4 class="card-title">Sales</h4>
+                            <h4 class="card-title">Ventas</h4>
                         </div>
                         <div class="col-4 text-right">
-                            <a href="{{ route('sales.create') }}" class="btn btn-sm btn-primary">Register Sale</a>
+                            <a href="{{ route('sales.create') }}" class="btn btn-sm btn-primary">Registrar Venta</a>
                         </div>
                     </div>
                 </div>
@@ -19,13 +19,13 @@
                     <div class="">
                         <table class="table">
                             <thead>
-                                <th>Date</th>
-                                <th>Client</th>
-                                <th>User</th>
-                                <th>Products</th>
+                                <th>Fecha</th>
+                                <th>Cliente</th>
+                                <th>Usuario</th>
+                                <th>Productos</th>
                                 <th>Total Stock</th>
-                                <th>Total Amount</th>
-                                <th>Status</th>
+                                <th>Cantidad Total</th>
+                                <th>Estado</th>
                                 <th></th>
                             </thead>
                             <tbody>
@@ -39,25 +39,25 @@
                                         <td>{{ format_money($sale->transactions->sum('amount')) }}</td>
                                         <td>
                                             @if (!$sale->finalized_at)
-                                                <span class="text-danger">To Finalize</span>
+                                                <span class="text-danger">Para Finalizar</span>
                                             @else
-                                                <span class="text-success">Finalized</span>
+                                                <span class="text-success">Finalizado</span>
                                             @endif
                                         </td>
                                         <td class="td-actions text-right">
                                             @if (!$sale->finalized_at)
-                                                <a href="{{ route('sales.show', ['sale' => $sale]) }}" class="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="Edit Sale">
+                                                <a href="{{ route('sales.show', ['sale' => $sale]) }}" class="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="Editar">
                                                     <i class="tim-icons icon-pencil"></i>
                                                 </a>
                                             @else
-                                                <a href="{{ route('sales.show', ['sale' => $sale]) }}" class="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="View Sale">
+                                                <a href="{{ route('sales.show', ['sale' => $sale]) }}" class="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="Ver Venta">
                                                     <i class="tim-icons icon-zoom-split"></i>
                                                 </a>
                                             @endif
                                             <form action="{{ route('sales.destroy', $sale) }}" method="post" class="d-inline">
                                                 @csrf
                                                 @method('delete')
-                                                <button type="button" class="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="Delete Sale" onclick="confirm('Are you sure you want to delete this sale? All your records will be permanently deleted.') ? this.parentElement.submit() : ''">
+                                                <button type="button" class="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="Eliminar" onclick="confirm('¿Está seguro de que desea eliminar esta venta? Todos sus registros serán eliminados permanentemente.') ? this.parentElement.submit() : ''">
                                                     <i class="tim-icons icon-simple-remove"></i>
                                                 </button>
                                             </form>

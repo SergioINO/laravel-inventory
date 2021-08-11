@@ -1,4 +1,4 @@
-@extends('layouts.app', ['pageSlug' => 'tstats', 'page' => 'Statistics', 'section' => 'transactions'])
+@extends('layouts.app', ['pageSlug' => 'tstats', 'page' => 'Estadísticas', 'section' => 'transactions'])
 
 @section('content')
     <div class="row">
@@ -7,11 +7,11 @@
                 <div class="card-header">
                     <div class="row">
                         <div class="col-8">
-                            <h4 class="card-title">Transaction Statistics</h4>
+                            <h4 class="card-title">Estadísticas de las transacciones</h4>
                         </div>
                         <div class="col-4 text-right">
                             <a href="{{ route('transactions.index') }}" class="btn btn-sm btn-primary">
-                                View Transactions
+                                Ver transacciones
                             </a>
                         </div>
                     </div>
@@ -19,13 +19,13 @@
                 <div class="card-body">
                         <table class="table">
                             <thead>
-                                <th>Period</th>
-                                <th>Transactions</th>
-                                <th>Income</th>
-                                <th>Expenses</th>
-                                <th>Payments</th>
-                                <th>Cash Balance</th>
-                                <th>Total balance</th>
+                                <th>Periodo</th>
+                                <th>Transacciones</th>
+                                <th>Ingresos</th>
+                                <th>Gastos</th>
+                                <th>Pagos</th>
+                                <th>Saldo de efectivo</th>
+                                <th>Saldo total</th>
                                 <th></th>
                             </thead>
                             <tbody>
@@ -54,10 +54,10 @@
                 <div class="card-header">
                     <div class="row">
                         <div class="col-8">
-                            <h4 class="card-title">Pending Balances</h4>
+                            <h4 class="card-title">Saldos pendientes</h4>
                         </div>
                         <div class="col-4 text-right">
-                            <a href="{{ route('clients.index') }}" class="btn btn-sm btn-primary">View Clients</a>
+                            <a href="{{ route('clients.index') }}" class="btn btn-sm btn-primary">Ver clientes</a>
                         </div>
                     </div>
                 </div>
@@ -65,9 +65,9 @@
                     <div class="table-full-width table-responsive">
                         <table class="table">
                             <thead>
-                                <th>Client</th>
-                                <th>Purchases</th>
-                                <th>Transactions</th>
+                                <th>Cliente</th>
+                                <th>Compras</th>
+                                <th>Transacciones</th>
                                 <th>Balance</th>
                                 <th></th>
                             </thead>
@@ -87,10 +87,10 @@
                                             @endif
                                         </td>
                                         <td>
-                                            <a href="{{ route('clients.transactions.add', $client) }}" class="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="Register Transation">
+                                            <a href="{{ route('clients.transactions.add', $client) }}" class="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="Registro Transación">
                                                 <i class="tim-icons icon-simple-add"></i>
                                             </a>
-                                            <a href="{{ route('clients.show', $client) }}" class="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="See Client">
+                                            <a href="{{ route('clients.show', $client) }}" class="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="Ver Cliente">
                                                 <i class="tim-icons icon-zoom-split"></i>
                                             </a>
                                         </td>
@@ -108,10 +108,10 @@
                 <div class="card-header">
                     <div class="row">
                         <div class="col-8">
-                            <h4 class="card-title">Statistics by Methods</h4>
+                            <h4 class="card-title">Estadísticas por métodos</h4>
                         </div>
                         <div class="col-4 text-right">
-                            <a href="{{ route('methods.index') }}" class="btn btn-sm btn-primary">View Methods</a>
+                            <a href="{{ route('methods.index') }}" class="btn btn-sm btn-primary">Ver Métodos</a>
                         </div>
                     </div>
                 </div>
@@ -119,8 +119,8 @@
                     <div class="table-full-width table-responsive">
                         <table class="table">
                             <thead>
-                                <th>Method</th>
-                                <th>Transactions {{ $date->year }}</th>
+                                <th>Método</th>
+                                <th>Transacciones {{ $date->year }}</th>
                                 <th>Balance {{ $date->year }}</th>
                                 <th></th>
                             </thead>
@@ -131,7 +131,7 @@
                                         <td>{{ format_money($transactionsperiods['Year']->where('payment_method_id', $method->id)->count()) }}</td>
                                         <td>{{ format_money($transactionsperiods['Year']->where('payment_method_id', $method->id)->sum('amount')) }}</td>
                                         <td>
-                                            <a href="{{ route('methods.show', $method) }}" class="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="See Method">
+                                            <a href="{{ route('methods.show', $method) }}" class="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="Ver método">
                                                 <i class="tim-icons icon-zoom-split"></i>
                                             </a>
                                         </td>
@@ -151,23 +151,25 @@
             <div class="card-header">
                 <div class="row">
                     <div class="col-8">
-                        <h4 class="card-title">Sales Statistics</h4>
+                        <h4 class="card-title">
+                                Estadísticas de ventas
+                            </h4>
                     </div>
                     <div class="col-4 text-right">
-                        <a href="{{ route('sales.index') }}" class="btn btn-sm btn-primary">View Sales</a>
+                        <a href="{{ route('sales.index') }}" class="btn btn-sm btn-primary">Ver ventas</a>
                     </div>
                 </div>
             </div>
             <div class="card-body">
                 <table class="table">
                     <thead>
-                        <th>Period</th>
-                        <th>Sales</th>
-                        <th>Clients</th>
+                        <th>Periodo</th>
+                        <th>Ventas</th>
+                        <th>Clientes</th>
                         <th>Total Stock</th>
-                        <th data-toggle="tooltip" data-placement="bottom" title="Promedio de ingresos por cada venta">Average C / V</th>
-                        <th>Billed Amount</th>
-                        <th>To Finalize</th>
+                        <th data-toggle="tooltip" data-placement="bottom" title="Promedio de ingresos por cada venta">Promedio C / V</th>
+                        <th>Cantidad facturada</th>
+                        <th>Para finalizar</th>
                     </thead>
                     <tbody>
                         @foreach ($salesperiods as $period => $data)

@@ -1,24 +1,32 @@
-@extends('layouts.app', ['page' => 'Product Information', 'pageSlug' => 'products', 'section' => 'inventory'])
+@extends('layouts.app', ['page' => 'Información del Producto', 'pageSlug' => 'products', 'section' => 'inventory'])
 
 @section('content')
     <div class="row">
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title">Product Information</h4>
+                    <div class="row align-items-center">
+                        <div class="col-8">
+                            <h4 class="mb-0">Información del Producto</h4>
+                        </div>
+                        <div class="col-4 text-right">
+                            <a href="{{ route('products.index') }}" class="btn btn-sm btn-primary">Atrás</a>
+                        </div>
+                    </div>
                 </div>
+                
                 <div class="card-body">
                     <table class="table">
                         <thead>
                             <th>ID</th>
-                            <th>Category</th>
-                            <th>Name</th>
+                            <th>Categoría</th>
+                            <th>Nombre</th>
                             <th>Stock</th>
-                            <th>Defective Stock</th>
-                            <th>Base price</th>
-                            <th>Average Price</th>
-                            <th>Total sales</th>
-                            <th>Income Produced</th>
+                            <th>Stock Defectuoso</th>
+                            <th>Precio Base</th>
+                            <th>Precio medio</th>
+                            <th>Total ventas</th>
+                            <th>Ingresos generados</th>
                         </thead>
                         <tbody>
                             <tr>
@@ -43,16 +51,16 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title">Latest Sales</h4>
+                    <h4 class="card-title">Últimas ventas</h4>
                 </div>
                 <div class="card-body">
                     <table class="table">
                         <thead>
-                            <th>Date</th>
-                            <th>Sale ID</th>
-                            <th>Quantity</th>
-                            <th>Price Unit</th>
-                            <th>Total Amount</th>
+                            <th>Fecha</th>
+                            <th>ID de venta</th>
+                            <th>Cantidad</th>
+                            <th>Precio Unidad</th>
+                            <th>Cantidad Total</th>
                             <th></th>
                         </thead>
                         <tbody>
@@ -64,7 +72,7 @@
                                     <td>{{ format_money($sold->price) }}</td>
                                     <td>{{ format_money($sold->total_amount) }}</td>
                                     <td class="td-actions text-right">
-                                        <a href="{{ route('sales.show', $sold->sale_id) }}" class="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="View Sale">
+                                        <a href="{{ route('sales.show', $sold->sale_id) }}" class="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="Ver Venta">
                                             <i class="tim-icons icon-zoom-split"></i>
                                         </a>
                                     </td>
@@ -81,16 +89,16 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title">Latest Receipts</h4>
+                    <h4 class="card-title">Últimos recibos</h4>
                 </div>
                 <div class="card-body">
                     <table class="table">
                         <thead>
-                            <th>Date</th>
-                            <th>Receipt ID</th>
-                            <th>Title</th>
+                            <th>Fecha</th>
+                            <th>ID del recibo</th>
+                            <th>Título</th>
                             <th>Stock</th>
-                            <th>Defective Stock</th>
+                            <th>Stock Defectuoso</th>
                             <th>Total Stock</th>
                             <th></th>
                         </thead>
@@ -104,7 +112,7 @@
                                     <td>{{ $received->stock_defective }}</td>
                                     <td>{{ $received->stock + $received->stock_defective }}</td>
                                     <td class="td-actions text-right">
-                                        <a href="{{ route('receipts.show', $received->receipt) }}" class="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="Ver Receipt">
+                                        <a href="{{ route('receipts.show', $received->receipt) }}" class="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="Ver Recibo">
                                             <i class="tim-icons icon-zoom-split"></i>
                                         </a>
                                     </td>

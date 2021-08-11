@@ -120,7 +120,6 @@
                 </a>
             </li>
 
-
             <!-- <li>
                 <a data-toggle="collapse" href="#clients">
                     <i class="tim-icons icon-single-02" ></i>
@@ -145,8 +144,7 @@
                     </ul>
                 </div>
             </li> -->
-
-
+            
             <li>
                 <a data-toggle="collapse" href="#users" {{ $section == 'users' ? 'aria-expanded=true' : '' }}>
                     <i class="tim-icons icon-badge" ></i>

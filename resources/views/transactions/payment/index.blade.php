@@ -1,4 +1,4 @@
-@extends('layouts.app', ['page' => 'Payments', 'pageSlug' => 'payments', 'section' => 'transactions'])
+@extends('layouts.app', ['page' => 'Pagos', 'pageSlug' => 'payments', 'section' => 'transactions'])
 
 @section('content')
     <div class="row">
@@ -7,10 +7,10 @@
                 <div class="card-header">
                     <div class="row">
                         <div class="col-8">
-                            <h4 class="card-title">Payments</h4>
+                            <h4 class="card-title">Pagos</h4>
                         </div>
                         <div class="col-4 text-right">
-                            <a href="{{ route('transactions.create', ['type' => 'payment']) }}" class="btn btn-sm btn-primary">New Payment</a>
+                            <a href="{{ route('transactions.create', ['type' => 'payment']) }}" class="btn btn-sm btn-primary">Nuevo Pago</a>
                         </div>
                     </div>
                 </div>
@@ -20,12 +20,12 @@
                     <div class="">
                         <table class="table tablesorter " id="">
                             <thead class=" text-primary">
-                                <th scope="col">Date</th>
-                                <th scope="col">Provider</th>
-                                <th scope="col">Title</th>
-                                <th scope="col">Method</th>
-                                <th scope="col">Amount</th>
-                                <th scope="col">Reference</th>
+                                <th scope="col">Fecha</th>
+                                <th scope="col">Proveedor</th>
+                                <th scope="col">Título</th>
+                                <th scope="col">Método</th>
+                                <th scope="col">Cantidad</th>
+                                <th scope="col">Referencia</th>
                                 <th scope="col"></th>
                             </thead>
                             <tbody>
@@ -39,13 +39,13 @@
                                         <td>{{ $transaction->reference }}</td>
                                         <td></td>
                                         <td class="td-actions text-right">
-                                            <a href="{{ route('transactions.edit', $transaction) }}" class="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="Edit Payment">
+                                            <a href="{{ route('transactions.edit', $transaction) }}" class="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="Editar">
                                                 <i class="tim-icons icon-pencil"></i>
                                             </a>
                                             <form action="{{ route('transactions.destroy', $transaction) }}" method="post" class="d-inline">
                                                 @csrf
                                                 @method('delete')
-                                                <button type="button" class="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="Delete Payment" onclick="confirm('Are you sure you want to delete this payment? There will be no record left.') ? this.parentElement.submit() : ''">
+                                                <button type="button" class="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="Eliminar" onclick="confirm('¿Está seguro de que quiere eliminar este pago? No quedará ningún registro.') ? this.parentElement.submit() : ''">
                                                     <i class="tim-icons icon-simple-remove"></i>
                                                 </button>
                                             </form>

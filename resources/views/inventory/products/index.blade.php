@@ -1,4 +1,4 @@
-@extends('layouts.app', ['page' => 'List of Products', 'pageSlug' => 'products', 'section' => 'inventory'])
+@extends('layouts.app', ['page' => 'Lista de productos', 'pageSlug' => 'products', 'section' => 'inventory'])
 
 @section('content')
     <div class="row">
@@ -7,10 +7,10 @@
                 <div class="card-header">
                     <div class="row">
                         <div class="col-8">
-                            <h4 class="card-title">Products</h4>
+                            <h4 class="card-title">Productos</h4>
                         </div>
                         <div class="col-4 text-right">
-                            <a href="{{ route('products.create') }}" class="btn btn-sm btn-primary">New product</a>
+                            <a href="{{ route('products.create') }}" class="btn btn-sm btn-primary">Nuevo producto</a>
                         </div>
                     </div>
                 </div>
@@ -20,12 +20,13 @@
                     <div class="">
                         <table class="table tablesorter " id="">
                             <thead class=" text-primary">
-                                <th scope="col">Category</th>
-                                <th scope="col">Product</th>
-                                <th scope="col">Base Price</th>
+                                <th scope="col">Categoría</th>
+                                <th scope="col">Producto</th>
+                                <th scope="col">Descripción</th>
+                                <th scope="col">Precio base</th>
                                 <th scope="col">Stock</th>
-                                <th scope="col">Faulty</th>
-                                <th scope="col">Total Sold</th>
+                                <th scope="col">Defectuoso</th>
+                                <th scope="col">Total vendido</th>
                                 <th scope="col"></th>
                             </thead>
                             <tbody>
@@ -33,21 +34,22 @@
                                     <tr>
                                         <td><a href="{{ route('categories.show', $product->category) }}">{{ $product->category->name }}</a></td>
                                         <td>{{ $product->name }}</td>
+                                        <td>{{ $product->description }}</td>
                                         <td>{{ format_money($product->price) }}</td>
                                         <td>{{ $product->stock }}</td>
                                         <td>{{ $product->stock_defective }}</td>
                                         <td>{{ $product->solds->sum('qty') }}</td>
                                         <td class="td-actions text-right">
-                                            <a href="{{ route('products.show', $product) }}" class="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="More Details">
+                                            <a href="{{ route('products.show', $product) }}" class="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="Detalles">
                                                 <i class="tim-icons icon-zoom-split"></i>
                                             </a>
-                                            <a href="{{ route('products.edit', $product) }}" class="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="Edit Product">
+                                            <a href="{{ route('products.edit', $product) }}" class="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="Editar ">
                                                 <i class="tim-icons icon-pencil"></i>
                                             </a>
                                             <form action="{{ route('products.destroy', $product) }}" method="post" class="d-inline">
                                                 @csrf
                                                 @method('delete')
-                                                <button type="button" class="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="Delete Product" onclick="confirm('Are you sure you want to remove this product? The records that contain it will continue to exist.') ? this.parentElement.submit() : ''">
+                                                <button type="button" class="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="Eliminar" onclick="confirm('¿Está seguro de que quiere eliminar este producto? Los registros que lo contienen seguirán existiendo.') ? this.parentElement.submit() : ''">
                                                     <i class="tim-icons icon-simple-remove"></i>
                                                 </button>
                                             </form>

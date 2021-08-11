@@ -45,7 +45,7 @@ class ProductController extends Controller
 
         return redirect()
             ->route('products.index')
-            ->withStatus('Product successfully registered.');
+            ->withStatus('Producto registrado con éxito!.');
     }
 
     /**
@@ -89,7 +89,7 @@ class ProductController extends Controller
 
         return redirect()
             ->route('products.index')
-            ->withStatus('Product updated successfully.');
+            ->withStatus('Producto actualizado con éxito!.');
     }
 
     /**
@@ -104,6 +104,6 @@ class ProductController extends Controller
 
         return redirect()
             ->route('products.index')
-            ->withStatus('Product removed successfully.');
+            ->withStatus('Producto retirado con éxito!.');
     }
 }
