@@ -49,6 +49,14 @@
                                     @include('alerts.feedback', ['field' => 'description'])
 
                                 </div>
+
+                                <div class="form-group{{ $errors->has('measures') ? ' has-danger' : '' }}">
+                                    <label class="form-control-label" for="input-measures">Medidas</label>
+                                    <input type="text" name="description" id="input-measures" class="form-control form-control-alternative" placeholder="Measures" value="{{ old('measures', $product->measures) }}" required>
+                                    @include('alerts.feedback', ['field' => 'measures'])
+
+                                </div>
+
                                 <div class="row">
                                     <div class="col-4">                                    
                                         <div class="form-group{{ $errors->has('stock') ? ' has-danger' : '' }}">

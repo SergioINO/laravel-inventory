@@ -13391,8 +13391,8 @@ img {
 
 .navbar .photo {
   display: inline-block;
-  height: 30px;
-  width: 30px;
+  height: 35px;
+  width: 35px;
   border-radius: 50%;
   vertical-align: middle;
   overflow: hidden;
@@ -13421,7 +13421,7 @@ img {
 }
 
 .navbar.navbar-transparent {
-  background: transparent !important;
+  background: rgb(56, 209, 18) !important;
 }
 
 .navbar.bg-white .navbar-nav .search-bar.input-group i {
@@ -14845,10 +14845,10 @@ table.tablesorter thead tr .headerSortDown {
 .sidebar,
 .off-canvas-sidebar {
   background: #2d0ccc;
-  background: -webkit-linear-gradient(0deg, #1d032c 0%, #4e65e1 100%);
-  background: -o-linear-gradient(0deg, #1d032c 0%, #4e65e1 100%);
-  background: -moz-linear-gradient(0deg, #1d032c 0%, #4e65e1 100%);
-  background: linear-gradient(0deg, #1d032c 0%, #4e65e1 100%);
+  background: -webkit-linear-gradient(0deg, #1d032c 0%, #7de14e 100%);
+  background: -o-linear-gradient(0deg, #1d032c 0%, #53e14e 100%);
+  background: -moz-linear-gradient(0deg, #1d032c 0%, #90e14e 100%);
+  background: linear-gradient(0deg, #1d032c 0%, #4ee15a 100%);
   height: calc(100vh - 90px);
   width: 230px;
   position: fixed;

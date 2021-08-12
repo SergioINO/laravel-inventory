@@ -22,7 +22,8 @@
                             <thead class=" text-primary">
                                 <th scope="col">Categoría</th>
                                 <th scope="col">Producto</th>
-                                <th scope="col">Descripción</th>
+                                <th scope="col">Descripción(espxanchxlarg)</th>
+                                <th scope="col">Medidas(M2 / M3)</th>
                                 <th scope="col">Precio base</th>
                                 <th scope="col">Stock</th>
                                 <th scope="col">Defectuoso</th>
@@ -35,6 +36,7 @@
                                         <td><a href="{{ route('categories.show', $product->category) }}">{{ $product->category->name }}</a></td>
                                         <td>{{ $product->name }}</td>
                                         <td>{{ $product->description }}</td>
+                                        <td>{{ $product->measures}}</td>
                                         <td>{{ format_money($product->price) }}</td>
                                         <td>{{ $product->stock }}</td>
                                         <td>{{ $product->stock_defective }}</td>

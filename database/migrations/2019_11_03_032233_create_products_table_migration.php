@@ -17,6 +17,7 @@ class CreateProductsTableMigration extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->text('description')->nullable();
+            $table->text('measures')->nullable();
             $table->unsignedBigInteger('product_category_id');
             $table->unsignedDecimal('price', 10, 2);
             $table->unsignedinteger('stock')->default(0);
