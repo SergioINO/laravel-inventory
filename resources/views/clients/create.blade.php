@@ -16,6 +16,7 @@
                         </div>
                     </div>
                     <div class="card-body">
+                        {{-- FORMULARIO AGREGAR UN NUEVO CLIENTE --}}
                         <form method="post" action="{{ route('clients.store') }}" autocomplete="off">
                             @csrf
                             <h6 class="heading-small text-muted mb-4">Informacion Cliente</h6>
@@ -29,7 +30,7 @@
                                     <div class="col-1">
                                         <label class="form-control-label" for="input-document_type">Tipo</label>
                                         <select name="document_type" id="input-document_type" class="form-control form-control-alternative{{ $errors->has('name') ? ' is-invalid' : '' }}" required>
-                                            @foreach (['V', 'E', 'P'] as $document_type)
+                                            @foreach (['E', 'P'] as $document_type)
                                                 @if($document_type == old('document_type'))
                                                     <option value="{{$document_type}}" selected>{{$document_type}}</option>
                                                 @else

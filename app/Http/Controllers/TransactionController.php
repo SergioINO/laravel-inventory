@@ -21,10 +21,10 @@ class TransactionController extends Controller
     public function index()
     {
         $transactionname = [
-            'income' => 'Income',
-            'payment' => 'Payment',
-            'expense' => 'Expense',
-            'transfer' => 'Transfer'
+            'income' => 'Ingreso',
+            'payment' => 'Pago',
+            'expense' => 'Gasto',
+            'transfer' => 'Transferencia'
         ];
 
         $transactions = Transaction::latest()->paginate(25);

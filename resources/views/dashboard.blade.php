@@ -189,13 +189,13 @@
                                     <tr> 
                                         <td>
                                             @if($transaction->type == 'expense')
-                                                Expense
+                                                Gasto
                                             @elseif($transaction->type == 'sale')
-                                                Sale
+                                                Venta
                                             @elseif($transaction->type == 'payment')
-                                                Payment
+                                                Pago
                                             @elseif($transaction->type == 'income')
-                                                Income
+                                                Ingreso
                                             @else
                                                 {{ $transaction->type }}
                                             @endif
@@ -225,18 +225,18 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">New Transaction</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Nueva Transacción</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
                     <div class="d-flex justify-content-between">
-                        <a href="{{ route('transactions.create', ['type' => 'payment']) }}" class="btn btn-sm btn-primary">Payment</a>
-                        <a href="{{ route('transactions.create', ['type' => 'income']) }}" class="btn btn-sm btn-primary">Income</a>
-                        <a href="{{ route('transactions.create', ['type' => 'expense']) }}" class="btn btn-sm btn-primary">Expense</a>
-                        <a href="{{ route('sales.create') }}" class="btn btn-sm btn-primary">Sale</a>
-                        <a href="{{ route('transfer.create') }}" class="btn btn-sm btn-primary">Transfer</a>
+                        <a href="{{ route('transactions.create', ['type' => 'payment']) }}" class="btn btn-sm btn-primary">Pago</a>
+                        <a href="{{ route('transactions.create', ['type' => 'income']) }}" class="btn btn-sm btn-primary">Ingreso</a>
+                        <a href="{{ route('transactions.create', ['type' => 'expense']) }}" class="btn btn-sm btn-primary">Gastos</a>
+                        <a href="{{ route('sales.create') }}" class="btn btn-sm btn-primary">Ventas</a>
+                        <a href="{{ route('transfer.create') }}" class="btn btn-sm btn-primary">Transferencia</a>
                     </div>
                 </div>
             </div>

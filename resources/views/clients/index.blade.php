@@ -16,7 +16,7 @@
                 </div>
                 <div class="card-body">
                     @include('alerts.success')
-
+                    {{-- INFORMACION DEL CLIENTE --}}
                     <div class="">
                         <table class="table tablesorter " id="">
                             <thead class=" text-primary">
@@ -49,6 +49,7 @@
                                         <td>{{ $client->sales->count() }}</td>
                                         <td>{{ format_money($client->transactions->sum('amount')) }}</td>
                                         <td>{{ ($client->sales->sortByDesc('created_at')->first()) ? date('d-m-y', strtotime($client->sales->sortByDesc('created_at')->first()->created_at)) : 'N/A' }}</td>
+                                        {{-- ACCIONES DEL CLIENTE --}}
                                         <td class="td-actions text-right">
                                             <a href="{{ route('clients.show', $client) }}" class="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="Mas detalle">
                                                 <i class="tim-icons icon-zoom-split"></i>

@@ -12198,7 +12198,7 @@ fieldset[disabled] .btn-link.active {
 
 .footer .nav {
   display: inline-block;
-  float: left;
+  float: none;
   margin-bottom: 0;
   padding-left: 30px;
   list-style: none;

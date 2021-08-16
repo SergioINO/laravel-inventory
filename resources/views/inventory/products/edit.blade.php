@@ -52,7 +52,7 @@
 
                                 <div class="form-group{{ $errors->has('measures') ? ' has-danger' : '' }}">
                                     <label class="form-control-label" for="input-measures">Medidas</label>
-                                    <input type="text" name="description" id="input-measures" class="form-control form-control-alternative" placeholder="Measures" value="{{ old('measures', $product->measures) }}" required>
+                                    <input type="text" name="measures" id="input-measures" class="form-control form-control-alternative" placeholder="Measures" value="{{ old('measures', $product->measures) }}" required>
                                     @include('alerts.feedback', ['field' => 'measures'])
 
                                 </div>

@@ -9,6 +9,7 @@
                     <h4 class="card-title">Información Cliente</h4>
                 </div>
                 <div class="card-body">
+                    {{-- TABLA INFORMACION DEL CLIENTE --}}
                     <table class="table">
                         <thead>
                             <th>ID</th>
@@ -62,6 +63,7 @@
                     </div>
                 </div>
                 <div class="card-body">
+                    {{-- TABLA ULTIMAS TRASACCIONES --}}
                     <table class="table">
                         <thead>
                             <th>ID</th>
@@ -103,6 +105,7 @@
                 </div>
                 <div class="card-body">
                     <table class="table">
+                        {{-- TABLA ULTIMAS COMPRAS --}}
                         <thead>
                             <th>ID</th>
                             <th>Fecha</th>

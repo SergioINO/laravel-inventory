@@ -89,7 +89,7 @@ class ReceiptController extends Controller
     {
         $receipt->finalized_at = Carbon::now()->toDateTimeString();
         $receipt->save();
-
+        
         foreach($receipt->products as $receivedproduct) {
             $receivedproduct->product->stock += $receivedproduct->stock;
             $receivedproduct->product->stock_defective += $receivedproduct->stock_defective;

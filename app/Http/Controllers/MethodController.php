@@ -59,10 +59,10 @@ class MethodController extends Controller
         Carbon::setWeekEndsAt(Carbon::SATURDAY);
 
         $transactionname = [
-            'income' => 'Income',
-            'payment' => 'Payment',
-            'expense' => 'Expense',
-            'transfer' => 'Transfer'
+            'income' => 'Ingreso',
+            'payment' => 'Pago',
+            'expense' => 'Gasto',
+            'transfer' => 'Transferencia'
         ];
 
         $balances = [

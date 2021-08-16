@@ -16,6 +16,7 @@
                         </div>
                     </div>
                     <div class="card-body">
+                        {{-- FORMULARIO EDITAR CLIENTE --}}
                         <form method="post" action="{{ route('clients.update', $client) }}" autocomplete="off">
                             @csrf
                             @method('put')

@@ -18,7 +18,7 @@
                                         @csrf
                                         @method('delete')
                                         <button type="submit" class="btn btn-sm btn-primary">
-                                            Eliminar Vents
+                                            Eliminar Ventas
                                         </button>
                                     </form>
                                 @else
