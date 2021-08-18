@@ -57,6 +57,12 @@
                                     @include('alerts.feedback', ['field' => 'phone'])
                                 </div>
 
+                                <div class="form-group{{ $errors->has('address') ? ' has-danger' : '' }}">
+                                    <label class="form-control-label" for="input-address">Dirección</label>
+                                    <input type="text" name="address" id="input-address" class="form-control form-control-alternative{{ $errors->has('address') ? ' is-invalid' : '' }}" placeholder="Address" value="{{ old('address') }}" required>
+                                    @include('alerts.feedback', ['field' => 'address'])
+                                </div>
+
 
                                 <div class="text-center">
                                     <button type="submit" class="btn btn-success mt-4">Guardar</button>

@@ -22,6 +22,7 @@
                             <thead class=" text-primary">
                                 <th>Nombre</th>
                                 <th>Email / Telefono</th>
+                                <th>Dirección</th>
                                 <th>Balance</th>
                                 <th>Compras</th>
                                 <th>Total Pagos</th>
@@ -37,6 +38,7 @@
                                             <br>
                                             {{ $client->phone }}
                                         </td>
+                                        <td>{{ $client->address }}</td>
                                         <td>
                                             @if (round($client->balance) > 0)
                                                 <span class="text-success">{{ format_money($client->balance) }}</span>

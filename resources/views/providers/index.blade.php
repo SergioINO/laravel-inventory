@@ -23,6 +23,7 @@
                                 <th scope="col">Nombre</th>
                                 <th scope="col">Descripción</th>
                                 <th scope="col">Email</th>
+                                <th scope="col">País</th>
                                 <th scope="col">Telefono</th>
                                 <th scope="col">Pagos realizados</th>
                                 <th scope="col">Pago total</th>
@@ -37,6 +38,7 @@
                                         <td>
                                             <a href="mailto:{{ $provider->email }}">{{ $provider->email }}</a>
                                         </td>
+                                        <td>{{ $provider->country }}</td>
                                         <td>{{ $provider->phone }}</td>
                                         <td>{{ $provider->transactions->count() }}</td>
                                         <td>{{ format_money(abs($provider->transactions->sum('amount'))) }}</td>

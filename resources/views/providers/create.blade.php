@@ -37,6 +37,13 @@
                                     <input type="email" name="email" id="input-email" class="form-control form-control-alternative{{ $errors->has('email') ? ' is-invalid' : '' }}" placeholder="Email" value="{{ old('email') }}" required>
                                     @include('alerts.feedback', ['field' => 'email'])
                                 </div>
+
+                                <div class="form-group{{ $errors->has('country') ? ' has-danger' : '' }}">
+                                    <label class="form-control-label" for="input-country">País</label>
+                                    <input type="country" name="country" id="input-country" class="form-control form-control-alternative{{ $errors->has('country') ? ' is-invalid' : '' }}" placeholder="Country" value="{{ old('country') }}" required>
+                                    @include('alerts.feedback', ['field' => 'country'])
+                                </div>
+
                                 <div class="form-group{{ $errors->has('phone') ? ' has-danger' : '' }}">
                                     <label class="form-control-label" for="input-phone">Telefono</label>
                                     <input type="phone" name="phone" id="input-phone" class="form-control form-control-alternative{{ $errors->has('phone') ? ' is-invalid' : '' }}" placeholder="Telephone" value="{{ old('phone') }}" required>

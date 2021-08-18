@@ -19,6 +19,7 @@ class CreateProvidersTableMigration extends Migration
             $table->text('description')->nullable();
             $table->text('paymentinfo')->nullable();
             $table->string('email')->nullable();
+            $table->string('country')->nullable();
             $table->string('phone')->nullable();
             $table->timestamps();
             $table->softDeletes();

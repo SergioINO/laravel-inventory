@@ -19,6 +19,7 @@ class CreateClientsTableMigration extends Migration
             $table->integer('document_id')->unique();
             $table->string('name');
             $table->string('email')->nullable();
+            $table->string('address')->nullable();
             $table->string('phone')->nullable();
             $table->timestamp('last_purchase')->nullable();
             $table->unsignedInteger('total_purchases')->default(0);

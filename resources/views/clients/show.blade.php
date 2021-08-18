@@ -17,6 +17,7 @@
                             <th>Rut</th>
                             <th>Telefono</th>
                             <th>Email</th>
+                            <th>Dirección</th>
                             <th>Balance</th>
                             <th>Compras</th>
                             <th>Total Pagos</th>
@@ -29,6 +30,7 @@
                                 <td>{{ $client->document_type }}-{{ $client->document_id }}</td>
                                 <td>{{ $client->phone }}</td>
                                 <td>{{ $client->email }}</td>
+                                <td>{{ $client->address }}</td>
                                 <td>
                                     @if ($client->balance > 0)
                                         <span class="text-success">{{ format_money($client->balance) }}</span>

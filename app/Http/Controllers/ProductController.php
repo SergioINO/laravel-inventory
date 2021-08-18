@@ -39,10 +39,10 @@ class ProductController extends Controller
      * @param  App\Product  $model
      * @return \Illuminate\Http\Response
      */
-    public function store(ProductRequest $request, Product $model)
+    public function store(ProductRequest $request, Product $product)
     {
-        // dd($request);
-        $model->create($request->all());
+        dd($request);
+        $product->create($request->all());
 
         return redirect()
             ->route('products.index')

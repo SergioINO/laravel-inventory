@@ -16,10 +16,19 @@ class CreateProductsTableMigration extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
+            $table->integer('thickness')->nullable();
+            $table->integer('width')->nullable();
+            $table->integer('length')->nullable();
+            $table->string('type_measure')->default('mm');
+            $table->float('length_mm')->nullable();
+            $table->float('PT')->nullable();
+            $table->float('TOTAL_PT')->nullable();
+            $table->float('m2')->nullable();
+            $table->float('m3')->nullable();
             $table->text('description')->nullable();
-            $table->text('measures')->nullable();
             $table->unsignedBigInteger('product_category_id');
-            $table->unsignedDecimal('price', 10, 2);
+            $table->unsignedDecimal('purchase_price', 10, 2);
+            $table->unsignedDecimal('selling_price', 10, 2);
             $table->unsignedinteger('stock')->default(0);
             $table->unsignedinteger('stock_defective')->default(0);
             $table->timestamps();

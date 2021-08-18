@@ -14,6 +14,7 @@
                             <th>Nombre</th>
                             <th>Descripción</th>
                             <th>Email</th>
+                            <th>País</th>
                             <th>Telefono</th>
                             <th>Información de pago</th>
                             <th>Pagos realizados</th>
@@ -25,6 +26,7 @@
                                 <td>{{ $provider->name }}</td>
                                 <td>{{ $provider->description }}</td>
                                 <td>{{ $provider->email }}</td>
+                                <td>{{ $provider->country }}</td>
                                 <td>{{ $provider->phone }}</td>
                                 <td style="max-width: 175px">{{ $provider->paymentinfo }}</td>
                                 <td>{{ $provider->transactions->count() }}</td>
