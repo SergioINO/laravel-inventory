@@ -42,18 +42,18 @@
                                     @include('alerts.feedback', ['field' => 'product_category_id'])
                                 </div>
 
-                                 <div class="row">
+                                <div class="row">
                                     <div class="col">
                                         <div class="form-group{{ $errors->has('thickness') ? ' has-danger' : '' }}">
                                             <label class="form-control-label" for="input-thickness">Espesor</label>
-                                            <input type="text" name="thickness" id="input-thickness" class="form-control form-control-alternative" placeholder="Thickness" value="{{ old('thickness') }}" required>
+                                            <input type="number" name="thickness" id="input-thickness" class="form-control form-control-alternative" placeholder="Thickness" value="{{ old('thickness') }}" required>
                                             @include('alerts.feedback', ['field' => 'thickness'])
                                         </div>
                                     </div>
                                     <div class="col">
                                         <div class="form-group{{ $errors->has('width') ? ' has-danger' : '' }}">
                                             <label class="form-control-label" for="input-width">Ancho</label>
-                                            <input type="text" name="width" id="input-width" class="form-control form-control-alternative" placeholder="Width" value="{{ old('width') }}" required>
+                                            <input type="number" name="width" id="input-width" class="form-control form-control-alternative" placeholder="Width" value="{{ old('width') }}" required>
                                             @include('alerts.feedback', ['field' => 'width'])
                                         </div>
                                     </div>
@@ -61,7 +61,7 @@
                                     <div class="col">
                                         <div class="form-group{{ $errors->has('length') ? ' has-danger' : '' }}">
                                             <label class="form-control-label" for="input-length">Largo</label>
-                                            <input type="text" name="length" id="input-length" class="form-control form-control-alternative" placeholder="Length" value="{{ old('length') }}" required>
+                                            <input type="number" name="length" id="input-length" class="form-control form-control-alternative" placeholder="Length" value="{{ old('length') }}" required>
                                             @include('alerts.feedback', ['field' => 'length'])
                                         </div>
                                     </div>
@@ -78,12 +78,6 @@
                                             @endforeach
                                         </select>
                                     </div>
-                                </div>
-
-                                <div class="form-group{{ $errors->has('description') ? ' has-danger' : '' }}">
-                                    <label class="form-control-label" for="input-description">Descripción</label>
-                                    <input type="text" name="description" id="input-description" class="form-control form-control-alternative" placeholder="Description" value="{{ old('description') }}">
-                                    @include('alerts.feedback', ['field' => 'description'])
                                 </div>
 
                             
@@ -119,6 +113,12 @@
                                     </div>                           
                                 </div>
 
+                                <div class="form-group{{ $errors->has('description') ? ' has-danger' : '' }}">
+                                    <label class="form-control-label" for="input-description">Descripción</label>
+                                    <input type="text" name="description" id="input-description" class="form-control form-control-alternative" placeholder="Description" value="{{ old('description') }}">
+                                    @include('alerts.feedback', ['field' => 'description'])
+                                </div>
+                                
                                 <div class="text-center">
                                     <button type="submit" class="btn btn-success mt-4">Guardar</button>
                                 </div>

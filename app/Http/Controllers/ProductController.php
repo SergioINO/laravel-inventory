@@ -41,7 +41,7 @@ class ProductController extends Controller
      */
     public function store(ProductRequest $request, Product $product)
     {
-        dd($request);
+        // dd('entre al store');
         $product->create($request->all());
 
         return redirect()

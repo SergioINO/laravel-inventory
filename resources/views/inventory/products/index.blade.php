@@ -20,13 +20,15 @@
                     <div class="">
                         <table class="table tablesorter " id="">
                             <thead class=" text-primary">
-                                <th scope="col">Categoría</th>
+                                <th scope="col">Especie</th>
                                 <th scope="col">Producto</th>
-                                <th scope="col">Descripción(espxanchxlarg)</th>
-                                <th scope="col">Medidas(M2 / M3)</th>
-                                <th scope="col">Precio base</th>
-                                <th scope="col">Stock</th>
-                                <th scope="col">Defectuoso</th>
+                                <th scope="col">Espesor</th>
+                                <th scope="col">Ancho</th>
+                                <th scope="col">Largo</th>
+                                <th scope="col">Tipo Medida</th>
+                                <th scope="col">N piezas</th>
+                                <th scope="col">N piezas Defectuosas</th>
+                                <th scope="col">Precio Venta</th>
                                 <th scope="col">Total vendido</th>
                                 <th scope="col"></th>
                             </thead>
@@ -35,11 +37,13 @@
                                     <tr>
                                         <td><a href="{{ route('categories.show', $product->category) }}">{{ $product->category->name }}</a></td>
                                         <td>{{ $product->name }}</td>
-                                        <td>{{ $product->description }}</td>
-                                        <td>{{ $product->measures}}</td>
-                                        <td>{{ format_money($product->price) }}</td>
+                                        <td>{{ $product->thickness }}</td>
+                                        <td>{{ $product->width}}</td>
+                                        <td>{{ $product->length}}</td>
+                                        <td>{{ $product->type_measure}}</td>
                                         <td>{{ $product->stock }}</td>
                                         <td>{{ $product->stock_defective }}</td>
+                                        <td>{{ format_money($product->selling_price) }}</td>
                                         <td>{{ $product->solds->sum('qty') }}</td>
                                         <td class="td-actions text-right">
                                             <a href="{{ route('products.show', $product) }}" class="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="Detalles">

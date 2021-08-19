@@ -19,11 +19,12 @@
                     <table class="table">
                         <thead>
                             <th>ID</th>
-                            <th>Categoría</th>
+                            <th>Especie</th>
                             <th>Nombre</th>
-                            <th>Stock</th>
-                            <th>Stock Defectuoso</th>
-                            <th>Precio Base</th>
+                            <th>N piezas</th>
+                            <th>N piezas defectuosas</th>
+                            <th>Precio Compra</th>
+                            <th>Precio Venta</th>
                             <th>Precio medio</th>
                             <th>Total ventas</th>
                             <th>Ingresos generados</th>
@@ -35,7 +36,8 @@
                                 <td>{{ $product->name }}</td>
                                 <td>{{ $product->stock }}</td>
                                 <td>{{ $product->stock_defective }}</td>
-                                <td>{{ format_money($product->price) }}</td>
+                                <td>{{ format_money($product->purchase_price) }}</td>
+                                <td>{{ format_money($product->selling_price) }}</td>
                                 <td>{{ format_money($product->solds->avg('price')) }}</td>
                                 <td>{{ $product->solds->sum('qty') }}</td>
                                 <td>{{ format_money($product->solds->sum('total_amount')) }}</td>

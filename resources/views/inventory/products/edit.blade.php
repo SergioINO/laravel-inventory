@@ -42,43 +42,82 @@
                                     @include('alerts.feedback', ['field' => 'product_category_id'])
                                 </div>
 
-
-                                <div class="form-group{{ $errors->has('description') ? ' has-danger' : '' }}">
-                                    <label class="form-control-label" for="input-description">Descripción</label>
-                                    <input type="text" name="description" id="input-description" class="form-control form-control-alternative" placeholder="Description" value="{{ old('description', $product->description) }}" required>
-                                    @include('alerts.feedback', ['field' => 'description'])
-
-                                </div>
-
-                                <div class="form-group{{ $errors->has('measures') ? ' has-danger' : '' }}">
-                                    <label class="form-control-label" for="input-measures">Medidas</label>
-                                    <input type="text" name="measures" id="input-measures" class="form-control form-control-alternative" placeholder="Measures" value="{{ old('measures', $product->measures) }}" required>
-                                    @include('alerts.feedback', ['field' => 'measures'])
-
-                                </div>
-
                                 <div class="row">
-                                    <div class="col-4">                                    
+                                    <div class="col-3">
+                                        <div class="form-group{{ $errors->has('thickness') ? ' has-danger' : '' }}">
+                                            <label class="form-control-label" for="input-thickness">{{ __('Espesor') }}</label>
+                                            <input type="text" name="thickness" id="input-thickness" class="form-control form-control-alternative{{ $errors->has('thickness') ? ' is-invalid' : '' }}" placeholder="{{ __('Thickness') }}" value="{{ old('thickness', $product->thickness) }}" required autofocus>
+                                            @include('alerts.feedback', ['field' => 'thickness'])
+                                        </div>
+                                    </div>
+                                    <div class="col-3">
+                                        <div class="form-group{{ $errors->has('width') ? ' has-danger' : '' }}">
+                                            <label class="form-control-label" for="input-width">{{ __('Ancho') }}</label>
+                                            <input type="text" name="width" id="input-width" class="form-control form-control-alternative{{ $errors->has('width') ? ' is-invalid' : '' }}" placeholder="{{ __('Width') }}" value="{{ old('width', $product->width) }}" required autofocus>
+                                            @include('alerts.feedback', ['field' => 'width'])
+                                        </div>
+                                    </div>
+                                    <div class="col-3">
+                                        <div class="form-group{{ $errors->has('length') ? ' has-danger' : '' }}">
+                                            <label class="form-control-label" for="input-length">{{ __('Largo') }}</label>
+                                            <input type="text" name="length" id="input-length" class="form-control form-control-alternative{{ $errors->has('length') ? ' is-invalid' : '' }}" placeholder="{{ __('Length') }}" value="{{ old('length', $product->length) }}" required autofocus>
+                                            @include('alerts.feedback', ['field' => 'length'])
+                                        </div>
+                                    </div>
+
+                                    <div class="col-3">
+                                        <label class="form-control-label" for="input-type_measure">{{ __('Tipo') }}</label>
+                                        <select name="type_measure" id="input-type_measure" class="form-control form-control-alternative{{ $errors->has('name') ? ' is-invalid' : '' }}" required>
+                                            @foreach (['mm', 'pulg'] as $type_measure)
+                                                @if($type_measure == old('type_measure') or $type_measure == $product->type_measure)
+                                                    <option value="{{$type_measure}}" selected>{{$type_measure}}</option>
+                                                @else
+                                                    <option value="{{$type_measure}}">{{$type_measure}}</option>
+                                                @endif
+                                            @endforeach
+
+                                        </select>
+                                    </div>
+
+                                </div> 
+                                
+                                <div class="row">
+                                    <div class="col-3">
                                         <div class="form-group{{ $errors->has('stock') ? ' has-danger' : '' }}">
-                                            <label class="form-control-label" for="input-stock">Stock</label>
-                                            <input type="number" name="stock" id="input-stock" class="form-control form-control-alternative" placeholder="Stock" value="{{ old('stock', $product->stock) }}" required>
+                                            <label class="form-control-label" for="input-stock">{{ __('N piezas') }}</label>
+                                            <input type="number" name="stock" id="input-stock" class="form-control form-control-alternative{{ $errors->has('stock') ? ' is-invalid' : '' }}" placeholder="{{ __('N piezas') }}" value="{{ old('stock', $product->stock) }}" required autofocus>
                                             @include('alerts.feedback', ['field' => 'stock'])
                                         </div>
-                                    </div>                            
-                                    <div class="col-4">                                    
+                                    </div>
+                                    <div class="col-3">
                                         <div class="form-group{{ $errors->has('stock_defective') ? ' has-danger' : '' }}">
-                                            <label class="form-control-label" for="input-stock_defective">Stock Defectuoso</label>
-                                            <input type="number" name="stock_defective" id="input-stock_defective" class="form-control form-control-alternative" placeholder="Defective Stock" value="{{ old('stock_defective', $product->stock_defective) }}" required>
+                                            <label class="form-control-label" for="input-stock_defective">{{ __('N piezas defectuosas') }}</label>
+                                            <input type="number" name="stock_defective" id="input-stock_defective" class="form-control form-control-alternative{{ $errors->has('stock_defective') ? ' is-invalid' : '' }}" placeholder="{{ __('N piezas defectuosas') }}" value="{{ old('stock_defective', $product->stock_defective) }}" required autofocus>
                                             @include('alerts.feedback', ['field' => 'stock_defective'])
                                         </div>
                                     </div>
-                                    <div class="col-4">                                    
-                                        <div class="form-group{{ $errors->has('price') ? ' has-danger' : '' }}">
-                                            <label class="form-control-label" for="input-price">Precio</label>
-                                            <input type="number" step=".01" name="price" id="input-price" class="form-control form-control-alternative" placeholder="Price" value="{{ old('price', $product->price) }}" required>
-                                            @include('alerts.feedback', ['field' => 'price'])
+                                    <div class="col-3">
+                                        <div class="form-group{{ $errors->has('purchase_price') ? ' has-danger' : '' }}">
+                                            <label class="form-control-label" for="input-purchase_price">{{ __('Precio Compra') }}</label>
+                                            <input type="number" name="purchase_price" id="input-purchase_price" class="form-control form-control-alternative{{ $errors->has('purchase_price') ? ' is-invalid' : '' }}" placeholder="{{ __('Precio Compra') }}" value="{{ old('purchase_price', $product->purchase_price) }}" required autofocus>
+                                            @include('alerts.feedback', ['field' => 'purchase_price'])
                                         </div>
                                     </div>
+
+                                    <div class="col-3">
+                                        <div class="form-group{{ $errors->has('selling_price') ? ' has-danger' : '' }}">
+                                            <label class="form-control-label" for="input-selling_price">{{ __('Precio Venta') }}</label>
+                                            <input type="number" name="selling_price" id="input-selling_price" class="form-control form-control-alternative{{ $errors->has('selling_price') ? ' is-invalid' : '' }}" placeholder="{{ __('Precio Venta') }}" value="{{ old('selling_price', $product->selling_price) }}" required autofocus>
+                                            @include('alerts.feedback', ['field' => 'selling_price'])
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="form-group{{ $errors->has('description') ? ' has-danger' : '' }}">
+                                    <label class="form-control-label" for="input-description">{{ __('Descripcion') }}</label>
+                                    <input type="text" name="description" id="input-description" class="form-control form-control-alternative{{ $errors->has('description') ? ' is-invalid' : '' }}" placeholder="{{ __('Descripcion') }}" value="{{ old('description', $product->description) }}" >
+                                    @include('alerts.feedback', ['field' => 'description'])
                                 </div>
 
                                 <div class="text-center">

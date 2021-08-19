@@ -29,7 +29,8 @@ class ProductRequest extends FormRequest
             'product_category_id' => ['required'],
             'description' => [],
             'stock' => ['required'],
-            'price' => ['required'],
+            'purchase_price' => ['required'],
+            'selling_price' => ['required'],
             'price_wholesaler' => [],
         ];
     }
