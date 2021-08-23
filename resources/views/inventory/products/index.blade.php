@@ -25,7 +25,8 @@
                                 <th scope="col">Espesor</th>
                                 <th scope="col">Ancho</th>
                                 <th scope="col">Largo</th>
-                                <th scope="col">Tipo Medida</th>
+                                <th scope="col">M2</th>
+                                <th scope="col">M3</th>
                                 <th scope="col">N piezas</th>
                                 <th scope="col">N piezas Defectuosas</th>
                                 <th scope="col">Precio Venta</th>
@@ -40,7 +41,8 @@
                                         <td>{{ $product->thickness }}</td>
                                         <td>{{ $product->width}}</td>
                                         <td>{{ $product->length}}</td>
-                                        <td>{{ $product->type_measure}}</td>
+                                        <td>{{ $product->m2}}</td>
+                                        <td>{{ $product->m3}}</td>
                                         <td>{{ $product->stock }}</td>
                                         <td>{{ $product->stock_defective }}</td>
                                         <td>{{ format_money($product->selling_price) }}</td>

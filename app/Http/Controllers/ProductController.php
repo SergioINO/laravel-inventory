@@ -1,9 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use DB;
 use App\Product;
 use App\ProductCategory;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 use App\Http\Requests\ProductRequest;
 
 class ProductController extends Controller
@@ -41,12 +43,70 @@ class ProductController extends Controller
      */
     public function store(ProductRequest $request, Product $product)
     {
-        // dd('entre al store');
-        $product->create($request->all());
 
-        return redirect()
+        dd($request);
+        $rules = [
+            'name' => 'required|string',
+            'thickness' => 'required|numeric',
+            'width'     => 'required|numeric',
+            'length'    => 'required|numeric',
+            'stock' => 'required|numeric',
+            'stock_defective' => 'required|numeric',
+            'purchase_price' => 'required|numeric',
+            'selling_price' => 'required|numeric',
+            'description' => 'nullable|string',
+        ];
+
+        try {
+        
+            $this->validate($request, $rules);
+
+            DB::connection(session()->get('database'))->beginTransaction();
+            
+            $store = new Product;
+            $store->setConnection(session()->get('database'));
+                $store->name        = $request->name;
+                $store->product_category_id = $request->product_category_id;
+                $store->stock       = $request->stock;
+                $store->stock_defective = $request->stock_defective;
+                $store->purchase_price = $request->purchase_price;
+                $store->selling_price = $request->selling_price;
+                $store->description = $request->description;
+                if ($request->type_measure = 'mm') {
+                    $store->thickness        = $request->thickness;
+                    $store->width       = $request->width;
+                    $store->length = $request->length;
+                    // $store->m2 = falta hacer formula  
+                    // $store->m3 = falta hacer formula 
+                    // $store->PT = falta hacer formula  
+                    // $store->TOTAL_PT = falta hacer formula 
+                }
+                if ($request->type_measure = 'pulg') {
+                    $store->thickness        = $request->thickness;
+                    $store->width       = $request->width;
+                    $store->length = $request->length;
+                    // $store->m2 = falta hacer formula  
+                    // $store->m3 = falta hacer formula  
+                    // $store->PT = falta hacer formula  
+                    // $store->TOTAL_PT = falta hacer formula 
+                }
+
+            $store->save();
+                
+            DB::connection(session()->get('database'))->commit();
+
+            return redirect()
             ->route('products.index')
             ->withStatus('Producto registrado con éxito!.');
+
+        }catch (ValidationException $exception) {
+            
+            DB::connection(session()->get('database'))->rollback();
+            return response()->json(['errors' => $exception->errors()], 422);
+        }
+        
+
+        
     }
 
     /**
