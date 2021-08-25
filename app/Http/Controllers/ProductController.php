@@ -189,9 +189,10 @@ class ProductController extends Controller
                     $store->width       = $request->width;
                     $store->length = $request->length;
                     // obtengo m2 de cada producto
-                    $store->m2 = ($request->width/1000) * ($request->length*304.8/1000);  
+                    $store->m2 = ($request->width/1000) * ($request->length/1000);  
                     // obtengo m3 de cada producto
-                    $store->m3 = ($request->thickness/1000) * ($request->width/1000) * ($request->length*304.8/1000); 
+                    $store->m3 = ($request->thickness/1000) * ($request->width/1000) * ($request->length/1000); 
+                    
                     // $store->PT = falta hacer formula  
                     // $store->TOTAL_PT = falta hacer formula 
                 }
