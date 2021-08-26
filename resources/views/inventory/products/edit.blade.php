@@ -21,7 +21,24 @@
                             @method('put')
 
                             <h6 class="heading-small text-muted mb-4">Información del producto</h6>
+
+                            
                             <div class="pl-lg-4">
+
+                                <div class="row">
+                                    <div class="col">
+                                        <label class="form-control-label" for="input-category_product">Categoria</label>
+                                        <select name="category_product" id="input-category_product" class="form-control form-control-alternative{{ $errors->has('type_measure') ? ' is-invalid' : '' }}" required>
+                                            @foreach (['Producto Terminado', 'Madera en Bruto'] as $category_product)
+                                                @if($category_product == old('category_product'))
+                                                    <option value="{{$category_product}}" selected>{{$category_product}}</option>
+                                                @else
+                                                    <option value="{{$category_product}}">{{$category_product}}</option>
+                                                @endif
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
                                 <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }}">
                                     <label class="form-control-label" for="input-name">{{ __('Nombre') }}</label>
                                     <input type="text" name="name" id="input-name" class="form-control form-control-alternative{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ __('Name') }}" value="{{ old('name', $product->name) }}" required autofocus>
@@ -68,7 +85,7 @@
                                     <div class="col-3">
                                         <label class="form-control-label" for="input-type_measure">{{ __('Tipo') }}</label>
                                         <select name="type_measure" id="input-type_measure" class="form-control form-control-alternative{{ $errors->has('name') ? ' is-invalid' : '' }}" required>
-                                            @foreach (['mm', 'pulg'] as $type_measure)
+                                            @foreach (['M2','M3', 'PULG'] as $type_measure)
                                                 @if($type_measure == old('type_measure') or $type_measure == $product->type_measure)
                                                     <option value="{{$type_measure}}" selected>{{$type_measure}}</option>
                                                 @else

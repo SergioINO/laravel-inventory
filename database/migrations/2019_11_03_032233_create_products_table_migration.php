@@ -15,16 +15,21 @@ class CreateProductsTableMigration extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('category_product')->default('Producto Terminado');
             $table->string('name');
-            $table->integer('thickness')->nullable();
-            $table->integer('width')->nullable();
-            $table->integer('length')->nullable();
-            $table->string('type_measure')->default('mm');
+            $table->float('thickness',8,3)->nullable();
+            $table->float('width',8,3)->nullable();
+            $table->float('length',8,3)->nullable();
+            $table->string('type_measure')->default('M2');
             $table->float('length_mm')->nullable();
             $table->float('PT')->nullable();
             $table->float('TOTAL_PT')->nullable();
-            $table->float('m2')->nullable();
-            $table->float('m3')->nullable();
+            $table->float('m2',8,5)->nullable();
+            $table->float('m3',8,5)->nullable();
+            $table->float('pulg',8,5)->nullable();
+            $table->float('m2_total',8,5)->nullable();
+            $table->float('m3_total',8,5)->nullable();
+            $table->float('pulg_total',8,5)->nullable();
             $table->text('description')->nullable();
             $table->unsignedBigInteger('product_category_id');
             $table->unsignedDecimal('purchase_price', 10, 2);

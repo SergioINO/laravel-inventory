@@ -26,11 +26,11 @@
                                         @foreach ($products as $product)
                                             @if($product['id'] == old('product_id'))
                                                 <option value="{{$product['id']}}" selected>[{{ $product->category->name }}] {{ $product->name }} |
-                                                                    Base price: ${{ $product->selling_price }} | M2: {{ $product->m2 }} |
+                                                                    Precio Venta: ${{ $product->selling_price }} | M2: {{ $product->m2 }} |
                                                                     Stock: {{ $product->stock }}</option>
                                             @else
                                                 <option value="{{$product['id']}}">[{{ $product->category->name }}] {{ $product->name }} |
-                                                                    Base price: ${{ $product->selling_price }} | M2: {{ $product->m2 }} |
+                                                                    Precio Venta: ${{ $product->selling_price }} | M2: {{ $product->m2 }} |
                                                                     Stock: {{ $product->stock }}</option>
                                             @endif
                                         @endforeach
