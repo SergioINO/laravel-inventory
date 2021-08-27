@@ -10,6 +10,13 @@ use App\Http\Requests\ProductRequest;
 
 class ProductController extends Controller
 {
+    public function search()
+    {
+        $search_text = $GET['query'];
+        $products = Product::where('name','LIKE','%'.$search_text.'%')->get();
+
+        return view('sales.addproduct', compact('products'));
+    }
     /**
      * Display a listing of the resource.
      *
@@ -94,7 +101,7 @@ class ProductController extends Controller
                     $store->width       = $request->width;
                     $store->length = $request->length;
                     // obtengo pulg de cada producto
-                    $store->pulg = ($request->thickness * $request->width)/((3.2 * $request->length)/10);
+                    $store->pulg = ($request->thickness * $request->width)/((3.2 * ($request->length)/10));
                     // obtengo pulg totales
                     $store->pulg_total = ($request->thickness * $request->width)/((3.2 * $request->length)/10)* $request->stock;
                     
@@ -217,9 +224,9 @@ class ProductController extends Controller
                     $store->width       = $request->width;
                     $store->length = $request->length;
                     // obtengo pulg de cada producto
-                    $store->pulg = ($request->thickness * $request->width)/((3.2 * $request->length)/10);
+                    $store->pulg = ($request->thickness * $request->width)/ (3.2* ($request->length/10));
                     // obtengo pulg totales
-                    $store->pulg_total = ($request->thickness * $request->width)/((3.2 * $request->length)/10)* $request->stock;
+                    $store->pulg_total = (($request->thickness * $request->width) / (3.2 *($request->length/10)))* $request->stock;
                     
                 }
 

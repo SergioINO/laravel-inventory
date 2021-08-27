@@ -30,6 +30,8 @@ Route::group(['middleware' => 'auth'], function () {
         'methods' => 'MethodController',
     ]);
     
+    /**************BUSQUEDA PRODUCTOS******************** */
+    Route::get('/search', 'ProductController@search');
     /***********************************TRANSACCIONES*********************************************************************************** */
     Route::resource('transactions', 'TransactionController')->except(['create', 'show']);
     Route::get('transactions/stats/{year?}/{month?}/{day?}', ['as' => 'transactions.stats', 'uses' => 'TransactionController@stats']);

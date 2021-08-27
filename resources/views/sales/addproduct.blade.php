@@ -7,6 +7,29 @@
                     <div class="card-header">
                         <div class="row align-items-center">
                             <div class="col-8">
+                                <h3 class="mb-0">Buscar producto</h3>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <form class="form-inline my-2 my-lg-0" type="get" action="{{ url('/search')}}">
+                            <input class="form-control mr-sm-2" name="query" type="search" placeholder="Buscar Productos">
+                            <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Buscar</button>
+                        </form>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-xl-12 order-xl-1">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="row align-items-center">
+                            <div class="col-8">
                                 <h3 class="mb-0">Agregar producto</h3>
                             </div>
                             <div class="col-4 text-right">
