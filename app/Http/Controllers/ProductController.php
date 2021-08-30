@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use DB;
 use App\Product;
+use App\Sale;
 use App\ProductCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -10,13 +11,20 @@ use App\Http\Requests\ProductRequest;
 
 class ProductController extends Controller
 {
-    public function search()
+    public function search(Request $request)
     {
-        $search_text = $GET['query'];
-        $products = Product::where('name','LIKE','%'.$search_text.'%')->get();
-
-        return view('sales.addproduct', compact('products'));
+        // dd($request);
+        $products = Product::all();
+        $sale = Sale::where('id','=' ,$request->id_sale)->first();
+        // dd($sale);
+        $search_text = $request->searching;
+        // dd($search_text);
+        $products_search = Product::where('name','LIKE','%'.$search_text.'%')->with('category')->get();
+        // dd($products_search);
+        // return redirect()->route('sales.product.add',[$request-> id_sale]);
+        return view('sales.addproduct', compact('products','products_search'))->with('sale' , $sale);
     }
+
     /**
      * Display a listing of the resource.
      *

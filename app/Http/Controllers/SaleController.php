@@ -110,6 +110,7 @@ class SaleController extends Controller
 
     public function addproduct(Sale $sale)
     {
+        // dd($sale);
         $products = Product::all();
 
         return view('sales.addproduct', compact('sale', 'products'));

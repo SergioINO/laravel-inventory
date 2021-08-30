@@ -13,10 +13,61 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <form class="form-inline my-2 my-lg-0" type="get" action="{{ url('/search')}}">
-                            <input class="form-control mr-sm-2" name="query" type="search" placeholder="Buscar Productos">
+                        <form class="form-inline my-2 my-lg-0" method="POST" action="{{ route('searching')}}">
+                            @csrf
+                            <input class="form-control mr-sm-2" name="searching"  type="search" placeholder="Buscar Productos">
+                            <input  name="id_sale"  hidden value="{{ $sale->id }}">
                             <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Buscar</button>
                         </form>
+                        <br>
+                    
+                        @php
+                            // dd(count($products_search));
+                        @endphp
+
+                        @if (!empty($products_search) && count($products_search) > 0 )
+                            @if ($products_search != NULL)
+                            <table class="table tablesorter " id="">
+                                <thead class=" text-primary">
+                                    <th scope="col">Especie</th>
+                                    <th scope="col">Producto</th>
+                                    <th scope="col">Espesor</th>
+                                    <th scope="col">Ancho</th>
+                                    <th scope="col">Largo</th>
+                                    <th scope="col">M2</th>
+                                    <th scope="col">M3</th>
+                                    <th scope="col">PULG</th>
+                                    <th scope="col">N piezas</th>
+                                    <th scope="col">N piezas Defectuosas</th>
+                                    <th scope="col">Precio Venta</th>
+                                    <th scope="col"></th>
+                                </thead>
+                                <tbody>
+                                    @foreach ($products_search as $product_search)
+                                            <tr>
+                                                <td><a href="{{ route('categories.show', $product_search->category) }}">{{ $product_search->category->name }}</a></td>
+                                                <td>{{ $product_search->name }}</td>
+                                                <td>{{ $product_search->thickness }}</td>
+                                                <td>{{ $product_search->width}}</td>
+                                                <td>{{ $product_search->length}}</td>
+                                                <td>{{ $product_search->m2}}</td>
+                                                <td>{{ $product_search->m3}}</td>
+                                                <td>{{ $product_search->pulg}}</td>
+                                                <td>{{ $product_search->stock }}</td>
+                                                <td>{{ $product_search->stock_defective }}</td>
+                                                <td>{{ format_money($product_search->selling_price) }}</td>
+                                                
+                                            </tr>
+                                        
+                                    @endforeach
+                                </tbody>
+                            </table>
+                            @else
+                                <h3 class="mb-0">Buscar producto</h3>
+                            @endif
+                            
+                        
+                        @endif
                         
                     </div>
                     
