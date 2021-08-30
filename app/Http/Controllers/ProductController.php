@@ -81,30 +81,31 @@ class ProductController extends Controller
                 $store->purchase_price = $request->purchase_price;
                 $store->selling_price = $request->selling_price;
                 $store->description = $request->description;
-                if ($request->type_measure = 'M2' || $request->type_measure = 'M3') {
+                
+                if ($request->type_measure == 'M2' || $request->type_measure == 'M3') {
                     $store->thickness        = $request->thickness;
                     $store->width       = $request->width;
                     $store->length = $request->length;
                     // obtengo m2 de cada producto
-                    $store->m2 = number_format((float)(($request->width/1000) * ($request->length/1000)),3,'.','');
+                    $store->m2 = (($request->width/1000) * ($request->length/1000));
                     // obtengo m2 totales producto
-                    $store->m2_total = number_format((float)((($request->width/1000) * ($request->length/1000))* $request->stock),3,'.','');   
+                    $store->m2_total = (($request->width/1000) * ($request->length/1000))* $request->stock;   
                     // obtengo m3 de cada producto
-                    $store->m3 = number_format((float)(($request->thickness/1000) * ($request->width/1000) * ($request->length/1000)),6,'.',''); 
+                    $store->m3 = (($request->thickness/1000) * ($request->width/1000) * ($request->length/1000)); 
                     // obtengo m3 totales producto
-                    $store->m3_total = number_format((float)((($request->thickness/1000) * ($request->width/1000) * ($request->length/1000))* $request->stock),6,'.','');
+                    $store->m3_total = (($request->thickness/1000) * ($request->width/1000) * ($request->length/1000))* $request->stock;
                     // $store->PT = falta hacer formula  
                     // $store->TOTAL_PT = falta hacer formula 
                 }
-                if ($request->type_measure = 'PULG') {
+
+                if ($request->type_measure == 'PULG') {
                     $store->thickness        = $request->thickness;
                     $store->width       = $request->width;
                     $store->length = $request->length;
                     // obtengo pulg de cada producto
-                    $store->pulg = ($request->thickness * $request->width)/((3.2 * ($request->length)/10));
+                    $store->pulg = ($request->thickness * $request->width)/ 3.2 * ($request->length) / 10 ;
                     // obtengo pulg totales
-                    $store->pulg_total = ($request->thickness * $request->width)/((3.2 * $request->length)/10)* $request->stock;
-                    
+                    $store->pulg_total = $store->pulg * $request->stock;
                     // $store->m2 = falta hacer formula  
                     // $store->m3 = falta hacer formula  
                     // $store->PT = falta hacer formula  
@@ -204,29 +205,31 @@ class ProductController extends Controller
                 $store->purchase_price = $request->purchase_price;
                 $store->selling_price = $request->selling_price;
                 $store->description = $request->description;
-                if ($request->type_measure = 'M2' || $request->type_measure = 'M3') {
+
+                if ($request->type_measure == 'M2' || $request->type_measure == 'M3') {
                     $store->thickness        = $request->thickness;
                     $store->width       = $request->width;
                     $store->length = $request->length;
                     // obtengo m2 de cada producto
-                    $store->m2 = number_format((float)(($request->width/1000) * ($request->length/1000)),3,'.','');
+                    $store->m2 = (($request->width/1000) * ($request->length/1000));
                     // obtengo m2 totales producto
-                    $store->m2_total = number_format((float)((($request->width/1000) * ($request->length/1000))* $request->stock),3,'.','');   
+                    $store->m2_total = (($request->width/1000) * ($request->length/1000))* $request->stock;   
                     // obtengo m3 de cada producto
-                    $store->m3 = number_format((float)(($request->thickness/1000) * ($request->width/1000) * ($request->length/1000)),6,'.',''); 
+                    $store->m3 = (($request->thickness/1000) * ($request->width/1000) * ($request->length/1000)); 
                     // obtengo m3 totales producto
-                    $store->m3_total = number_format((float)((($request->thickness/1000) * ($request->width/1000) * ($request->length/1000))* $request->stock),6,'.','');
+                    $store->m3_total = (($request->thickness/1000) * ($request->width/1000) * ($request->length/1000))* $request->stock;
                     // $store->PT = falta hacer formula  
                     // $store->TOTAL_PT = falta hacer formula 
                 }
-                if ($request->type_measure = 'PULG') {
+
+                if ($request->type_measure == 'PULG') {
                     $store->thickness        = $request->thickness;
                     $store->width       = $request->width;
                     $store->length = $request->length;
                     // obtengo pulg de cada producto
-                    $store->pulg = ($request->thickness * $request->width)/ (3.2* ($request->length/10));
+                    $store->pulg = ($request->thickness * $request->width)/ 3.2 * ($request->length) / 10 ;
                     // obtengo pulg totales
-                    $store->pulg_total = (($request->thickness * $request->width) / (3.2 *($request->length/10)))* $request->stock;
+                    $store->pulg_total = $store->pulg * $request->stock;
                     
                 }
 

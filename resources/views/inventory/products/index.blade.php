@@ -120,7 +120,6 @@
                                             <td>{{ $product->pulg}}</td>
                                             <td>{{ $product->pulg_total}}</td>
                                             <td>{{ $product->stock }}</td>
-                                            <td>{{ $product->stock_defective }}</td>
                                             <td>{{ format_money($product->selling_price) }}</td>
                                             <td>{{ $product->solds->sum('qty') }}</td>
                                             <td class="td-actions text-right">
