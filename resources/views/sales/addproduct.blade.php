@@ -15,7 +15,7 @@
                     <div class="card-body">
                         <form class="form-inline my-2 my-lg-0" method="POST" action="{{ route('searching')}}">
                             @csrf
-                            <input class="form-control mr-sm-2" name="searching"  type="search" placeholder="Buscar Productos">
+                            <input class="form-control mr-sm-2" name="searching"  type="search" placeholder="Buscar Productos" required>
                             <input  name="id_sale"  hidden value="{{ $sale->id }}">
                             <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Buscar</button>
                         </form>
@@ -98,7 +98,10 @@
                                     <label class="form-control-label" for="input-product">Producto</label>
                                     <select name="product_id" id="input-product" class="form-select form-control-alternative{{ $errors->has('product_id') ? ' is-invalid' : '' }}" required>
                                         @foreach ($products as $product)
+                                                    
                                             @if($product['id'] == old('product_id'))
+                                                
+                                                
                                                 <option value="{{$product['id']}}" selected>[{{ $product->category->name }}] {{ $product->name }} |
                                                                     Precio Venta: ${{ $product->selling_price }} | M2: {{ $product->m2 }} |
                                                                     Stock: {{ $product->stock }}</option>
@@ -106,14 +109,16 @@
                                                 <option value="{{$product['id']}}">[{{ $product->category->name }}] {{ $product->name }} |
                                                                     Precio Venta: ${{ $product->selling_price }} | M2: {{ $product->m2 }} |
                                                                     Stock: {{ $product->stock }}</option>
+                                                
                                             @endif
+                                            
                                         @endforeach
                                     </select>
                                     @include('alerts.feedback', ['field' => 'product_id'])
                                 </div>
 
                                 <div class="form-group{{ $errors->has('product_id') ? ' has-danger' : '' }}">
-                                    <label class="form-control-label" for="input-price">Precio por unidad</label>
+                                    <label class="form-control-label" for="input-price">Precio</label>
                                     <input type="number" name="price" id="input-price" step=".01" class="form-control form-control-alternative{{ $errors->has('product_id') ? ' is-invalid' : '' }}" value="0" required>
                                     @include('alerts.feedback', ['field' => 'product_id'])
                                 </div>
