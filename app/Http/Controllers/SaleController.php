@@ -118,13 +118,44 @@ class SaleController extends Controller
 
     public function storeproduct(Request $request, Sale $sale, SoldProduct $soldProduct)
     {
-        $request->merge(['total_amount' => $request->get('price') * $request->get('qty')]);
+        $rules = [
+            'qyt' => 'required|numeric',
+            'price' => 'required|numeric',
+            
+        ];
 
-        $soldProduct->create($request->all());
+        try {
+        
+            $this->validate($request, $rules);
+            DB::connection(session()->get('database'))->beginTransaction();
 
-        return redirect()
+            dd($request, $sale, $soldProduct);
+            $request->merge(['total_amount' => $request->get('price') * $request->get('qty')]);
+
+            $soldProduct->create($request->all());
+            
+            $store = new Product;
+            $store->setConnection(session()->get('database'));
+                $store->category_product = $request->category_product;
+                $store->name        = $request->name;
+                $store->product_category_id = $request->product_category_id;
+                $store->type_measure = $request->type_measure;
+
+            $store->save();
+                
+            DB::connection(session()->get('database'))->commit();
+
+            return redirect()
             ->route('sales.show', ['sale' => $sale])
             ->withStatus('Producto registrado con éxito!.');
+
+        }catch (ValidationException $exception) {
+            
+            DB::connection(session()->get('database'))->rollback();
+            return response()->json(['errors' => $exception->errors()], 422);
+        }
+
+        
     }
 
     public function editproduct(Sale $sale, SoldProduct $soldproduct)

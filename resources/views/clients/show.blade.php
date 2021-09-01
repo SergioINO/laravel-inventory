@@ -18,7 +18,7 @@
                             <th>Telefono</th>
                             <th>Email</th>
                             <th>Dirección</th>
-                            <th>Balance</th>
+                            {{-- <th>Balance</th> --}}
                             <th>Compras</th>
                             <th>Total Pagos</th>
                             <th>Últimas Compra</th>
@@ -31,7 +31,7 @@
                                 <td>{{ $client->phone }}</td>
                                 <td>{{ $client->email }}</td>
                                 <td>{{ $client->address }}</td>
-                                <td>
+                                {{-- <td>
                                     @if ($client->balance > 0)
                                         <span class="text-success">{{ format_money($client->balance) }}</span>
                                     @elseif ($client->balance < 0.00)
@@ -39,7 +39,7 @@
                                     @else
                                         {{ format_money($client->balance) }}
                                     @endif
-                                </td>
+                                </td> --}}
                                 <td>{{ $client->sales->count() }}</td>
                                 <td>{{ format_money($client->transactions->sum('amount')) }}</td>
                                 <td>{{ (empty($client->sales)) ? date('d-m-y', strtotime($client->sales->reverse()->first()->created_at)) : 'N/A' }}</td>

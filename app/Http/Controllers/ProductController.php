@@ -19,10 +19,16 @@ class ProductController extends Controller
         // dd($sale);
         $search_text = $request->searching;
         // dd($search_text);
-        $products_search = Product::where('name','LIKE','%'.$search_text.'%')->with('category')->get();
+        $products_search_pulg = Product::where('name','LIKE','%'.$search_text.'%')
+                                    ->where('type_measure','=','PULG')->with('category')->get();
+
+        $products_search_m = Product::where('name','LIKE','%'.$search_text.'%')
+                                    ->where('type_measure','=','M2')
+                                    ->orWhere('type_measure','=','M3')
+                                    ->with('category')->get();
         // dd($products_search);
         // return redirect()->route('sales.product.add',[$request-> id_sale]);
-        return view('sales.addproduct', compact('products','products_search'))->with('sale' , $sale);
+        return view('sales.addproduct', compact('search_text','products','products_search_pulg','products_search_m'))->with('sale' , $sale);
     }
 
     /**

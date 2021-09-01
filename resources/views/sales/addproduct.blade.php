@@ -21,52 +21,90 @@
                         </form>
                         <br>
                     
-                        @php
-                            // dd(count($products_search));
-                        @endphp
+                        {{-- @php
+                            // dd($products_search_pulg, $products_search_m);
+                        @endphp --}}
 
-                        @if (!empty($products_search) && count($products_search) > 0 )
-                            @if ($products_search != NULL)
-                            <table class="table tablesorter " id="">
-                                <thead class=" text-primary">
-                                    <th scope="col">Especie</th>
-                                    <th scope="col">Producto</th>
-                                    <th scope="col">Espesor</th>
-                                    <th scope="col">Ancho</th>
-                                    <th scope="col">Largo</th>
-                                    <th scope="col">M2</th>
-                                    <th scope="col">M3</th>
-                                    <th scope="col">PULG</th>
-                                    <th scope="col">N piezas</th>
-                                    <th scope="col">N piezas Defectuosas</th>
-                                    <th scope="col">Precio Venta</th>
-                                    <th scope="col"></th>
-                                </thead>
-                                <tbody>
-                                    @foreach ($products_search as $product_search)
-                                            <tr>
-                                                <td><a href="{{ route('categories.show', $product_search->category) }}">{{ $product_search->category->name }}</a></td>
-                                                <td>{{ $product_search->name }}</td>
-                                                <td>{{ $product_search->thickness }}</td>
-                                                <td>{{ $product_search->width}}</td>
-                                                <td>{{ $product_search->length}}</td>
-                                                <td>{{ $product_search->m2}}</td>
-                                                <td>{{ $product_search->m3}}</td>
-                                                <td>{{ $product_search->pulg}}</td>
-                                                <td>{{ $product_search->stock }}</td>
-                                                <td>{{ $product_search->stock_defective }}</td>
-                                                <td>{{ format_money($product_search->selling_price) }}</td>
-                                                
-                                            </tr>
-                                        
-                                    @endforeach
-                                </tbody>
-                            </table>
+                        @if (!empty($products_search_pulg) && count($products_search_pulg) > 0 )
+                            @if ($products_search_pulg != NULL)
+                                <table class="table tablesorter " id="">
+                                    <thead class=" text-primary">
+                                        <th scope="col">Especie</th>
+                                        <th scope="col">Producto</th>
+                                        <th scope="col">Espesor</th>
+                                        <th scope="col">Ancho</th>
+                                        <th scope="col">Largo</th>
+                                        <th scope="col">PULG</th>
+                                        <th scope="col">PULG TOTAL</th>
+                                        <th scope="col">N piezas</th>
+                                        <th scope="col">N piezas Defectuosas</th>
+                                        <th scope="col">Precio Venta</th>
+                                        <th scope="col"></th>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($products_search_pulg as $product_search_pulg)
+                                                <tr>
+                                                    <td><a href="{{ route('categories.show', $product_search_pulg->category) }}">{{ $product_search_pulg->category->name }}</a></td>
+                                                    <td>{{ $product_search_pulg->name }}</td>
+                                                    <td>{{ $product_search_pulg->thickness }}</td>
+                                                    <td>{{ $product_search_pulg->width}}</td>
+                                                    <td>{{ $product_search_pulg->length}}</td>
+                                                    <td>{{ $product_search_pulg->pulg}}</td>
+                                                    <td>{{ $product_search_pulg->pulg_total}}</td>
+                                                    <td>{{ $product_search_pulg->stock }}</td>
+                                                    <td>{{ $product_search_pulg->stock_defective }}</td>
+                                                    <td>{{ format_money($product_search_pulg->selling_price) }}</td>
+                                                    
+                                                </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
                             @else
                                 <h3 class="mb-0">Buscar producto</h3>
                             @endif
-                            
-                        
+                        @endif
+
+                        @if (!empty($products_search_m) && count($products_search_m) > 0 )
+                            @if ($products_search_m != NULL)
+                                <table class="table tablesorter " id="">
+                                    <thead class=" text-primary">
+                                        <th scope="col">Especie</th>
+                                        <th scope="col">Producto</th>
+                                        <th scope="col">Espesor</th>
+                                        <th scope="col">Ancho</th>
+                                        <th scope="col">Largo</th>
+                                        <th scope="col">M2</th>
+                                        <th scope="col">M2 TOTAL</th>
+                                        <th scope="col">M3</th>
+                                        <th scope="col">M3 TOTAL</th>
+                                        <th scope="col">N piezas</th>
+                                        <th scope="col">N piezas Defectuosas</th>
+                                        <th scope="col">Precio Venta</th>
+                                        <th scope="col"></th>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($products_search_m as $product_search_m)
+                                                <tr>
+                                                    <td><a href="{{ route('categories.show', $product_search_m->category) }}">{{ $product_search_m->category->name }}</a></td>
+                                                    <td>{{ $product_search_m->name }}</td>
+                                                    <td>{{ $product_search_m->thickness }}</td>
+                                                    <td>{{ $product_search_m->width}}</td>
+                                                    <td>{{ $product_search_m->length}}</td>
+                                                    <td>{{ $product_search_m->m2}}</td>
+                                                    <td>{{ $product_search_m->m2_total}}</td>
+                                                    <td>{{ $product_search_m->m3}}</td>
+                                                    <td>{{ $product_search_m->m3_total}}</td>
+                                                    <td>{{ $product_search_m->stock }}</td>
+                                                    <td>{{ $product_search_m->stock_defective }}</td>
+                                                    <td>{{ format_money($product_search_m->selling_price) }}</td>
+                                                    
+                                                </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            @else
+                                <h3 class="mb-0">Buscar producto</h3>
+                            @endif
                         @endif
                         
                     </div>
@@ -98,19 +136,38 @@
                                     <label class="form-control-label" for="input-product">Producto</label>
                                     <select name="product_id" id="input-product" class="form-select form-control-alternative{{ $errors->has('product_id') ? ' is-invalid' : '' }}" required>
                                         @foreach ($products as $product)
+                                            @if($product->type_measure == 'M2' || $product->type_measure == 'M3')  
+                                            
+                                                @if($product['id'] == old('product_id'))
+                                                    <option value="{{$product['id']}}" selected>[{{ $product->category->name }}] {{ $product->name }} |
+                                                                        Precio Venta: ${{ $product->selling_price }} | M2: {{ $product->m2 }} |
+                                                                        M2 TOTAL: {{ $product->m2_total }} | M3: {{ $product->m3 }} |
+                                                                        M3 TOTAL: {{ $product->m3_total }} | Stock: {{ $product->stock }}</option>
+                                                @else
+                                                    <option value="{{$product['id']}}">[{{ $product->category->name }}] {{ $product->name }} |
+                                                                        Precio Venta: ${{ $product->selling_price }} | M2: {{ $product->m2 }} |
+                                                                        M2 TOTAL: {{ $product->m2_total }} | M3: {{ $product->m3 }} |
+                                                                        M3 TOTAL: {{ $product->m3_total }} | Stock: {{ $product->stock }}</option>
                                                     
-                                            @if($product['id'] == old('product_id'))
-                                                
-                                                
-                                                <option value="{{$product['id']}}" selected>[{{ $product->category->name }}] {{ $product->name }} |
-                                                                    Precio Venta: ${{ $product->selling_price }} | M2: {{ $product->m2 }} |
-                                                                    Stock: {{ $product->stock }}</option>
-                                            @else
-                                                <option value="{{$product['id']}}">[{{ $product->category->name }}] {{ $product->name }} |
-                                                                    Precio Venta: ${{ $product->selling_price }} | M2: {{ $product->m2 }} |
-                                                                    Stock: {{ $product->stock }}</option>
-                                                
+                                                @endif
+
                                             @endif
+
+                                            @if($product->type_measure == 'PULG')  
+                                            
+                                                @if($product['id'] == old('product_id'))
+                                                    <option value="{{$product['id']}}" selected>[{{ $product->category->name }}] {{ $product->name }} |
+                                                                        Precio Venta: ${{ $product->selling_price }} | PULG: {{ $product->pulg }} |
+                                                                        PULG TOTAL: {{ $product->pulg_total }} |  Stock: {{ $product->stock }}</option>
+                                                @else
+                                                    <option value="{{$product['id']}}">[{{ $product->category->name }}] {{ $product->name }} |
+                                                                        Precio Venta: ${{ $product->selling_price }} | PULG: {{ $product->pulg }} |
+                                                                        PULG TOTAL: {{ $product->pulg_total }} |  Stock: {{ $product->stock }}</option>
+                                                    
+                                                @endif
+
+                                            @endif
+
                                             
                                         @endforeach
                                     </select>
@@ -130,8 +187,8 @@
                                 </div>
 
                                 <div class="form-group{{ $errors->has('product_id') ? ' has-danger' : '' }}">
-                                    <label class="form-control-label" for="input-total">Cantidad Total</label>
-                                    <input type="text" name="total_amount" id="input-total" class="form-control form-control-alternative{{ $errors->has('product_id') ? ' is-invalid' : '' }}" value="0$" disabled>
+                                    <label class="form-control-label" for="input-total">Precio Total</label>
+                                    <input type="number" name="total_amount" id="input-total" class="form-control form-control-alternative{{ $errors->has('product_id') ? ' is-invalid' : '' }}" value="0$" disabled>
                                     @include('alerts.feedback', ['field' => 'product_id'])
                                 </div>
 
