@@ -18,8 +18,8 @@ class CreateSoldProductsTableMigration extends Migration
             $table->unsignedBigInteger('sale_id');
             $table->unsignedBigInteger('product_id');
             $table->float('qty',8,3);
-            $table->decimal('price', 10, 2);
-            $table->decimal('total_amount', 10, 2);
+            $table->float('price', 8, 3);
+            $table->float('total_amount', 8, 3);
             $table->timestamps();
             $table->foreign('sale_id')->references('id')->on('sales')->onDelete('cascade');
             $table->foreign('product_id')->references('id')->on('products');

@@ -182,13 +182,13 @@
 
                                 <div class="form-group{{ $errors->has('product_id') ? ' has-danger' : '' }}">
                                     <label class="form-control-label" for="input-qty">Cantidad</label>
-                                    <input type="number" name="qty" id="input-qty" class="form-control form-control-alternative{{ $errors->has('product_id') ? ' is-invalid' : '' }}" value="0" required>
+                                    <input type="number" step="0.001" name="qty" id="input-qty" class="form-control form-control-alternative{{ $errors->has('product_id') ? ' is-invalid' : '' }}" value="0" required>
                                     @include('alerts.feedback', ['field' => 'product_id'])
                                 </div>
 
                                 <div class="form-group{{ $errors->has('product_id') ? ' has-danger' : '' }}">
-                                    <label class="form-control-label" for="input-total">Precio Total</label>
-                                    <input type="number" name="total_amount" id="input-total" class="form-control form-control-alternative{{ $errors->has('product_id') ? ' is-invalid' : '' }}" value="0$" disabled>
+                                    <label class="form-control-label" for="input-total">Precio Total + IVA</label>
+                                    <input  placeholder= "0" readonly= "readonly" type="number" step="0.001" name="total_amount" id="input-total" class="form-control form-control-alternative{{ $errors->has('product_id') ? ' is-invalid' : '' }}" value="0$" >
                                     @include('alerts.feedback', ['field' => 'product_id'])
                                 </div>
 
@@ -211,12 +211,23 @@
     </script>
     <script>
         let input_qty = document.getElementById('input-qty');
+        
         let input_price = document.getElementById('input-price');
         let input_total = document.getElementById('input-total');
         input_qty.addEventListener('input', updateTotal);
         input_price.addEventListener('input', updateTotal);
         function updateTotal () {
-            input_total.value = (parseInt(input_qty.value) * parseFloat(input_price.value))+"$";
+
+            let total;
+            let IVA;
+
+            total = (parseFloat(input_qty.value) * parseFloat(input_price.value));
+            
+            IVA = total * 0.19;
+            
+            input_total.value = total + IVA ;
+
+            // input_total.value = (parseFloat(input_total.valueiva) + parseFloat(input_total.value)) + "$";
         }
     </script>
 @endpush

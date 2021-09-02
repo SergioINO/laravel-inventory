@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use DB;
 use App\Client;
 use App\Sale;
 use App\Product;
@@ -10,6 +11,7 @@ use App\SoldProduct;
 use App\Transaction;
 use App\PaymentMethod;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class SaleController extends Controller
 {
@@ -118,31 +120,26 @@ class SaleController extends Controller
 
     public function storeproduct(Request $request, Sale $sale, SoldProduct $soldProduct)
     {
+        dd($request, $sale, $soldProduct);
+
         $rules = [
             'qyt' => 'required|numeric',
             'price' => 'required|numeric',
             
         ];
-
-        try {
         
-            $this->validate($request, $rules);
-            DB::connection(session()->get('database'))->beginTransaction();
+        try {
 
-            dd($request, $sale, $soldProduct);
+            $store = new SoldProduct;
+            $store->setConnection(session()->get('database'));
+                $store->qty = $request->qty;
+                $store->price = $request->price;
+            
+            // $this->validate($request, $rules);
+            // dd($request, $sale, $soldProduct);
             $request->merge(['total_amount' => $request->get('price') * $request->get('qty')]);
 
-            $soldProduct->create($request->all());
             
-            $store = new Product;
-            $store->setConnection(session()->get('database'));
-                $store->category_product = $request->category_product;
-                $store->name        = $request->name;
-                $store->product_category_id = $request->product_category_id;
-                $store->type_measure = $request->type_measure;
-
-            $store->save();
-                
             DB::connection(session()->get('database'))->commit();
 
             return redirect()
