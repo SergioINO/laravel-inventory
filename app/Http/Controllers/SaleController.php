@@ -132,9 +132,11 @@ class SaleController extends Controller
 
             $store = new SoldProduct;
             $store->setConnection(session()->get('database'));
+                $store->sale_id = $request->sale_id;
+                $store->product_id $request->product_id;
                 $store->qty = $request->qty;
                 $store->price = $request->price;
-            
+                $store->total_amount = $request->total_amount;
             // $this->validate($request, $rules);
             // dd($request, $sale, $soldProduct);
             $request->merge(['total_amount' => $request->get('price') * $request->get('qty')]);
