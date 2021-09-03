@@ -89,17 +89,41 @@ class SaleController extends Controller
 
     public function finalize(Sale $sale)
     {
+        // dd($sale);
+
         $sale->total_amount = $sale->products->sum('total_amount');
 
         foreach ($sale->products as $sold_product) {
             $product_name = $sold_product->product->name;
-            $product_stock = $sold_product->product->stock;
-            if($sold_product->qty > $product_stock) return back()->withError("El producto '$product_name' no tiene suficiente stock. Sólo tiene $product_stock unidades.");
+            if ($sold_product->product->type_measure == 'PULG') {
+
+                $product_stock = $sold_product->product->pulg;
+                if($sold_product->qty > $product_stock) return back()->withError("El producto '$product_name' no tiene suficiente stock. Sólo tiene $product_stock unidades.");
+        
+            }
         }
 
         foreach ($sale->products as $sold_product) {
-            $sold_product->product->stock -= $sold_product->qty;
-            $sold_product->product->save();
+
+            if ($sold_product->product->type_measure == 'PULG') {
+                $sold_product->product->pulg -= $sold_product->qty;
+                $sold_product->product->pulg_total -= $sold_product->qty;
+                $sold_product->product->save();
+            }
+
+            if ($sold_product->product->type_measure == 'M2') {
+                $sold_product->product->m2 -= $sold_product->qty;
+                $sold_product->product->m2_total -= $sold_product->qty;
+                $sold_product->product->save();
+            }
+
+            if ($sold_product->product->type_measure == 'M3') {
+                $sold_product->product->m3 -= $sold_product->qty;
+                $sold_product->product->m3_total -= $sold_product->qty;
+                $sold_product->product->save();
+            }
+
+            
         }
 
         $sale->finalized_at = Carbon::now()->toDateTimeString();
@@ -120,7 +144,7 @@ class SaleController extends Controller
 
     public function storeproduct(Request $request, Sale $sale, SoldProduct $soldProduct)
     {
-        dd($request, $sale, $soldProduct);
+        // dd($request, $sale, $soldProduct);
 
         $rules = [
             'qyt' => 'required|numeric',
@@ -133,7 +157,7 @@ class SaleController extends Controller
             $store = new SoldProduct;
             $store->setConnection(session()->get('database'));
                 $store->sale_id = $request->sale_id;
-                $store->product_id $request->product_id;
+                $store->product_id =  $request->product_id;
                 $store->qty = $request->qty;
                 $store->price = $request->price;
                 $store->total_amount = $request->total_amount;
@@ -141,7 +165,8 @@ class SaleController extends Controller
             // dd($request, $sale, $soldProduct);
             $request->merge(['total_amount' => $request->get('price') * $request->get('qty')]);
 
-            
+            $store->save();
+
             DB::connection(session()->get('database'))->commit();
 
             return redirect()

@@ -22,8 +22,9 @@
                                         </button>
                                     </form>
                                 @else
-                                    <button type="button" class="btn btn-sm btn-primary" onclick="confirm('ATENCIÓN: Las transacciones de esta venta no parecen coincidir con el coste de los productos, ¿quieres finalizarla? Sus registros no podrán ser modificados a partir de ahora.') ? window.location.replace('{{ route('sales.finalize', $sale) }}') : ''">
-                                        Finalizar Venta
+                                    <button type="button" class="btn btn-sm btn-primary" 
+                                            onclick="confirm('ATENCIÓN: Las transacciones de esta venta no parecen coincidir con el coste de los productos, ¿quieres finalizarla? Sus registros no podrán ser modificados a partir de ahora.') ? window.location.replace('{{ route('sales.finalize', $sale) }}') : ''">
+                                            Finalizar Venta
                                     </button>
                                 @endif
                             </div>
@@ -38,7 +39,7 @@
                             <th>Usuario</th>
                             <th>Cliente</th>
                             <th>Productos</th>
-                            <th>Total Stock</th>
+                            <th>Total Cantidad</th>
                             <th>Costo total</th>
                             <th>Estado</th>
                         </thead>
@@ -83,7 +84,7 @@
                             <th>Producto</th>
                             <th>Cantidad</th>
                             <th>Precio C/U</th>
-                            <th>Total</th>
+                            <th>Total + IVA</th>
                             <th></th>
                         </thead>
                         <tbody>
@@ -92,7 +93,7 @@
                                     <td>{{ $sold_product->product->id }}</td>
                                     <td><a href="{{ route('categories.show', $sold_product->product->category) }}">{{ $sold_product->product->category->name }}</a></td>
                                     <td><a href="{{ route('products.show', $sold_product->product) }}">{{ $sold_product->product->name }}</a></td>
-                                    <td>{{ $sold_product->qty }}</td>
+                                    <td>{{ $sold_product->qty }}  {{$sold_product->product->type_measure}}</td>
                                     <td>{{ format_money($sold_product->price) }}</td>
                                     <td>{{ format_money($sold_product->total_amount) }}</td>
                                     <td class="td-actions text-right">
