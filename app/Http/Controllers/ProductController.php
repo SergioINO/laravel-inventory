@@ -51,7 +51,7 @@ class ProductController extends Controller
     public function create()
     {
         $categories = ProductCategory::all();
-
+        
         return view('inventory.products.create', compact('categories'));
     }
 

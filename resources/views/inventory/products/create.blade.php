@@ -67,6 +67,7 @@
                                             @include('alerts.feedback', ['field' => 'thickness'])
                                         </div>
                                     </div>
+                                    
                                     <div class="col">
                                         <div class="form-group{{ $errors->has('width') ? ' has-danger' : '' }}">
                                             <label class="form-control-label" for="input-width">Ancho</label>
