@@ -67,7 +67,8 @@
                 <div class="card-header">
                     <div class="row">
                         <div class="col-8">
-                            <h4 class="card-title">Productos: {{ $sale->products->sum('qty') }}</h4>
+                            <h4 class="card-title">Productos:</h4>
+                            {{-- <h4 class="card-title">Productos: {{ $sale->products->sum('qty') }}</h4> --}}
                         </div>
                         @if (!$sale->finalized_at)
                             <div class="col-4 text-right">

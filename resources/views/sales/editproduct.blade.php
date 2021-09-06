@@ -25,11 +25,39 @@
                                     <label class="form-control-label" for="input-product">Producto</label>
                                     <select name="product_id" id="input-product" class="form-select form-control-alternative{{ $errors->has('product_id') ? ' is-invalid' : '' }}" required>
                                         @foreach ($products as $product)
-                                            @if($product['id'] == old('product_id') or $product['id'] == $soldproduct->product_id )
-                                                <option value="{{$product['id']}}" selected>[{{ $product->category->name }}] {{ $product->name }} | Precio Venta: ${{ $product->selling_price }} | M2: {{ $product->m2 }} | Stock: {{ $product->stock }}</option>
-                                            @else
-                                                <option value="{{$product['id']}}">[{{ $product->category->name }}] {{ $product->name }} | Precio Venta: ${{ $product->selling_price }} | M2: {{ $product->m2 }} | Stock: {{ $product->stock }}</option>
+                                            @if($product->type_measure == 'M2' || $product->type_measure == 'M3')  
+                                            
+                                                @if($product['id'] == old('product_id'))
+                                                    <option value="{{$product['id']}}" selected>[{{ $product->category->name }}] {{ $product->name }} |
+                                                                        Precio Venta: ${{ $product->selling_price }} | M2: {{ $product->m2 }} |
+                                                                        M2 TOTAL: {{ $product->m2_total }} | M3: {{ $product->m3 }} |
+                                                                        M3 TOTAL: {{ $product->m3_total }} | Stock: {{ $product->stock }}</option>
+                                                @else
+                                                    <option value="{{$product['id']}}">[{{ $product->category->name }}] {{ $product->name }} |
+                                                                        Precio Venta: ${{ $product->selling_price }} | M2: {{ $product->m2 }} |
+                                                                        M2 TOTAL: {{ $product->m2_total }} | M3: {{ $product->m3 }} |
+                                                                        M3 TOTAL: {{ $product->m3_total }} | Stock: {{ $product->stock }}</option>
+                                                    
+                                                @endif
+
                                             @endif
+
+                                            @if($product->type_measure == 'PULG')  
+                                            
+                                                @if($product['id'] == old('product_id'))
+                                                    <option value="{{$product['id']}}" selected>[{{ $product->category->name }}] {{ $product->name }} |
+                                                                        Precio Venta: ${{ $product->selling_price }} | PULG: {{ $product->pulg }} |
+                                                                        PULG TOTAL: {{ $product->pulg_total }} |  Stock: {{ $product->stock }}</option>
+                                                @else
+                                                    <option value="{{$product['id']}}">[{{ $product->category->name }}] {{ $product->name }} |
+                                                                        Precio Venta: ${{ $product->selling_price }} | PULG: {{ $product->pulg }} |
+                                                                        PULG TOTAL: {{ $product->pulg_total }} |  Stock: {{ $product->stock }}</option>
+                                                    
+                                                @endif
+
+                                            @endif
+
+                                            
                                         @endforeach
                                     </select>
                                     @include('alerts.feedback', ['field' => 'product_id'])

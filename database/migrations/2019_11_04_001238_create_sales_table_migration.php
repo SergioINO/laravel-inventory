@@ -17,7 +17,7 @@ class CreateSalesTableMigration extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('client_id');
-            $table->float('total_amount', 8, 3)->nullable();
+            $table->integer('total_amount')->nullable();
             $table->timestamp('finalized_at')->nullable();
             $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('client_id')->references('id')->on('clients');
