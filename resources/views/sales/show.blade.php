@@ -23,7 +23,7 @@
                                     </form>
                                 @else
                                     <button type="button" class="btn btn-sm btn-primary" 
-                                            onclick="confirm('ATENCIÓN: Las transacciones de esta venta no parecen coincidir con el coste de los productos, ¿quieres finalizarla? Sus registros no podrán ser modificados a partir de ahora.') ? window.location.replace('{{ route('sales.finalize', $sale) }}') : ''">
+                                            onclick="confirm('ATENCIÓN: Las transacciones de esta venta no podran ser modificados, ¿quieres finalizarla? Sus registros no podrán ser modificados a partir de ahora.') ? window.location.replace('{{ route('sales.finalize', $sale) }}') : ''">
                                             Finalizar Venta
                                     </button>
                                 @endif
