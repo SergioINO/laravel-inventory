@@ -136,7 +136,7 @@
                                     <label class="form-control-label" for="input-product">Producto</label>
                                     <select name="product_id" id="input-product" class="form-select form-control-alternative{{ $errors->has('product_id') ? ' is-invalid' : '' }}" required>
                                         @foreach ($products as $product)
-                                            @if($product->type_measure == 'M2' || $product->type_measure == 'M3')  
+                                            @if($product->type_measure == 'M2' || $product->type_measure == 'M3' || $product->type_measure == 'PIEZA' )  
                                             
                                                 @if($product['id'] == old('product_id'))
                                                     <option value="{{$product['id']}}" selected>[{{ $product->category->name }}] {{ $product->name }} |

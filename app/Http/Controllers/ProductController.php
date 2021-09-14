@@ -25,6 +25,7 @@ class ProductController extends Controller
         $products_search_m = Product::where('name','LIKE','%'.$search_text.'%')
                                     ->where('type_measure','=','M2')
                                     ->orWhere('type_measure','=','M3')
+                                    ->orWhere('type_measure','=','PIEZA')
                                     ->with('category')->get();
         // dd($products_search);
         // return redirect()->route('sales.product.add',[$request-> id_sale]);
@@ -96,7 +97,7 @@ class ProductController extends Controller
                 $store->selling_price = $request->selling_price;
                 $store->description = $request->description;
                 
-                if ($request->type_measure == 'M2' || $request->type_measure == 'M3') {
+                if ($request->type_measure == 'M2' || $request->type_measure == 'M3' || $request->type_measure == 'PIEZA') {
                     $store->thickness        = $request->thickness;
                     $store->width       = $request->width;
                     $store->length = $request->length;
@@ -220,7 +221,7 @@ class ProductController extends Controller
                 $store->selling_price = $request->selling_price;
                 $store->description = $request->description;
 
-                if ($request->type_measure == 'M2' || $request->type_measure == 'M3') {
+                if ($request->type_measure == 'M2' || $request->type_measure == 'M3' || $request->type_measure == 'PIEZA') {
                     $store->thickness        = $request->thickness;
                     $store->width       = $request->width;
                     $store->length = $request->length;

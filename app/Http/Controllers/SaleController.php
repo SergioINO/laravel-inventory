@@ -95,6 +95,12 @@ class SaleController extends Controller
 
         foreach ($sale->products as $sold_product) {
             $product_name = $sold_product->product->name;
+
+            if ($sold_product->product->type_measure == 'PIEZA') {
+                $product_stock = $sold_product->product->stock;
+                if($sold_product->qty > $product_stock) return back()->withError("El producto '$product_name' no tiene suficiente stock. Sólo tiene $product_stock unidades.");
+            }
+
             if ($sold_product->product->type_measure == 'PULG') {
                 $product_stock = $sold_product->product->pulg_total;
                 if($sold_product->qty > $product_stock) return back()->withError("El producto '$product_name' no tiene suficiente stock. Sólo tiene $product_stock unidades.");
@@ -112,6 +118,12 @@ class SaleController extends Controller
         }
 
         foreach ($sale->products as $sold_product) {
+
+            if ($sold_product->product->type_measure == 'PIEZA') {
+                $sold_product->product->stock -= $sold_product->qty;
+                $sold_product->product->stock = $sold_product->product->stock;
+                $sold_product->product->save();
+            }
 
             if ($sold_product->product->type_measure == 'PULG') {
                 $sold_product->product->pulg_total -= $sold_product->qty;
