@@ -69,6 +69,7 @@ class SaleController extends Controller
      */
     public function show(Sale $sale)
     {
+        dd($sale);
         return view('sales.show', ['sale' => $sale]);
     }
 

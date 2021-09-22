@@ -30,6 +30,8 @@ Route::group(['middleware' => 'auth'], function () {
         'methods' => 'MethodController',
     ]);
     
+
+    Route::get('/pdf', 'PDFController@PDF')->name('descargarPDF');
     /**************BUSQUEDA PRODUCTOS******************** */
     Route::post('/search', 'ProductController@search')->name('searching');
     /***********************************TRANSACCIONES*********************************************************************************** */
