@@ -46,17 +46,17 @@
                                         </td>
                                         <td class="td-actions text-right">
                                             @if (!$sale->finalized_at)
-                                                <a href="{{ route('sales.show', ['sale' => $sale]) }}" class="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="Editar">
+                                                <a href="{{ route('sales.show', ['sale' => $sale] )}}" class="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="Editar">
                                                     <i class="tim-icons icon-pencil"></i>
                                                 </a>
-                                                <a href="{{ route('descargarPDF', ['sale' => $sale])}}" class="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="Imprimir PDF" ">
+                                                <a href="{{ route('descargarPDF', ['sale' => $sale] )}}" class="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="Imprimir PDF" ">
                                                     <i class="tim-icons icon-attach-87"></i>
                                                 </a>
                                             @else
-                                                <a href="{{ route('sales.show', ['sale' => $sale]) }}" class="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="Ver Venta">
+                                                <a href="{{ route('sales.show', ['sale' => $sale] )}}" class="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="Ver Venta">
                                                     <i class="tim-icons icon-zoom-split"></i>
                                                 </a>
-                                                <a href="{{ route('descargarPDF')}}" class="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="Imprimir PDF" ">
+                                                <a href="{{ route('descargarPDF', ['sale' => $sale] )}}" class="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="Imprimir PDF" ">
                                                     <i class="tim-icons icon-attach-87"></i>
                                                 </a>
                                             @endif

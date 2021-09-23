@@ -13,7 +13,7 @@ class ProductController extends Controller
 {
     public function search(Request $request)
     {
-        // dd($request);
+        dd($request);
         $products = Product::all();
         $sale = Sale::where('id','=' ,$request->id_sale)->first();
         // dd($sale);
@@ -30,6 +30,27 @@ class ProductController extends Controller
         // dd($products_search);
         // return redirect()->route('sales.product.add',[$request-> id_sale]);
         return view('sales.addproduct', compact('search_text','products','products_search_pulg','products_search_m'))->with('sale' , $sale);
+    }
+
+    public function search_product(Request $request)
+    {
+        // dd($request);
+        $products = Product::all();
+        // $sale = Sale::where('id','=' ,$request->id_sale)->first();
+        // dd($sale);
+        $search_text = $request->searching_product;
+        // dd($search_text);
+        $products_search_pulg = Product::where('name','LIKE','%'.$search_text.'%')
+                                    ->where('type_measure','=','PULG')->with('category')->get();
+
+        $products_search_m = Product::where('name','LIKE','%'.$search_text.'%')
+                                    ->where('type_measure','=','M2')
+                                    ->orWhere('type_measure','=','M3')
+                                    ->orWhere('type_measure','=','PIEZA')
+                                    ->with('category')->get();
+        // dd($products_search_pulg, $products_search_m);
+        // return redirect()->route('sales.product.add',[$request-> id_sale]);
+        return view('inventory.products.index', compact('search_text','products','products_search_pulg','products_search_m'));
     }
 
     /**
