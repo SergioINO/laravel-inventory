@@ -11,10 +11,11 @@ use App\Sale;
 class PDFController extends Controller
 {
     public function PDF(Sale $sale){
-        // dd($sale);
-        $cliente = Client::all();
         
-        $pdf = PDF::loadView('product_quotation', compact('cliente'))->setPaper('a4');
+        $cliente = Client::on(session()->get('database'))->find($sale->client_id);
+        // dd($cliente);
+        
+        $pdf = PDF::loadView('product_quotation', compact('cliente'));
 
         return $pdf->download('cotizacion_productos.pdf');
     }
