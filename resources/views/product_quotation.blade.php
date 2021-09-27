@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>TABLA DE PRODUCTOS</title>
+    <title>Cotizacion Productos</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <style>
         @page {
@@ -10,19 +10,20 @@
             font-size: 1em;
         }
         body {
-            margin: 3cm 2cm 2cm;
+            margin: 5cm 2cm 2cm;
         }
         header {
             position: fixed;
             top: 0cm;
             left: 0cm;
             right: 0cm;
-            height: 2cm;
+            height: 5cm;
             background-color: #46C66B;
             color: white;
             text-align: center;
-            line-height: 30px;
+            line-height: 10px;
         }
+        
         footer {
             position: fixed;
             bottom: 0cm;
@@ -32,44 +33,114 @@
             background-color: #46C66B;
             color: white;
             text-align: center;
-            line-height: 35px;
+            line-height: 25px;
         }
+
     </style>
 </head>
 <body>
     <header>
+        <div >
+            <img style=" text-align: left; display: inline-flex; margin:15px 12px" src="{{ storage_path('app/public/PACFOR.jpg') }} "> 
+            <h3 style="display: inline;"><strong>Comercializadora Forestal SPA<strong></h3>
+        </div>
+        <p class="text-center">Av. Bernardo O´Higgins 77, Depto.1205., Concepción, Región del Bio Bio, CHILE</p>
+        <p class="text-center">+56-412185630    +56-412185631</p>
+        <p class="text-center">CONCEPCIÓN, CHILE </p>
+
+
+            {{-- <img src="{{ storage_path('app/public/PACFOR.jpg') }} " />
+            
+            <img src="{{ storage_path('app/public/info_pacfor.jpg') }}" /> --}}
+            
+            {{-- <img src="{{ storage_path('app/public/PACFOR.jpg') }}" class="img-responsive inline-block" style="width: 150px; height: 100px">
+            <img src="{{ storage_path('app/public/info_pacfor.jpg') }}" class="img-responsive inline-block" style="width: 500px; height: 350px"> --}}
+            {{-- <img src="{{ asset('assets/img/PACFOR.jpg') }}" alt="{{ __('Profile Photo') }}" height="75px"> --}}
+        
         <br>
-        <p><strong>Pacific Forest</strong></p>
+        
     </header>
     <main>
+        <br>
         <div class="container">
-            <h5 style="text-align: center"><strong>Probando Cliente Cotizacion </strong></h5>
+            <h5 style="text-align: center"><strong>Cliente Cotizacion </strong></h5>
             <table class="table table-striped text-center">
                 <thead>
-                    <tr>
-                        
-                        <th scope="col">Nombre</th>
+                    <tr style="page-break-after: always;">
                         <th scope="col">Rut</th>
+                        <th scope="col">Nombre</th>
                         <th scope="col">Direccion</th>
                         <th scope="col">Telefono</th>
                         <th scope="col">Email</th>
                     </tr>
                 </thead>
                 <tbody>
-                    
+                        
                         <tr>
-                            <td><{{ $cliente->name }}</td>
-                            <td><{{ $cliente->document_id }}</td>
-                            <td><{{ $cliente->address }}</td>
-                            <td><{{ $cliente->phone }}</td>
-                            <td><{{ $cliente->email }}</td>
+                            <td> {{ $cliente->document_id }} </td>
+                            <td> {{ $cliente->name }} </td>
+                            <td> {{ $cliente->address }} </td>
+                            <td> {{ $cliente->phone }} </td>
+                            <td> {{ $cliente->email }} </td>
                         </tr>
+                        
                     
                 </tbody>
             </table>
         </div>
+        <br><br><br><br>
+        <br><br><br><br>
+
+            <h5 style="text-align: center"><strong>Producto a Cotizar </strong></h5>
+            <table class="table table-striped text-center">
+                <thead>
+                    <tr style="page-break-after: always;">
+                        <th scope="col">Producto</th>
+                        <th scope="col">Espesor</th>
+                        <th scope="col">Ancho</th>
+                        <th scope="col">Largo</th>
+                        <th scope="col">Cantidad</th>
+                        <th scope="col">Precio</th>
+                        <th scope="col">Total c/p + IVA</th>
+                    </tr>
+                </thead>
+                <tbody>
+                        @foreach ($productos as $product)
+                        <tr>
+                            <td> {{ $product->name }} </td>
+                            <td> {{ $product->thickness }} </td>
+                            <td> {{ $product->width }} </td>
+                            <td> {{ $product->length }} </td>
+                            <td> {{ $product->qty }} </td>
+                            <td> ${{ $product->price }} </td>
+                            <td> ${{ $product->total_amount }} </td>
+                            
+                        </tr>
+                        @endforeach
+                    
+                </tbody>
+            </table>
+
+            <h5 style="text-align: center"><strong>Total Productos a Cotizar </strong></h5>
+            <table class="table table-striped text-center">
+                <thead>
+                    <tr style="page-break-after: always;">
+                        
+                        <th scope="col">Total + IVA</th>
+                    </tr>
+                </thead>
+                <tbody>
+                        
+                        <tr>
+                            <td> ${{ $total_products_amount }} </td>
+                        </tr>
+                    
+                </tbody>
+            </table>
+        
     </main>
     <footer>
+        <p><strong>Fecha {{ $sale->created_at}}</strong></p>
         <p><strong>Pacific Forest - Comercializadora Forestal</strong></p>
     </footer>
 </body>
