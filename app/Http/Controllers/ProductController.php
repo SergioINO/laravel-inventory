@@ -13,7 +13,7 @@ class ProductController extends Controller
 {
     public function search(Request $request)
     {
-        dd($request);
+        // dd($request);
         $products = Product::all();
         $sale = Sale::where('id','=' ,$request->id_sale)->first();
         // dd($sale);
