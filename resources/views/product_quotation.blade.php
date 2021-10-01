@@ -63,7 +63,7 @@
     <main>
         <br>
         <div class="container">
-            <h5 style="text-align: center"><strong>Cliente Cotizacion </strong></h5>
+            <h5 style="text-align: center"><strong>Cliente Cotización </strong></h5>
             <table class="table table-striped text-center">
                 <thead>
                     <tr style="page-break-after: always;">
@@ -137,7 +137,21 @@
                     
                 </tbody>
             </table>
-        
+        <br><br><br><br><br><br><br><br>
+        <br><br><br>
+
+        <h5>DATOS DE TRANSFERENCIA:</h3>     
+
+        <p> Nombre del Banco: Banco de Chile.</p> 
+        <p> Número de cuenta: 225-37638-05</p> 
+        <p> Titular de la cuenta: Comercializadora Forestal SPA.</p> 
+        <p> Rut: 76.399.165-2</p> 
+        <p> Correo: misael.burgos@pacificforest.cl</p> 
+
+        <img style=" text-align: left; display: inline-flex; margin:15px 12px" src="{{ storage_path('app/public/firmamisael.jpg') }} "> 
+            <h5 style=" text-align: left; "><strong>Misael Burgos Alarcon<strong></h3>
+            <h5 style=" text-align: left; "><strong>+56977993047<strong></h3>
+
     </main>
     <footer>
         <p><strong>Fecha {{ $sale->created_at}}</strong></p>
