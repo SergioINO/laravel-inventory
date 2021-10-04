@@ -36,10 +36,10 @@
                                         <td>{{ $sale->user->name }}</td>
                                         <td>{{ $sale->products->count() }}</td>
                                         <td>{{ $sale->products->sum('qty') }}</td>
-                                        <td>{{ format_money($sale->transactions->sum('amount')) }}</td>
+                                        <td>{{ format_money($sale->products->sum('total_amount')) }}</td>
                                         <td>
                                             @if (!$sale->finalized_at)
-                                                <span class="text-danger">Para Finalizar</span>
+                                                <span class="text-danger">Por Finalizar</span>
                                             @else
                                                 <span class="text-success">Finalizado</span>
                                             @endif

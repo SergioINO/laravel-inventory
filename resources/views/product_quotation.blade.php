@@ -18,8 +18,7 @@
             left: 0cm;
             right: 0cm;
             height: 5cm;
-            background-color: #46C66B;
-            color: white;
+            background-color: #ffffff;
             text-align: center;
             line-height: 10px;
         }
@@ -30,8 +29,7 @@
             left: 0cm;
             right: 0cm;
             height: 2cm;
-            background-color: #46C66B;
-            color: white;
+            background-color: #ffffff;
             text-align: center;
             line-height: 25px;
         }
@@ -43,28 +41,26 @@
         <div >
             <img style=" text-align: left; display: inline-flex; margin:15px 12px" src="{{ storage_path('app/public/PACFOR.jpg') }} "> 
             <h3 style="display: inline;"><strong>Comercializadora Forestal SPA<strong></h3>
-        </div>
-        <p class="text-center">Av. Bernardo O´Higgins 77, Depto.1205., Concepción, Región del Bio Bio, CHILE</p>
-        <p class="text-center">+56-412185630    +56-412185631</p>
-        <p class="text-center">CONCEPCIÓN, CHILE </p>
-
-
-            {{-- <img src="{{ storage_path('app/public/PACFOR.jpg') }} " />
-            
-            <img src="{{ storage_path('app/public/info_pacfor.jpg') }}" /> --}}
-            
-            {{-- <img src="{{ storage_path('app/public/PACFOR.jpg') }}" class="img-responsive inline-block" style="width: 150px; height: 100px">
-            <img src="{{ storage_path('app/public/info_pacfor.jpg') }}" class="img-responsive inline-block" style="width: 500px; height: 350px"> --}}
-            {{-- <img src="{{ asset('assets/img/PACFOR.jpg') }}" alt="{{ __('Profile Photo') }}" height="75px"> --}}
         
+            <p class="text-center">Av. Bernardo O'Higgins 77, Depto.1205., Concepción, Región del Bio Bio, CHILE</p>
+            <p class="text-center">+56-412185630    +56-412185631</p>
+            <p class="text-center">CONCEPCIÓN, CHILE </p>
+        </div>
+
         <br>
         
     </header>
     <main>
         <br>
-        <div class="container">
+        <div>
             <h5 style="text-align: center"><strong>Cliente Cotización </strong></h5>
-            <table class="table table-striped text-center">
+            
+            <p style=" text-align: left; display: inline-flex;">Señor/Señora : {{ $cliente->name }} </p>
+            <p style="display: inline;" >RUT : {{ $cliente->document_id }} </p>
+            <p class="text-left">Dirección : {{ $cliente->address }} </p>
+            <p class="text-left">Telefono : {{ $cliente->phone }} </p>
+            <p class="text-left">Email : {{ $cliente->email }} </p>
+            {{-- <table class="table table-striped text-center">
                 <thead>
                     <tr style="page-break-after: always;">
                         <th scope="col">Rut</th>
@@ -86,10 +82,9 @@
                         
                     
                 </tbody>
-            </table>
+            </table> --}}
         </div>
-        <br><br><br><br>
-        <br><br><br><br>
+        <br><br>
 
             <h5 style="text-align: center"><strong>Producto a Cotizar </strong></h5>
             <table class="table table-striped text-center">
