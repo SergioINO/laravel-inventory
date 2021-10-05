@@ -30,7 +30,7 @@ Route::group(['middleware' => 'auth'], function () {
         'methods' => 'MethodController',
     ]);
     
-
+    /**************PDF IMPRIMIR COTIZACION PRODUCTOS******************** */
     Route::get('/{sale}/pdf', 'PDFController@PDF')->name('descargarPDF');
     /**************BUSQUEDA PRODUCTOS******************** */
     Route::post('/search', 'ProductController@search')->name('searching');
@@ -54,6 +54,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::delete('inventory/receipts/{receipt}/product/{receivedproduct}', ['as' => 'receipts.product.destroy', 'uses' => 'ReceiptController@destroyproduct']);
     /*************************************************************************************************************************************** */
     
+    //EXPORTAR EXCEL ******************************************************************************************
+    Route::get('/sales/export/excel', 'SaleController@exportExcel')->name('export_excel');
+    // ****************************************************************************************************** */
     /******************************************VENTAS*************************************************************************************** */
     Route::resource('sales', 'SaleController')->except(['edit', 'update']);
     Route::get('sales/{sale}/finalize', ['as' => 'sales.finalize', 'uses' => 'SaleController@finalize']);

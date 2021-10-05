@@ -2,6 +2,12 @@
 
 namespace App\Http\Controllers;
 
+// MATWEBSITE
+use Response;
+use DataTables;
+use Excel;
+use App\Exports\SalesExport;
+
 use DB;
 use App\Client;
 use App\Sale;
@@ -13,8 +19,33 @@ use App\PaymentMethod;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
+use Auth;
+Use Alert;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Crypt;
+use Illuminate\Contracts\Encryption\DecryptException;
+
 class SaleController extends Controller
 {
+
+    private $excel;
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct(Excel $excel)
+    {
+        $this->middleware('auth');
+        $this->excel = $excel;
+    }
+
+    public function exportExcel() 
+    {
+        return Excel::download(new SalesExport, 'Exportacion Resumen Ventas '.Carbon::now()->format('dmY').'.xlsx');
+        
+    }
     /**
      * Display a listing of the resource.
      *

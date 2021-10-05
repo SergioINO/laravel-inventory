@@ -7,12 +7,20 @@
             <div class="card ">
                 <div class="card-header">
                     <div class="row">
-                        <div class="col-8">
+                        <div class="col-4">
                             <h4 class="card-title">Ventas</h4>
+                        </div>
+                        <div class="col-4" >
+                            <form method="GET" action="{{route('export_excel')}}">
+                                <button type="submit" class="btn btn-sm btn-primary">
+                                    <i class="fas fa-download mr-2"></i> Exportar Resumen Ventas
+                                </button>
+                            </form>
                         </div>
                         <div class="col-4 text-right">
                             <a href="{{ route('sales.create') }}" class="btn btn-sm btn-primary">Registrar Venta</a>
                         </div>
+                        
                     </div>
                 </div>
                 <div class="card-body">
