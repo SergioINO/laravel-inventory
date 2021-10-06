@@ -5,6 +5,7 @@ use DB;
 use Carbon\Carbon;
 use Session;
 use App\Sales;
+use App\Client;
 use PhpOffice\PhpSpreadsheet\Shared\Date;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\WithHeadings;
@@ -35,21 +36,21 @@ class SalesExport implements FromCollection, WithHeadings, WithColumnWidths, Wit
     public function columnWidths(): array
     {
         return [
-            'A' => 10,
-            'B' => 25,
-            'C' => 35, 
+            'A' => 20,
+            'B' => 20,
+            'C' => 20, 
             'D' => 20, 
-            'E' => 35, 
-            'F' => 25, 
+            'E' => 20, 
+            'F' => 20, 
             'G' => 20, 
             'H' => 20, 
-            'I' => 30, 
+            'I' => 20, 
             'J' => 20, 
             'K' => 20, 
             'L' => 20, 
             'M' => 20, 
             'N' => 20, 
-            'O' => 30,
+            'O' => 20,
             
         ];
     }
@@ -59,67 +60,43 @@ class SalesExport implements FromCollection, WithHeadings, WithColumnWidths, Wit
         // return Equipment::all();
         $sales = DB::connection(session()->get('database'))
                         ->table('sales')
-                        ->select(
-                            'equipment.id','units.unit','responsability_centers.center','equipment.code','equipment.equipment',
-                            'equipment_ratings.equipment_rating','equipment.inventory','equipment_groups.equipment_group',
-                            'equipment_sub_groups.equipment_subgroup', 'equipment_states.equipment_state',
-                            'equipment_properties.equipment_property',
-                            'equipment.serie','equipment.location','equipment.warranty', 'equipment.provenance', 'equipment.commentary',
-                            'equipment.manufacturing_at','equipment.reception_at','equipment.installation_at',
-                            'marks.mark','patterns.pattern','providers.provider'
-                        )
-                        ->join("units","units.id", "equipment.unit_id")                    
-                        ->join("equipment_groups", "equipment_groups.id", "equipment.group_id")   
-                        ->join("equipment_sub_groups", "equipment_sub_groups.id", "equipment.subgroup_id") 
-                        ->join("equipment_states", "equipment_states.id", "equipment.state_id")
-                        ->join("equipment_properties", "equipment_properties.id", "equipment.property_id")                
-                        ->join("responsability_centers", "responsability_centers.id", "equipment.cr_id")
-                        ->join("equipment_ratings", "equipment_ratings.id", "equipment.rating_id")
-                        ->join("marks", "marks.id", "equipment.mark_id")
-                        ->join("patterns", "patterns.id", "equipment.pattern_id")
-                        ->join("providers", "providers.id", "equipment.provider_id")
                         ->get();
-
+        // dd($sales);
         $collectionTable = collect();
 
         foreach ($sales as $key => $value) {
             
-            if($value->manufacturing_at == NULL){
+            $client = Client::on(session()->get('database'))->find($value->client_id);
 
-                $manufacturing_at = '';
-            }else{
-                $manufacturing_at = Carbon::createFromFormat('Y-m-d H:i:s', $value-> manufacturing_at)->format('d-m-Y');
-            }
+            $products = DB::connection(session()->get('database'))
+                        ->table('sales')
+                        ->join('sold_products', 'sales.id', '=', 'sold_products.sale_id')
+                        ->join('products', 'sold_products.product_id', '=', 'products.id')
+                        ->select('products.name','products.thickness','products.width','products.length','products.type_measure', 'sold_products.qty',
+                                    'sold_products.price','sold_products.total_amount')
+                        ->where('sales.id', $value->id)
+                        ->first();
 
-            if($value->reception_at == NULL){
-                $reception_at = '';
-            }else{
-                $reception_at = Carbon::createFromFormat('Y-m-d H:i:s', $value-> reception_at)->format('d-m-Y');
-            }
-
-            if($value->installation_at == NULL){
-                $installation_at = '';
-            }else{
-                $installation_at = Carbon::createFromFormat('Y-m-d H:i:s', $value-> installation_at)->format('d-m-Y');
-            }
+            // dd($client,$products,$value);
             
             $collectionTable->push((object)[
-                'CLIENTE'                        => $key+1,
-                'FECHA'                    => $value->unit,
-                'PRODUCTO' => $value->center,
-                'ESPESOR'                      => $value->code,
-                'ANCHO'                    => $value->equipment,
-                'LARGO'                     => $value->equipment_group,
-                'CANTIDAD'                  => $value->equipment_subgroup,
-                'VOLUMEN'             => $value->inventory,
-                'UN.MEDIDA'                  => $value->serie,
-                'PRECIO UNITARIO'                     => $value->mark,
-                'TOTAL NETO'                    => $value->pattern,
-                'IVA'             => $value->equipment_rating,
-                'TOTAL'                    => $value->equipment_state,
-                'ORIGEN CLIENTE'                 => $value->equipment_property,
-                'ESTATUS CLIENTE'                 => $value->location,
-                'LUGAR DE PROCEDENCIA'         => $manufacturing_at,
+
+                'CLIENTE'          => $client->name,
+                'FECHA'            => $value->finalized_at,
+                'PRODUCTO'         => $products->name,
+                'ESPESOR'          => $products->thickness,
+                'ANCHO'            => $products->width,
+                'LARGO'            => $products->length,
+                'CANTIDAD'         => $products->qty,
+                'VOLUMEN'          => $products->qty,
+                'UN.MEDIDA'        => $products->type_measure,
+                'PRECIO UNITARIO'  => $products->price,
+                'TOTAL NETO'       => ($products->price)*($products->qty),
+                'IVA'              => (($products->price)*($products->qty))* 0.19,
+                'TOTAL'            => $value->total_amount,
+                'ORIGEN CLIENTE'   => $client->address,
+                // 'ESTATUS CLIENTE'      => $value->location,
+                // 'LUGAR DE PROCEDENCIA' => $manufacturing_at,
                 
                 
             ]);
@@ -136,7 +113,7 @@ class SalesExport implements FromCollection, WithHeadings, WithColumnWidths, Wit
             [
                 'A1' => ' ',
                 'B1' => ' ',
-                'C1' => 'EXPORTACIÓN MASIVA DE EQUIPOS',
+                'C1' => 'EXPORTACIÓN RESUMEN VENTAS',
                 'D1' => ' ',
                 'E1' => ' ',
                 'F1' => 'FECHA: ',
@@ -163,8 +140,8 @@ class SalesExport implements FromCollection, WithHeadings, WithColumnWidths, Wit
                 'IVA'                   ,
                 'TOTAL'                 ,
                 'ORIGEN CLIENTE'        ,
-                'ESTATUS CLIENTE'       ,
-                'LUGAR DE PROCEDENCIA'  ,
+                // 'ESTATUS CLIENTE'       ,
+                // 'LUGAR DE PROCEDENCIA'  ,
             ],
 
         ];
