@@ -8,17 +8,21 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
         <title>{{ $page }} - {{ config('app.name') }}</title> 
-
+        
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@100;200;300;400;500;600&display=swap" rel="stylesheet"> 
         <link href="https://cdnjs.cloudflare.com/ajax/libs/slim-select/1.23.0/slimselect.min.css" rel="stylesheet">
-
+        
+        
         <!-- Icons -->
         <link href="{{ asset('assets') }}/css/nucleo-icons.css" rel="stylesheet" />
         
         <!-- CSS -->
         <link href="{{ asset('assets') }}/css/white-dashboard.css?v=1.0.0" rel="stylesheet" />
         <link href="{{ asset('assets') }}/css/theme.css" rel="stylesheet" />
+        
+        @yield('css')
+
     </head>
     <body class="white-content {{ $class ?? '' }}">
         @auth()
@@ -48,11 +52,12 @@
                 </div>
             </div>
         @endauth
-
+        
         <script src="{{ asset('assets') }}/js/core/jquery.min.js"></script>
         <script src="{{ asset('assets') }}/js/core/popper.min.js"></script>
         <script src="{{ asset('assets') }}/js/core/bootstrap.min.js"></script>
         <script src="{{ asset('assets') }}/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+        
         <!-- Chart JS -->
         {{-- <script src="{{ asset('assets') }}/js/plugins/chartjs.min.js"></script> --}}
         <!--  Notifications Plugin    -->
@@ -171,4 +176,6 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/slim-select/1.23.0/slimselect.min.js"></script>
         @stack('js')
     </body>
+
+    @yield('script')
 </html>

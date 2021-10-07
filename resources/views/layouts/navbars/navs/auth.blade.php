@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-absolute navbar-transparent">
+<nav  style="position: fixed;" class="navbar navbar-expand-lg navbar-absolute navbar-transparent">
     <div class="container-fluid">
         <div class="navbar-wrapper">
             <div class="navbar-toggle d-inline">

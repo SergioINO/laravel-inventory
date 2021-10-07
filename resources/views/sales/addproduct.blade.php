@@ -186,10 +186,10 @@
                                             @if($product->type_measure == 'PIEZA')  
                                             
                                                 @if($product['id'] == old('product_id'))
-                                                    <option value="{{$product['id']}}" selected>[{{ $product->category->name }}] {{ $product->name }} |
+                                                    <option value="{{$product['id']}}" selected>[{{ $product->category->name }}] {{ $product->name }} | Espesor: {{ $product->thickness }}(mm) |
                                                                         Precio Venta: ${{ $product->selling_price }} |  Stock: {{ $product->stock }}</option>
                                                 @else
-                                                    <option value="{{$product['id']}}">[{{ $product->category->name }}] {{ $product->name }} |
+                                                    <option value="{{$product['id']}}">[{{ $product->category->name }}] {{ $product->name }} | Espesor: {{ $product->thickness }}(mm) |
                                                                         Precio Venta: ${{ $product->selling_price }} |  Stock: {{ $product->stock }}</option>
                                                     
                                                 @endif
