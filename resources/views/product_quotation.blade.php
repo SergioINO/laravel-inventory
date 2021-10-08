@@ -37,55 +37,62 @@
     </style>
 </head>
 <body>
-    <header>
-        <div >
-            <img style=" text-align: left; display: inline-flex; margin:15px 12px" src="{{ storage_path('app/public/PACFOR.jpg') }} "> 
-            <h3 style="display: inline;"><strong>Comercializadora Forestal SPA<strong></h3>
-        
-            <p class="text-center">Av. Bernardo O'Higgins 77, Depto.1205., Concepción, Región del Bio Bio, CHILE</p>
-            <p class="text-center">+56-412185630    +56-412185631</p>
-            <p class="text-center">CONCEPCIÓN, CHILE </p>
-        </div>
 
-        <br>
+    <header>
         
-    </header>
-    <main>
-        <br>
-        <div>
-            <h5 style="text-align: center"><strong>Cliente Cotización </strong></h5>
-            
-            <p style=" text-align: left; display: inline-flex;">Señor/Señora : {{ $cliente->name }} </p>
-            <p style="display: inline;" >RUT : {{ $cliente->document_id }} </p>
-            <p class="text-left">Dirección : {{ $cliente->address }} </p>
-            <p class="text-left">Telefono : {{ $cliente->phone }} </p>
-            <p class="text-left">Email : {{ $cliente->email }} </p>
-            {{-- <table class="table table-striped text-center">
-                <thead>
-                    <tr style="page-break-after: always;">
-                        <th scope="col">Rut</th>
-                        <th scope="col">Nombre</th>
-                        <th scope="col">Direccion</th>
-                        <th scope="col">Telefono</th>
-                        <th scope="col">Email</th>
-                    </tr>
-                </thead>
-                <tbody>
-                        
-                        <tr>
-                            <td> {{ $cliente->document_id }} </td>
-                            <td> {{ $cliente->name }} </td>
-                            <td> {{ $cliente->address }} </td>
-                            <td> {{ $cliente->phone }} </td>
-                            <td> {{ $cliente->email }} </td>
-                        </tr>
+            <img style=" padding: 10px; margin: 50px;  float: left; width: 150px;" src="{{ storage_path('app/public/PACFOR.jpg') }} ">
+
+            <div style=" padding: 20px; margin: 5px; border: 2px solid black; float: left; width: 300px; border-radius: 10px;">
+                <h6 style="display: inline;"><strong>Comercializadora Forestal SPA<strong></h6><br><br>
+                 <p class="text-center">Av. Bernardo O'Higgins 77, Depto.1205</p>
+                 <P class="text-center">Concepción, Región del Bio Bio, CHILE</P>  
+                 <p class="text-center">+56-412185630    +56-412185631</p>
+            </div>
+        </header>
+    <div style="  border: 2px solid black; border-radius: 10px;float: center; width: 600px;">
+                    <p style="display: inline; ">Señor/Señora : {{ $cliente->name }} </p><br>
+                    <p style="display: inline;" >RUT : {{ $cliente->document_id }} </p><br>
+                    <p style="display: inline;">Dirección : {{ $cliente->address }} </p><br>
+                    <p style="display: inline;">Telefono : {{ $cliente->phone }} </p><br>
+                    <p style="display: inline;">Email : {{ $cliente->email }} </p>
+              
+                 </div>
+
+                 <br><br><br>
+                 
+                 
+                 
+                 <main>
+                 <br><br><br>
+                     <div>
+                         {{-- <table class="table table-striped text-center">
+                            <thead>
+                                <tr style="page-break-after: always;">
+                                <th scope="col">Rut</th>
+                                <th scope="col">Nombre</th>
+                                <th scope="col">Direccion</th>
+                                <th scope="col">Telefono</th>
+                                <th scope="col">Email</th>
+                                </tr>
+                            </thead>
+                            /*******************Tabla de Datos personales******** */
+                            <tbody>
+                                    
+                                <tr>
+                                <td> {{ $cliente->document_id }} </td>
+                                <td> {{ $cliente->name }} </td>
+                                <td> {{ $cliente->address }} </td>
+                                <td> {{ $cliente->phone }} </td>
+                                <td> {{ $cliente->email }} </td>
+                                </tr>
                         
                     
-                </tbody>
-            </table> --}}
-        </div>
-        <br><br>
+                            </tbody>
+                            </table> --}}
+                        </div>
 
+
+                               
             <h5 style="text-align: center"><strong>Producto a Cotizar </strong></h5>
             <table class="table table-striped text-center">
                 <thead>
@@ -122,30 +129,44 @@
                     <tr style="page-break-after: always;">
                         
                         <th scope="col">Total + IVA</th>
+                        <td> ${{ $total_products_amount }} </td>
                     </tr>
                 </thead>
-                <tbody>
-                        
-                        <tr>
-                            <td> ${{ $total_products_amount }} </td>
-                        </tr>
-                    
-                </tbody>
+                
             </table>
-        <br><br><br><br><br><br><br><br>
+     
+    
+        <div style=" margin: 10px; border: 1px solid black; float: left; width: 500px; border-radius: 10px;">
+        
+            <p style="center; ">DATOS DE TRANSFERENCIA:</p>     
+
+            <p style="display: inline; "> Nombre del Banco: Banco de Chile.</p> <br>
+            <p style="display: inline; "> Número de cuenta: 225-37638-05</p> <br>
+            <p style="display: inline; "> Titular de la cuenta: Comercializadora Forestal SPA.</p> <br>
+            <p style="display: inline; "> Rut: 76.399.165-2</p> <br>
+            <p style="display: inline; "> Correo: misael.burgos@pacificforest.cl</p>
+        
+        </div>
         <br><br><br>
+        <br><br><br>
+        <br><br>
 
-        <h5>DATOS DE TRANSFERENCIA:</h3>     
+        <div  style="  text-align: center;" >
+        
+        <img  src="{{ storage_path('app/public/firmamisael.jpg') }} ">
+    
+        </div>   
 
-        <p> Nombre del Banco: Banco de Chile.</p> 
-        <p> Número de cuenta: 225-37638-05</p> 
-        <p> Titular de la cuenta: Comercializadora Forestal SPA.</p> 
-        <p> Rut: 76.399.165-2</p> 
-        <p> Correo: misael.burgos@pacificforest.cl</p> 
 
-        <img style=" text-align: left; display: inline-flex; margin:15px 12px" src="{{ storage_path('app/public/firmamisael.jpg') }} "> 
-            <h5 style=" text-align: left; "><strong>Misael Burgos Alarcon<strong></h3>
-            <h5 style=" text-align: left; "><strong>+56977993047<strong></h3>
+
+
+
+
+            <p style=" text-align: center; ">Misael Burgos Alarcon</p>  
+            <p style=" text-align: center; ">+56977993047</p>
+
+
+
 
     </main>
     <footer>
