@@ -40,21 +40,21 @@
 
     <header>
         
-            <img style=" padding: 10px; margin: 50px;  float: left; width: 150px;" src="{{ storage_path('app/public/PACFOR.jpg') }} ">
+            <img style=" padding: 10px; margin: 50px;  float: left; width: 200px;" src="{{ storage_path('app/public/PACFOR.jpg') }} ">
 
-            <div style=" padding: 20px; margin: 5px; border: 2px solid black; float: left; width: 300px; border-radius: 10px;">
+            <div style=" padding: 20px; margin: 5px; border: 1px solid black; float: left; width: 300px; border-radius: 10px;">
                 <h6 style="display: inline;"><strong>Comercializadora Forestal SPA<strong></h6><br><br>
                  <p class="text-center">Av. Bernardo O'Higgins 77, Depto.1205</p>
                  <P class="text-center">Concepción, Región del Bio Bio, CHILE</P>  
                  <p class="text-center">+56-412185630    +56-412185631</p>
             </div>
         </header>
-    <div style="  border: 2px solid black; border-radius: 10px;float: center; width: 600px;">
-                    <p style="display: inline; ">Señor/Señora : {{ $cliente->name }} </p><br>
-                    <p style="display: inline;" >RUT : {{ $cliente->document_id }} </p><br>
-                    <p style="display: inline;">Dirección : {{ $cliente->address }} </p><br>
-                    <p style="display: inline;">Telefono : {{ $cliente->phone }} </p><br>
-                    <p style="display: inline;">Email : {{ $cliente->email }} </p>
+    <div style="  border: 1px solid black; border-radius: 10px;float: center; width: 600px;">
+                    <p style="display: inline; ">&nbsp;&nbsp;Señor/Señora : {{ $cliente->name }} </p><br>
+                    <p style="display: inline;" >&nbsp;&nbsp;RUT : {{ $cliente->document_id }} </p><br>
+                    <p style="display: inline;">&nbsp;&nbsp;Dirección : {{ $cliente->address }} </p><br>
+                    <p style="display: inline;">&nbsp;&nbsp;Telefono : {{ $cliente->phone }} </p><br>
+                    <p style="display: inline;">&nbsp;&nbsp;Email : {{ $cliente->email }} </p>
               
                  </div>
 
@@ -136,31 +136,29 @@
             </table>
      
     
-        <div style=" margin: 10px; border: 1px solid black; float: left; width: 500px; border-radius: 10px;">
+        <div style=" margin: 10px; border: 1px solid black; float: left; width: 600px; border-radius: 10px;">
         
-            <p style="center; ">DATOS DE TRANSFERENCIA:</p>     
-
-            <p style="display: inline; "> Nombre del Banco: Banco de Chile.</p> <br>
-            <p style="display: inline; "> Número de cuenta: 225-37638-05</p> <br>
-            <p style="display: inline; "> Titular de la cuenta: Comercializadora Forestal SPA.</p> <br>
-            <p style="display: inline; "> Rut: 76.399.165-2</p> <br>
-            <p style="display: inline; "> Correo: misael.burgos@pacificforest.cl</p>
+            <p style="display: inline; ">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            DATOS DE TRANSFERENCIA:</p>    <br> 
+            <p style="display: inline; "> &nbsp;&nbsp;Nombre del Banco: Banco de Chile.</p> <br>
+            <p style="display: inline; "> &nbsp;&nbsp;Tipo de Cuenta: Cuenta corriente.</p> <br>
+            <p style="display: inline; ">&nbsp;&nbsp; Número de cuenta: 225-37638-05</p> <br>
+            <p style="display: inline; "> &nbsp;&nbsp;Titular de la cuenta: Comercializadora Forestal SPA.</p> <br>
+            <p style="display: inline; "> &nbsp;&nbsp;Rut: 76.399.165-2</p> <br>
+            <p style="display: inline; "> &nbsp;&nbsp;Correo: misael.burgos@pacificforest.cl</p>
         
         </div>
         <br><br><br>
         <br><br><br>
         <br><br>
 
-        <div  style="  text-align: center;" >
+        <div  style="text-align: center;" >
         
         <img  src="{{ storage_path('app/public/firmamisael.jpg') }} ">
     
         </div>   
-
-
-
-
-
 
             <p style=" text-align: center; ">Misael Burgos Alarcon</p>  
             <p style=" text-align: center; ">+56977993047</p>
