@@ -51,7 +51,10 @@ class SalesExport implements FromCollection, WithHeadings, WithColumnWidths, Wit
             'M' => 20, 
             'N' => 20, 
             'O' => 20,
-            
+            'Q' => 20,
+            'R' => 20,
+            'S' => 20,
+            'T' => 20,
         ];
     }
 
@@ -62,44 +65,51 @@ class SalesExport implements FromCollection, WithHeadings, WithColumnWidths, Wit
                         ->table('sales')
                         ->get();
         // dd($sales);
+        
         $collectionTable = collect();
 
         foreach ($sales as $key => $value) {
-            
             $client = Client::on(session()->get('database'))->find($value->client_id);
-
             $products = DB::connection(session()->get('database'))
                         ->table('sales')
                         ->join('sold_products', 'sales.id', '=', 'sold_products.sale_id')
                         ->join('products', 'sold_products.product_id', '=', 'products.id')
-                        ->select('products.name','products.thickness','products.width','products.length','products.type_measure', 'sold_products.qty',
+                        ->select('products.name','products.thickness','products.width','products.length',
+                                    'products.type_measure','products.purchase_price','sold_products.qty',
                                     'sold_products.price','sold_products.total_amount')
                         ->where('sales.id', $value->id)
-                        ->first();
+                        ->get();
 
-            // dd($client,$products,$value);
+            foreach ($products as $key => $valueproduct) {
+                
+                // dd($client,$valueproduct,$value);
+                            
+                $collectionTable->push((object)[
+
+                    'CLIENTE'          => $client->name,
+                    'FECHA'            => $value->finalized_at,
+                    'PRODUCTO'         => $valueproduct->name,
+                    'ESPESOR'          => $valueproduct->thickness,
+                    'ANCHO'            => $valueproduct->width,
+                    'LARGO'            => $valueproduct->length,
+                    'CANTIDAD'         => $valueproduct->qty,
+                    'VOLUMEN'          => $valueproduct->qty,
+                    'UN.MEDIDA'        => $valueproduct->type_measure,
+                    'PRECIO UNITARIO'  => $valueproduct->price,
+                    'TOTAL NETO'       => ($valueproduct->price)*($valueproduct->qty),
+                    'IVA'              => (($valueproduct->price)*($valueproduct->qty))* 0.19,
+                    'TOTAL'            => $value->total_amount,
+                    'ORIGEN CLIENTE'   => $client->address,
+                    'P.COMPRA'         => $valueproduct->purchase_price,
+                    'MGN'              => (($valueproduct->price - $valueproduct->purchase_price) / $valueproduct->purchase_price)* 100 .' %' ,
+                    'TOTAL COSTO'      => ($valueproduct->purchase_price) * ($valueproduct->qty) ,
+                    'UTILIDAD'         => (($valueproduct->price)*($valueproduct->qty)) - (($valueproduct->purchase_price) * ($valueproduct->qty)),
+                    // 'ESTATUS CLIENTE'      => $value->location,
+                    // 'LUGAR DE PROCEDENCIA' => $manufacturing_at,
+                    
+                ]);
+            }
             
-            $collectionTable->push((object)[
-
-                'CLIENTE'          => $client->name,
-                'FECHA'            => $value->finalized_at,
-                'PRODUCTO'         => $products->name,
-                'ESPESOR'          => $products->thickness,
-                'ANCHO'            => $products->width,
-                'LARGO'            => $products->length,
-                'CANTIDAD'         => $products->qty,
-                'VOLUMEN'          => $products->qty,
-                'UN.MEDIDA'        => $products->type_measure,
-                'PRECIO UNITARIO'  => $products->price,
-                'TOTAL NETO'       => ($products->price)*($products->qty),
-                'IVA'              => (($products->price)*($products->qty))* 0.19,
-                'TOTAL'            => $value->total_amount,
-                'ORIGEN CLIENTE'   => $client->address,
-                // 'ESTATUS CLIENTE'      => $value->location,
-                // 'LUGAR DE PROCEDENCIA' => $manufacturing_at,
-                
-                
-            ]);
         } 
 
         return $collectionTable;
@@ -140,6 +150,10 @@ class SalesExport implements FromCollection, WithHeadings, WithColumnWidths, Wit
                 'IVA'                   ,
                 'TOTAL'                 ,
                 'ORIGEN CLIENTE'        ,
+                'P.COMPRA',
+                'MGN',
+                'TOTAL COSTO',
+                'UTILIDAD',
                 // 'ESTATUS CLIENTE'       ,
                 // 'LUGAR DE PROCEDENCIA'  ,
             ],

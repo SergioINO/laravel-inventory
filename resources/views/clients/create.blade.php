@@ -29,7 +29,7 @@
                                 <div class="row">
                                     <div class="col-1">
                                         <label class="form-control-label" for="input-document_type">Tipo</label>
-                                        <select name="document_type" id="input-document_type" class="form-control form-control-alternative{{ $errors->has('name') ? ' is-invalid' : '' }}" required>
+                                        <select name="document_type" id="input-document_type" class="form-control form-control-alternative{{ $errors->has('name') ? ' is-invalid' : '' }}" >
                                             @foreach (['E', 'P'] as $document_type)
                                                 @if($document_type == old('document_type'))
                                                     <option value="{{$document_type}}" selected>{{$document_type}}</option>
@@ -41,25 +41,32 @@
                                     </div>
                                     <div class="col">
                                         <label class="form-control-label" for="input-document_id">Rut</label>
-                                        <input type="number" name="document_id" id="input-document_id" class="form-control form-control-alternative{{ $errors->has('document_id') ? ' is-invalid' : '' }}" placeholder="Document Number" value="{{ old('document_id') }}" required>
+                                        <input type="number" name="document_id" id="input-document_id" class="form-control form-control-alternative{{ $errors->has('document_id') ? ' is-invalid' : '' }}" placeholder="Document Number" value="{{ old('document_id') }}" >
                                         @include('alerts.feedback', ['field' => 'document_id'])
 
                                     </div>
                                 </div>
+
+                                <div class="form-group{{ $errors->has('giro') ? ' has-danger' : '' }}">
+                                    <label class="form-control-label" for="input-giro">Giro</label>
+                                    <input type="text" name="giro" id="input-giro" class="form-control form-control-alternative{{ $errors->has('giro') ? ' is-invalid' : '' }}" placeholder="Giro" value="{{ old('giro') }}" >
+                                    @include('alerts.feedback', ['field' => 'giro'])
+                                </div>
+
                                 <div class="form-group{{ $errors->has('email') ? ' has-danger' : '' }}">
                                     <label class="form-control-label" for="input-email">Email</label>
-                                    <input type="email" name="email" id="input-email" class="form-control form-control-alternative{{ $errors->has('email') ? ' is-invalid' : '' }}" placeholder="Email" value="{{ old('email') }}" required>
+                                    <input type="email" name="email" id="input-email" class="form-control form-control-alternative{{ $errors->has('email') ? ' is-invalid' : '' }}" placeholder="Email" value="{{ old('email') }}" >
                                     @include('alerts.feedback', ['field' => 'email'])
                                 </div>
                                 <div class="form-group{{ $errors->has('phone') ? ' has-danger' : '' }}">
                                     <label class="form-control-label" for="input-phone">Telefono</label>
-                                    <input type="text" name="phone" id="input-phone" class="form-control form-control-alternative{{ $errors->has('phone') ? ' is-invalid' : '' }}" placeholder="Telephone" value="{{ old('phone') }}" required>
+                                    <input type="text" name="phone" id="input-phone" class="form-control form-control-alternative{{ $errors->has('phone') ? ' is-invalid' : '' }}" placeholder="Telephone" value="{{ old('phone') }}" >
                                     @include('alerts.feedback', ['field' => 'phone'])
                                 </div>
-
+                                
                                 <div class="form-group{{ $errors->has('address') ? ' has-danger' : '' }}">
                                     <label class="form-control-label" for="input-address">Dirección</label>
-                                    <input type="text" name="address" id="input-address" class="form-control form-control-alternative{{ $errors->has('address') ? ' is-invalid' : '' }}" placeholder="Address" value="{{ old('address') }}" required>
+                                    <input type="text" name="address" id="input-address" class="form-control form-control-alternative{{ $errors->has('address') ? ' is-invalid' : '' }}" placeholder="Address" value="{{ old('address') }}" >
                                     @include('alerts.feedback', ['field' => 'address'])
                                 </div>
 
