@@ -37,11 +37,8 @@
     </style>
 </head>
 <body>
-
     <header>
-        
             <img style=" padding: 10px; margin: 50px;  float: left; width: 200px;" src="{{ storage_path('app/public/PACFOR.jpg') }} ">
-
             <div style=" padding: 20px; margin: 5px; border: 1px solid black; float: left; width: 300px; border-radius: 10px;">
                 <h6 style="display: inline;"><strong>Comercializadora Forestal SPA<strong></h6><br><br>
                  <p class="text-center">Av. Bernardo O'Higgins 77, Depto.1205</p>
@@ -58,7 +55,7 @@
               
                  </div>
 
-                 <br><br>
+                 <br>
                  
                  
                  
