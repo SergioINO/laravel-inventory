@@ -58,7 +58,7 @@
               
                  </div>
 
-                 <br><br><br>
+                 <br><br>
                  
                  
                  
@@ -89,7 +89,7 @@
                     
                             </tbody>
                             </table> --}}
-                        </div>
+                        </div><br>
 
 
                                
@@ -103,7 +103,8 @@
                         <th scope="col">Largo</th>
                         <th scope="col">Cantidad</th>
                         <th scope="col">Precio</th>
-                        <th scope="col">Total c/p + IVA</th>
+                        <th scope="col">U.medida</th>
+                        <th scope="col">Total+IVA</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -115,6 +116,7 @@
                             <td> {{ $product->length }} </td>
                             <td> {{ $product->qty }} </td>
                             <td> ${{ $product->price }} </td>
+                            <td> {{ $product->type_measure }} </td>
                             <td> ${{ $product->total_amount }} </td>
                             
                         </tr>
@@ -134,8 +136,6 @@
                 </thead>
                 
             </table>
-     
-    
         <div style=" margin: 10px; border: 1px solid black; float: left; width: 600px; border-radius: 10px;">
         
             <p style="display: inline; ">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -155,17 +155,10 @@
         <br><br>
 
         <div  style="text-align: center;" >
-        
         <img  src="{{ storage_path('app/public/firmamisael.jpg') }} ">
-    
         </div>   
-
             <p style=" text-align: center; ">Misael Burgos Alarcon</p>  
             <p style=" text-align: center; ">+56977993047</p>
-
-
-
-
     </main>
     <footer>
         <p><strong>Fecha {{ $sale->created_at}}</strong></p>
