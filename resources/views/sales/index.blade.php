@@ -1,57 +1,88 @@
 @extends('layouts.app', ['page' => 'Ventas', 'pageSlug' => 'sales', 'section' => 'transactions'])
 @section('css')
 <style>
-    .switchBtn {
-        position: relative;
-        display: inline-block;
-        width: 110px;
-        height: 34px;
-    }
-    .switchBtn input {display:none;}
-    .slide {
-        position: absolute;
-        cursor: pointer;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background-color: #ccc;
-        -webkit-transition: .4s;
-        transition: .4s;
-        padding: 8px;
-        color: #fff;
-    }
-    .slide:before {
-        position: absolute;
-        content: "";
-        height: 26px;
-        width: 26px;
-        left: 78px;
-        bottom: 4px;
-        background-color: white;
-        -webkit-transition: .4s;
-        transition: .4s;
-    }
-    input:checked + .slide {
-        background-color: #8CE196;
-        padding-left: 40px;
-    }
-    input:focus + .slide {
-        box-shadow: 0 0 1px #01aeed;
-    }
-    input:checked + .slide:before {
-        -webkit-transform: translateX(26px);
-        -ms-transform: translateX(26px);
-        transform: translateX(26px);
-        left: -20px;
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 130px;
+    height: 36px;
+}
+
+.switch input {display:none;}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ca2222;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+input:checked + .slider {
+    background-color: #2ab934;
+}
+
+input:focus + .slider {
+    box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+    -webkit-transform: translateX(95px);
+    -ms-transform: translateX(95px);
+    transform: translateX(95px);
+}
+
+/*------ ADDED CSS ---------*/
+.on
+{
+    display: none;
+}
+
+.on, .off
+{
+    color: white;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    top: 50%;
+    left: 50%;
+    font-size: 10px;
+    font-family: Verdana, sans-serif;
+}
+
+input:checked+ .slider .on
+{display: block;}
+
+input:checked + .slider .off
+{display: none;}
+
+/*--------- END --------*/
+
+    /* Rounded sliders */
+    .slider.round {
+    border-radius: 34px;
     }
 
-    .slide.round {
-        border-radius: 34px;
+    .slider.round:before {
+    border-radius: 50%;
     }
-    .slide.round:before {
-        border-radius: 50%;
-    }
+
 </style>
 @endsection
 @section('content')
@@ -109,10 +140,31 @@
                                             @endif
                                         </td>
                                         <td>
-                                            <label class="switchBtn">
+                                            @if (!$sale->finalized_at)
+                                            <label class="switch">
+                                                <input type="checkbox" id="togBtn">
+                                                <div class="slider round">
+                                                <!--ADDED HTML -->
+                                                <span class="on">RESERVADO</span>
+                                                <span class="off">DESPACHADO</span>
+                                                <!--END-->
+                                                </div>
+                                            </label>
+                                            @else
+                                            <label class="switch">
+                                                <input type="checkbox" id="togBtn" disabled>
+                                                <div class="slider round">
+                                                <!--ADDED HTML -->
+                                                <span class="on">RESERVADO</span>
+                                                <span class="off">DESPACHADO</span>
+                                                <!--END-->
+                                                </div>
+                                            </label>
+                                            @endif
+                                            {{-- <label class="switchBtn">
                                                 <input type="checkbox">
                                                 <div class="slide round">Reservado</div>
-                                            </label>
+                                            </label> --}}
                                         </td>
                                         <td class="td-actions text-right">
                                             @if (!$sale->finalized_at)
