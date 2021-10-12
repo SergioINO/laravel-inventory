@@ -31,7 +31,7 @@
             height: 2cm;
             background-color: #ffffff;
             text-align: center;
-            line-height: 25px;
+            line-height: 20x;
         }
 
     </style>
@@ -52,13 +52,8 @@
                     <p style="display: inline;">&nbsp;&nbsp;Dirección : {{ $cliente->address }} </p><br>
                     <p style="display: inline;">&nbsp;&nbsp;Telefono : {{ $cliente->phone }} </p><br>
                     <p style="display: inline;">&nbsp;&nbsp;Email : {{ $cliente->email }} </p>
-              
                  </div>
-
                  <br>
-                 
-                 
-                 
                  <main>
                  <br><br><br>
                      <div>
@@ -86,10 +81,9 @@
                     
                             </tbody>
                             </table> --}}
-                        </div><br>
-
-
-                               
+                        </div>
+                        <br>
+ 
             <h5 style="text-align: center"><strong>Producto a Cotizar </strong></h5>
             <table class="table table-striped text-center">
                 <thead>
@@ -126,22 +120,19 @@
             <table class="table table-striped text-center">
                 <thead>
                     <tr style="page-break-after: always;">
-                        
                         <th scope="col">Total + IVA</th>
                         <td> ${{ $total_products_amount }} </td>
                     </tr>
                 </thead>
-                
             </table>
         <div style=" margin: 10px; border: 1px solid black; float: left; width: 600px; border-radius: 10px;">
-        
             <p style="display: inline; ">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             DATOS DE TRANSFERENCIA:</p>    <br> 
             <p style="display: inline; "> &nbsp;&nbsp;Nombre del Banco: Banco de Chile.</p> <br>
             <p style="display: inline; "> &nbsp;&nbsp;Tipo de Cuenta: Cuenta corriente.</p> <br>
-            <p style="display: inline; ">&nbsp;&nbsp; Número de cuenta: 225-37638-05</p> <br>
+            <p style="display: inline; "> &nbsp;&nbsp;Número de cuenta: 225-37638-05</p> <br>
             <p style="display: inline; "> &nbsp;&nbsp;Titular de la cuenta: Comercializadora Forestal SPA.</p> <br>
             <p style="display: inline; "> &nbsp;&nbsp;Rut: 76.399.165-2</p> <br>
             <p style="display: inline; "> &nbsp;&nbsp;Correo: misael.burgos@pacificforest.cl</p>
@@ -152,7 +143,7 @@
         <br><br>
 
         <div  style="text-align: center;" >
-        <img  src="{{ storage_path('app/public/firmamisael.jpg') }} ">
+        <img  src="{{ storage_path('app/public/firmamisael.jpg')}} ">
         </div>   
             <p style=" text-align: center; ">Misael Burgos Alarcon</p>  
             <p style=" text-align: center; ">+56977993047</p>
