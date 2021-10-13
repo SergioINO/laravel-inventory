@@ -120,7 +120,7 @@ input:checked + .slider .off
                                 <th>Total Stock</th>
                                 <th>Cantidad Total</th>
                                 <th>Estado</th>
-                                <th>Reserva</th>
+                                <th>Confirmado</th>
                                 <th></th>
                             </thead>
                             <tbody>
@@ -133,38 +133,36 @@ input:checked + .slider .off
                                         <td>{{ $sale->products->sum('qty') }}</td>
                                         <td>{{ format_money($sale->products->sum('total_amount')) }}</td>
                                         <td>
-                                            @if (!$sale->finalized_at)
-                                                <span class="text-danger">Por Finalizar</span>
+                                            @if ($sale->finalized_at)
+                                                <span class="text-danger">Finalizado</span>
+                                            @elseif ($sale->confirm_at)
+                                                <span class="text-danger">Confirmado</span>
                                             @else
-                                                <span class="text-success">Finalizado</span>
+                                                <span class="text-success">Por Finalizar</span>
                                             @endif
                                         </td>
                                         <td>
-                                            @if (!$sale->finalized_at)
-                                            <label class="switch">
-                                                <input type="checkbox" id="togBtn">
-                                                <div class="slider round">
-                                                <!--ADDED HTML -->
-                                                <span class="on">RESERVADO</span>
-                                                <span class="off">DESPACHADO</span>
-                                                <!--END-->
-                                                </div>
-                                            </label>
+                                            @if ($sale->confirm_at)
+                                                <label class="switch">
+                                                    <input checked type="checkbox" id="togBtn" disabled>
+                                                    <div class="slider round">
+                                                    <!--ADDED HTML -->
+                                                    <span class="on">RESERVADO</span>
+                                                    <span class="off">DESPACHADO</span>
+                                                    <!--END-->
+                                                    </div>
+                                                </label>
                                             @else
-                                            <label class="switch">
-                                                <input type="checkbox" id="togBtn" disabled>
-                                                <div class="slider round">
-                                                <!--ADDED HTML -->
-                                                <span class="on">RESERVADO</span>
-                                                <span class="off">DESPACHADO</span>
-                                                <!--END-->
-                                                </div>
-                                            </label>
+                                                <label class="switch">
+                                                    <input  type="checkbox" id="togBtn" disabled>
+                                                    <div class="slider round">
+                                                    <!--ADDED HTML -->
+                                                    <span class="on">RESERVADO</span>
+                                                    <span class="off">DESPACHADO</span>
+                                                    <!--END-->
+                                                    </div>
+                                                </label>
                                             @endif
-                                            {{-- <label class="switchBtn">
-                                                <input type="checkbox">
-                                                <div class="slide round">Reservado</div>
-                                            </label> --}}
                                         </td>
                                         <td class="td-actions text-right">
                                             @if (!$sale->finalized_at)

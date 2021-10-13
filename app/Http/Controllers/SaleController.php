@@ -119,12 +119,14 @@ class SaleController extends Controller
             ->withStatus('El registro de venta ha sido eliminado con éxito!.');
     }
 
-    public function finalize(Sale $sale)
+
+    public function confirm(Sale $sale)
     {
         // dd($sale);
 
         $sale->total_amount = $sale->products->sum('total_amount');
 
+        // CONFIRMO SI EXISTE SUFICIENTE STOCK DISPONIBLE
         foreach ($sale->products as $sold_product) {
             $product_name = $sold_product->product->name;
 
@@ -149,6 +151,79 @@ class SaleController extends Controller
             }
         }
 
+        // HAGO LA RESERVA DEL STOCK
+        foreach ($sale->products as $sold_product) {
+
+            // dd($sold_product);
+
+            if ($sold_product->product->type_measure == 'PIEZA') {
+                $sold_product->product->PT += $sold_product->qty;
+                $sold_product->product->stock = $sold_product->product->stock;
+                $sold_product->product->save();
+            }
+
+            if ($sold_product->product->type_measure == 'PULG') {
+                $sold_product->product->PT += $sold_product->qty;
+                $sold_product->product->stock = $sold_product->product->pulg_total / $sold_product->product->pulg;
+                $sold_product->product->save();
+            }
+
+            if ($sold_product->product->type_measure == 'M2') {
+                $sold_product->product->PT += $sold_product->qty;
+                $sold_product->product->stock = $sold_product->product->m2_total / $sold_product->product->m2;
+                $sold_product->product->save();
+            }
+
+            if ($sold_product->product->type_measure == 'M3') {
+                $sold_product->product->PT += $sold_product->qty;
+                $sold_product->product->stock = $sold_product->product->m3_total / $sold_product->product->m3;
+                $sold_product->product->save();
+            }
+
+            
+        }
+
+        $sale->confirm_at = Carbon::now()->toDateTimeString();
+        $sale->client->balance -= $sale->total_amount;
+        $sale->save();
+        $sale->client->save();
+
+        // return back()->withStatus('La venta se ha completado con éxito!.');
+        return view('sales.index')->withStatus('La venta se ha completado con éxito!.');
+    }
+
+    public function finalize(Sale $sale)
+    {
+        // dd($sale);
+
+        $sale->total_amount = $sale->products->sum('total_amount');
+
+        // CONFIRMO SI EXISTE SUFICIENTE STOCK DISPONIBLE
+        foreach ($sale->products as $sold_product) {
+            $product_name = $sold_product->product->name;
+
+            if ($sold_product->product->type_measure == 'PIEZA') {
+                $product_stock = $sold_product->product->stock;
+                if($sold_product->qty > $product_stock) return back()->withError("El producto '$product_name' no tiene suficiente stock. Sólo tiene $product_stock unidades.");
+            }
+
+            if ($sold_product->product->type_measure == 'PULG') {
+                $product_stock = $sold_product->product->pulg_total;
+                if($sold_product->qty > $product_stock) return back()->withError("El producto '$product_name' no tiene suficiente stock. Sólo tiene $product_stock unidades.");
+            }
+
+            if ($sold_product->product->type_measure == 'M2') {
+                $product_stock = $sold_product->product->m2_total;
+                if($sold_product->qty > $product_stock) return back()->withError("El producto '$product_name' no tiene suficiente stock. Sólo tiene $product_stock unidades.");
+            }
+
+            if ($sold_product->product->type_measure == 'M3') {
+                $product_stock = $sold_product->product->m3_total;
+                if($sold_product->qty > $product_stock) return back()->withError("El producto '$product_name' no tiene suficiente stock. Sólo tiene $product_stock unidades.");
+            }
+        }
+
+        // DESCUENTO STOCK
         foreach ($sale->products as $sold_product) {
 
             if ($sold_product->product->type_measure == 'PIEZA') {
