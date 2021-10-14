@@ -142,7 +142,7 @@ input:checked + .slider .off
                                             @endif
                                         </td>
                                         <td>
-                                            @if ($sale->confirm_at)
+                                            @if ($sale->confirm_at && !$sale->finalized_at)
                                                 <label class="switch">
                                                     <input checked type="checkbox" id="togBtn" disabled>
                                                     <div class="slider round">

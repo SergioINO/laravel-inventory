@@ -112,6 +112,34 @@ class SaleController extends Controller
      */
     public function destroy(Sale $sale)
     {
+        // HAGO EL DESCUENTO DE LA RESERVA EN CASO QUE EL  ESTADO SEA CONFIRMADO
+        foreach ($sale->products as $sold_product) {
+
+            // dd($sold_product);
+
+            if ($sold_product->product->type_measure == 'PIEZA') {
+                $sold_product->product->PT -= $sold_product->qty;
+                $sold_product->product->save();
+            }
+
+            if ($sold_product->product->type_measure == 'PULG') {
+                $sold_product->product->PT -= $sold_product->qty;
+                $sold_product->product->save();
+            }
+
+            if ($sold_product->product->type_measure == 'M2') {
+                $sold_product->product->PT -= $sold_product->qty;
+                $sold_product->product->save();
+            }
+
+            if ($sold_product->product->type_measure == 'M3') {
+                $sold_product->product->PT -= $sold_product->qty;
+                $sold_product->product->save();
+            }
+
+            
+        }
+        
         $sale->delete();
 
         return redirect()
@@ -151,6 +179,7 @@ class SaleController extends Controller
             }
         }
 
+        // dd($sale->products);
         // HAGO LA RESERVA DEL STOCK
         foreach ($sale->products as $sold_product) {
 
@@ -188,8 +217,8 @@ class SaleController extends Controller
         $sale->save();
         $sale->client->save();
 
-        // return back()->withStatus('La venta se ha completado con éxito!.');
-        return view('sales.index')->withStatus('La venta se ha completado con éxito!.');
+        return back()->withStatus('La venta se ha completado con éxito!.');
+        // return view('sales.index')->withStatus('La venta se ha completado con éxito!.');
     }
 
     public function finalize(Sale $sale)
@@ -227,24 +256,28 @@ class SaleController extends Controller
         foreach ($sale->products as $sold_product) {
 
             if ($sold_product->product->type_measure == 'PIEZA') {
+                $sold_product->product->PT -= $sold_product->qty;
                 $sold_product->product->stock -= $sold_product->qty;
                 $sold_product->product->stock = $sold_product->product->stock;
                 $sold_product->product->save();
             }
 
             if ($sold_product->product->type_measure == 'PULG') {
+                $sold_product->product->PT -= $sold_product->qty;
                 $sold_product->product->pulg_total -= $sold_product->qty;
                 $sold_product->product->stock = $sold_product->product->pulg_total / $sold_product->product->pulg;
                 $sold_product->product->save();
             }
 
             if ($sold_product->product->type_measure == 'M2') {
+                $sold_product->product->PT -= $sold_product->qty;
                 $sold_product->product->m2_total -= $sold_product->qty;
                 $sold_product->product->stock = $sold_product->product->m2_total / $sold_product->product->m2;
                 $sold_product->product->save();
             }
 
             if ($sold_product->product->type_measure == 'M3') {
+                $sold_product->product->PT -= $sold_product->qty;
                 $sold_product->product->m3_total -= $sold_product->qty;
                 $sold_product->product->stock = $sold_product->product->m3_total / $sold_product->product->m3;
                 $sold_product->product->save();
