@@ -35,9 +35,9 @@ class ClientRequest extends FormRequest
             'document_type' => [
                 'required', 'max:3'
             ],
-            'document_id' => [
-                'required',
-            ],
+            // 'document_id' => [
+            //     'required',
+            // ],
 
         ];
     }
