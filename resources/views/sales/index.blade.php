@@ -152,6 +152,8 @@ input:checked + .slider .off
                                                     <!--END-->
                                                     </div>
                                                 </label>
+                                            @elseif($sale->confirm_at == NULL && $sale->finalized_at == NULL)
+                                                <span class="text-danger">COTIZACION</span>
                                             @else
                                                 <label class="switch">
                                                     <input  type="checkbox" id="togBtn" disabled>
