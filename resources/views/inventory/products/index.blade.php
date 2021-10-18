@@ -160,7 +160,7 @@
                                             <td>{{ $product->stock }}</td>
                                             <td>{{ $product->PT }}</td>
                                             <td>{{ format_money($product->selling_price) }}</td>
-                                            <td>{{ $product->solds->sum('qty') }}</td>
+                                            <td>{{ $product->solds->sum('qty') }} {{ $product->type_measure}}</td>
                                             <td class="td-actions text-right">
                                                 <a href="{{ route('products.show', $product) }}" class="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="Detalles">
                                                     <i class="tim-icons icon-zoom-split"></i>
@@ -234,7 +234,7 @@
                                             <td>{{ $product->pulg_total}}</td>
                                             <td>{{ $product->stock }}</td>
                                             <td>{{ format_money($product->selling_price) }}</td>
-                                            <td>{{ $product->solds->sum('qty') }}</td>
+                                            <td>{{ $product->solds->sum('qty') }} {{ $product->type_measure}}</td>
                                             <td class="td-actions text-right">
                                                 <a href="{{ route('products.show', $product) }}" class="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="Detalles">
                                                     <i class="tim-icons icon-zoom-split"></i>

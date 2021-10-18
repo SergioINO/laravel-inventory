@@ -57,7 +57,6 @@
 
                                             @endif
 
-                                            
                                         @endforeach
                                     </select>
                                     @include('alerts.feedback', ['field' => 'product_id'])
@@ -81,6 +80,13 @@
                                     @include('alerts.feedback', ['field' => 'product_id'])
                                 </div>
 
+                                <div class="form-group{{ $errors->has('observations') ? ' has-danger' : '' }}">
+                                    <label class="form-control-label" for="input-observations">Observaciones</label>
+                                    {{-- <input type="text" name="observations" id="input-observations" class="form-control form-control-alternative" placeholder="Observations" value="{{ old('observations') }}"> --}}
+                                    <textarea  id="input-observations" class="form-control form-control-alternative{{ $errors->has('product_id') ? ' is-invalid' : '' }}" name="observations" rows="10" cols="40" value="{{ old('observations', $soldproduct->observations) }}">Escribe aquí tus observaciones</textarea>
+                                    @include('alerts.feedback', ['field' => 'observations'])
+                                </div>
+                                
                                 <div class="text-center">
                                     <button type="submit" class="btn btn-success mt-4">Continuar</button>
                                 </div>

@@ -321,6 +321,7 @@ class SaleController extends Controller
                 $store->qty = $request->qty;
                 $store->price = $request->price;
                 $store->total_amount = $request->total_amount;
+                $store->observations = $request->observations;
             // $this->validate($request, $rules);
             // dd($request, $sale, $soldProduct);
             $request->merge(['total_amount' => $request->get('price') * $request->get('qty')]);
@@ -344,8 +345,10 @@ class SaleController extends Controller
 
     public function editproduct(Sale $sale, SoldProduct $soldproduct)
     {
+        
         $products = Product::all();
-
+        
+        // dd($sale, $soldproduct , $products);
         return view('sales.editproduct', compact('sale', 'soldproduct', 'products'));
     }
 

@@ -29,9 +29,9 @@ class ClientRequest extends FormRequest
             'name' => [
                 'required', 'min:3'
             ],
-            'email' => [
-                'required', 'email', Rule::unique((new Client)->getTable())->ignore($this->route()->client->id ?? null)
-            ],
+            // 'email' => [
+            //     'required', 'email', Rule::unique((new Client)->getTable())->ignore($this->route()->client->id ?? null)
+            // ],
             'document_type' => [
                 'required', 'max:3'
             ],
