@@ -83,7 +83,7 @@
                                 <div class="form-group{{ $errors->has('observations') ? ' has-danger' : '' }}">
                                     <label class="form-control-label" for="input-observations">Observaciones</label>
                                     {{-- <input type="text" name="observations" id="input-observations" class="form-control form-control-alternative" placeholder="Observations" value="{{ old('observations') }}"> --}}
-                                    <textarea  id="input-observations" class="form-control form-control-alternative{{ $errors->has('product_id') ? ' is-invalid' : '' }}" name="observations" rows="10" cols="40" value="{{ old('observations', $soldproduct->observations) }}">Escribe aquí tus observaciones</textarea>
+                                    <textarea  id="input-observations" class="form-control form-control-alternative{{ $errors->has('product_id') ? ' is-invalid' : '' }}" name="observations" rows="10" cols="40" value="{{ old('observations', $soldproduct->observations) }}">{{ old('observations', $soldproduct->observations) }}</textarea>
                                     @include('alerts.feedback', ['field' => 'observations'])
                                 </div>
                                 
