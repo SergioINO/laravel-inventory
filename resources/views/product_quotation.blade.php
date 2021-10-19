@@ -7,11 +7,9 @@
     <style>
         @page {
             margin: 0cm 0cm;
-            font-size: 1em;
-        }
+            font-size: 1em}
         body {
-            margin: 5cm 2cm 2cm;
-        }
+            margin: 5cm 2cm 2cm;}
         header {
             position: fixed;
             top: 0cm;
@@ -20,43 +18,46 @@
             height: 5cm;
             background-color: #ffffff;
             text-align: center;
-            line-height: 10px;
-        }
-        
-        footer {
+            line-height: 10px;}
+         footer {
             position: fixed;
             bottom: 0cm;
             left: 0cm;
             right: 0cm;
-            height: 2cm;
+            height: 5cm;
             background-color: #ffffff;
             text-align: center;
-            line-height: 20x;
-        }
-
+            line-height: 10px;}
     </style>
 </head>
 <body>
     <header>
-            <img style=" padding: 10px; margin: 50px;  float: left; width: 200px;" src="{{ storage_path('app/public/PACFOR.jpg') }} ">
-            <div style=" padding: 20px; margin: 5px; border: 1px solid black; float: left; width: 300px; border-radius: 10px;">
-                <h6 style="display: inline;"><strong>Comercializadora Forestal SPA<strong></h6><br><br>
-                 <p class="text-center">Av. Bernardo O'Higgins 77, Depto.1205</p>
-                 <P class="text-center">Concepción, Región del Bio Bio, CHILE</P>  
-                 <p class="text-center">+56-412185630    +56-412185631</p>
+            <img style="  margin: 45px;  float: left; width: 100px;" src="{{ storage_path('app/public/PACFOR.jpg') }} ">
+            <div style=" padding: 5px;  margin: 2px; border: 1px solid black; float: left; width: 540px; border-radius: 10px;">
+                <h5 ><strong>Comercializadora Forestal SPA<strong></h5><br>
+                <font  size="12px";class="text-center">Av. Bernardo O'Higgins 77, Depto.1205, Concepción, Región del Bio Bio, Chile</font><br><br>
+                <font  size="12px";class="text-center">+56-412185630    +56-412185631</font><br><br>
+                <font  size="12px";class="text-center">Concepción, Chile</font>
             </div>
-        </header>
-    <div style="  border: 1px solid black; border-radius: 10px;float: center; width: 600px;">
-                    <p style="display: inline; ">&nbsp;&nbsp;Señor/Señora : {{ $cliente->name }} </p><br>
-                    <p style="display: inline;" >&nbsp;&nbsp;RUT : {{ $cliente->document_id }} </p><br>
-                    <p style="display: inline;">&nbsp;&nbsp;Dirección : {{ $cliente->address }} </p><br>
-                    <p style="display: inline;">&nbsp;&nbsp;Telefono : {{ $cliente->phone }} </p><br>
-                    <p style="display: inline;">&nbsp;&nbsp;Email : {{ $cliente->email }} </p>
-                 </div>
-                 <br>
-                 <main>
-                 <br><br><br>
-                     <div>
+            <!-- <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Fecha {{ $sale->created_at}}</p>  -->
+        </header> 
+                <div style="border: 1px solid black; border-radius: 10px;float: center; width: 680px;">
+                    <p style="display: inline; ">&nbsp;&nbsp;Señores: {{ $cliente->name }} </p>  <br>                     
+                    <p style="display: inline;" >&nbsp;&nbsp;Rut: {{ $cliente->document_id }} </p><br>
+                    <p style="display: inline;">&nbsp;&nbsp;Dirección: {{ $cliente->address }} </p><br>
+                    <p style="display: inline;">&nbsp;&nbsp;Telefono : {{ $cliente->phone }} </p> 
+                    <p style="display: inline;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;Email : {{ $cliente->email }} </p> 
+                 </div><br>
+                 <main><br><br><br><br>
+          
+                     <!-- <div>
                          {{-- <table class="table table-striped text-center">
                             <thead>
                                 <tr style="page-break-after: always;">
@@ -81,21 +82,19 @@
                     
                             </tbody>
                             </table> --}}
-                        </div>
-                        <br>
- 
-            <h5 style="text-align: center"><strong>Producto a Cotizar </strong></h5>
-            <table class="table table-striped text-center">
+                        </div> -->
+            <font  size="16px";align="left";>Producto a Cotizar </font>
+            <table class="table users table-hover table-bordered">
                 <thead>
-                    <tr style="page-break-after: always;">
+                    <tr> 
                         <th scope="col">Producto</th>
                         <th scope="col">Espesor</th>
                         <th scope="col">Ancho</th>
                         <th scope="col">Largo</th>
+                        <th scope="col">U.medida</th>
                         <th scope="col">Cantidad</th>
                         <th scope="col">Precio</th>
-                        <th scope="col">U.medida</th>
-                        <th scope="col">Total+IVA</th>
+                        <th scope="col">Total</th> 
                     </tr>
                 </thead>
                 <tbody>
@@ -105,52 +104,72 @@
                             <td> {{ $product->thickness }} </td>
                             <td> {{ $product->width }} </td>
                             <td> {{ $product->length }} </td>
+                            <td> {{ $product->type_measure }} </td>
                             <td> {{ $product->qty }} </td>
                             <td> ${{ $product->price }} </td>
-                            <td> {{ $product->type_measure }} </td>
                             <td> ${{ $product->total_amount }} </td>
-                            
-                        </tr>
+                            </tr>
                         @endforeach
                     
                 </tbody>
             </table>
-
-            <h5 style="text-align: center"><strong>Total Productos a Cotizar </strong></h5>
-            <table class="table table-striped text-center">
+            <font  size="16px";>&nbsp;Total Productos a Cotizar:${{ $total_products_amount }} </font> <hr>
+            
+            <!-- <table class="table table-striped text-center">
                 <thead>
                     <tr style="page-break-after: always;">
-                        <th scope="col">Total + IVA</th>
+                        <th scope="col">Total</th>
                         <td> ${{ $total_products_amount }} </td>
                     </tr>
                 </thead>
-            </table>
-        <div style=" margin: 10px; border: 1px solid black; float: left; width: 600px; border-radius: 10px;">
-            <p style="display: inline; ">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            DATOS DE TRANSFERENCIA:</p>    <br> 
-            <p style="display: inline; "> &nbsp;&nbsp;Nombre del Banco: Banco de Chile.</p> <br>
+            </table> -->
+            <font  size="15px";align="left";>&nbsp;&nbsp;Observaciones de calidad</font> <br>
+
+
+        <div style=" margin: 10px; border: 1px solid black; float: left; width: 670px; border-radius: 10px;">
+        
+        <font  size="13px">&nbsp; {{ $product->name }}</font> <br>
+        <font  size="12px">&nbsp;&nbsp;&nbsp; {{ $product->qty }} Piezas de {{ $product->thickness }}*{{ $product->width }}*{{ $product->length }}</font> <br>
+
+
+  
+
+       
+
+
+
+
+
+
+
+
+
+        <font  size="13px";align="left";>&nbsp;Datos de Transferencia: </font> <br>
+        <font  size="12px";align="left";>&nbsp;&nbsp;&nbsp;-Nombre del Banco: Banco de Chile. </font> <br>
+        <font  size="12px";align="left";>&nbsp;&nbsp;&nbsp;-Tipo de Cuenta: Cuenta corriente. </font> <br>
+        <font  size="12px";align="left";>&nbsp;&nbsp;&nbsp;-Número de cuenta: 225-37638-05 </font> <br>
+        <font  size="12px";align="left";>&nbsp;&nbsp;&nbsp;-Titular de la cuenta: Comercializadora Forestal SPA. </font> <br>
+        <font  size="12px";align="left";>&nbsp;&nbsp;&nbsp;-Rut: 76.399.165-2 </font> <br>
+        <font  size="12px";>&nbsp;&nbsp;&nbsp;-Correo: misael.burgos@pacificforest.cl </font> <br>
+            <!-- <p style="display: inline; "> &nbsp;&nbsp;Nombre del Banco: Banco de Chile.</p> <br>
             <p style="display: inline; "> &nbsp;&nbsp;Tipo de Cuenta: Cuenta corriente.</p> <br>
             <p style="display: inline; "> &nbsp;&nbsp;Número de cuenta: 225-37638-05</p> <br>
             <p style="display: inline; "> &nbsp;&nbsp;Titular de la cuenta: Comercializadora Forestal SPA.</p> <br>
             <p style="display: inline; "> &nbsp;&nbsp;Rut: 76.399.165-2</p> <br>
-            <p style="display: inline; "> &nbsp;&nbsp;Correo: misael.burgos@pacificforest.cl</p>
-        
+            <p style="display: inline; "> &nbsp;&nbsp;Correo: misael.burgos@pacificforest.cl</p> -->  
         </div>
-        <br><br><br>
-        <br><br><br>
-        <br><br>
+        </main>   
 
-        <div  style="text-align: center;" >
-        <img  src="{{ storage_path('app/public/firmamisael.jpg')}} ">
-        </div>   
-            <p style=" text-align: center; ">Misael Burgos Alarcon</p>  
-            <p style=" text-align: center; ">+56977993047</p>
-    </main>
-    <footer>
+   <!--  <footer>
         <p><strong>Fecha {{ $sale->created_at}}</strong></p>
         <p><strong>Pacific Forest - Comercializadora Forestal</strong></p>
+    </footer>
+     -->
+
+     <footer>
+        <img  src="{{ storage_path('app/public/firmamisael.jpg')}} ">
+        <p><strong>Misael Burgos Alarcon</strong></p>
+        <p><strong>+56977993047</strong></p>
     </footer>
 </body>
 </html>
