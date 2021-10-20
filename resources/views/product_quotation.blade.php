@@ -32,19 +32,17 @@
 </head>
 <body>
     <header>
-            <img style="  margin: 45px;  float: left; width: 100px;" src="{{ storage_path('app/public/PACFOR.jpg') }} ">
+            <img style="  margin: 10px;  float: left; width: 160px;" src="{{ storage_path('app/public/PACFOR.jpg') }} ">
             <div style=" padding: 5px;  margin: 2px; border: 1px solid black; float: left; width: 540px; border-radius: 10px;">
                 <h5 ><strong>Comercializadora Forestal SPA<strong></h5><br>
                 <font  size="12px";class="text-center">Av. Bernardo O'Higgins 77, Depto.1205, Concepción, Región del Bio Bio, Chile</font><br><br>
                 <font  size="12px";class="text-center">+56-412185630    +56-412185631</font><br><br>
                 <font  size="12px";class="text-center">Concepción, Chile</font>
+            </div><br><br><br><br><br><br><br><br><br><br><br><br>
+    
+                    <div style="margin: 10px 0 10px 600px;"> 
+                <font  size="12px";>{{ date('d-m-Y') }}</font> 
             </div>
-            <!-- <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Fecha {{ $sale->created_at}}</p>  -->
         </header> 
                 <div style="border: 1px solid black; border-radius: 10px;float: center; width: 680px;">
                     <p style="display: inline; ">&nbsp;&nbsp;Señores: {{ $cliente->name }} </p>  <br>                     
@@ -56,33 +54,7 @@
                     &nbsp;&nbsp;&nbsp;Email : {{ $cliente->email }} </p> 
                  </div><br>
                  <main><br><br><br><br>
-          
-                     <!-- <div>
-                         {{-- <table class="table table-striped text-center">
-                            <thead>
-                                <tr style="page-break-after: always;">
-                                <th scope="col">Rut</th>
-                                <th scope="col">Nombre</th>
-                                <th scope="col">Direccion</th>
-                                <th scope="col">Telefono</th>
-                                <th scope="col">Email</th>
-                                </tr>
-                            </thead>
-                            /*******************Tabla de Datos personales******** */
-                            <tbody>
-                                    
-                                <tr>
-                                <td> {{ $cliente->document_id }} </td>
-                                <td> {{ $cliente->name }} </td>
-                                <td> {{ $cliente->address }} </td>
-                                <td> {{ $cliente->phone }} </td>
-                                <td> {{ $cliente->email }} </td>
-                                </tr>
-                        
-                    
-                            </tbody>
-                            </table> --}}
-                        </div> -->
+                 
             <font  size="16px";align="left";>Producto a Cotizar </font>
             <table class="table users table-hover table-bordered">
                 <thead>
@@ -113,37 +85,17 @@
                     
                 </tbody>
             </table>
-            <font  size="16px";>&nbsp;Total Productos a Cotizar:${{ $total_products_amount }} </font> <hr>
             
-            <!-- <table class="table table-striped text-center">
-                <thead>
-                    <tr style="page-break-after: always;">
-                        <th scope="col">Total</th>
-                        <td> ${{ $total_products_amount }} </td>
-                    </tr>
-                </thead>
-            </table> -->
+            <div align="right"> 
+                <font  size="16px";>Total Productos a Cotizar:${{ $total_products_amount }} </font> <hr> 
+            </div>
+            
             <font  size="15px";align="left";>&nbsp;&nbsp;Observaciones de calidad</font> <br>
 
 
         <div style=" margin: 10px; border: 1px solid black; float: left; width: 670px; border-radius: 10px;">
-        
         <font  size="13px">&nbsp; {{ $product->name }}</font> <br>
         <font  size="12px">&nbsp;&nbsp;&nbsp; {{ $product->qty }} Piezas de {{ $product->thickness }}*{{ $product->width }}*{{ $product->length }}</font> <br>
-
-
-  
-
-       
-
-
-
-
-
-
-
-
-
         <font  size="13px";align="left";>&nbsp;Datos de Transferencia: </font> <br>
         <font  size="12px";align="left";>&nbsp;&nbsp;&nbsp;-Nombre del Banco: Banco de Chile. </font> <br>
         <font  size="12px";align="left";>&nbsp;&nbsp;&nbsp;-Tipo de Cuenta: Cuenta corriente. </font> <br>
@@ -151,21 +103,9 @@
         <font  size="12px";align="left";>&nbsp;&nbsp;&nbsp;-Titular de la cuenta: Comercializadora Forestal SPA. </font> <br>
         <font  size="12px";align="left";>&nbsp;&nbsp;&nbsp;-Rut: 76.399.165-2 </font> <br>
         <font  size="12px";>&nbsp;&nbsp;&nbsp;-Correo: misael.burgos@pacificforest.cl </font> <br>
-            <!-- <p style="display: inline; "> &nbsp;&nbsp;Nombre del Banco: Banco de Chile.</p> <br>
-            <p style="display: inline; "> &nbsp;&nbsp;Tipo de Cuenta: Cuenta corriente.</p> <br>
-            <p style="display: inline; "> &nbsp;&nbsp;Número de cuenta: 225-37638-05</p> <br>
-            <p style="display: inline; "> &nbsp;&nbsp;Titular de la cuenta: Comercializadora Forestal SPA.</p> <br>
-            <p style="display: inline; "> &nbsp;&nbsp;Rut: 76.399.165-2</p> <br>
-            <p style="display: inline; "> &nbsp;&nbsp;Correo: misael.burgos@pacificforest.cl</p> -->  
         </div>
+        
         </main>   
-
-   <!--  <footer>
-        <p><strong>Fecha {{ $sale->created_at}}</strong></p>
-        <p><strong>Pacific Forest - Comercializadora Forestal</strong></p>
-    </footer>
-     -->
-
      <footer>
         <img  src="{{ storage_path('app/public/firmamisael.jpg')}} ">
         <p><strong>Misael Burgos Alarcon</strong></p>
