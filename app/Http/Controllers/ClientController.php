@@ -105,4 +105,4 @@ class ClientController extends Controller
 
         return view('clients.transactions.add', compact('client','payment_methods'));
     }
-}
+} 

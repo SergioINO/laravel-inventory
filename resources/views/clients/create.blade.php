@@ -18,8 +18,9 @@
                     <div class="card-body">
                         {{-- FORMULARIO AGREGAR UN NUEVO CLIENTE --}}
                         <form method="post" action="{{ route('clients.store') }}" autocomplete="off">
-                            @csrf
+                                @csrf
                             <h6 class="heading-small text-muted mb-4">Informacion Cliente</h6>
+
                             <div class="pl-lg-4">
                                 <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }}">
                                     <label class="form-control-label" for="input-name">Nombre</label>
@@ -81,4 +82,6 @@
             </div>
         </div>
     </div>
+
+   
 @endsection
