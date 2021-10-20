@@ -9,7 +9,6 @@ use App\Client;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 
-
 class PDFController extends Controller
 {
     public function PDF(Sale $sale){
