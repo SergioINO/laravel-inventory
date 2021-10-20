@@ -32,7 +32,7 @@
 </head>
 <body>
     <header>
-            <img style="  margin: 10px;  float: left; width: 160px;" src="{{ storage_path('app/public/PACFOR.jpg') }} ">
+            <img style="  margin: 10px;  float: left; width: 160px;" src="{{ storage_path('app/public/PACFOR.png') }} ">
             <div style=" padding: 5px;  margin: 2px; border: 1px solid black; float: left; width: 540px; border-radius: 10px;">
                 <h5 ><strong>Comercializadora Forestal SPA<strong></h5><br>
                 <font  size="12px";class="text-center">Av. Bernardo O'Higgins 77, Depto.1205, Concepción, Región del Bio Bio, Chile</font><br><br>
@@ -41,7 +41,7 @@
             </div><br><br><br><br><br><br><br><br><br><br><br><br>
     
                     <div style="margin: 10px 0 10px 600px;"> 
-                <font  size="12px";>{{ date('d-m-Y') }}</font> 
+                <font  size="12px";> Fecha: {{ date('d-m-Y') }}</font> 
             </div>
         </header> 
                 <div style="border: 1px solid black; border-radius: 10px;float: center; width: 680px;">
@@ -94,8 +94,9 @@
 
 
         <div style=" margin: 10px; border: 1px solid black; float: left; width: 670px; border-radius: 10px;">
-        <font  size="13px">&nbsp; {{ $product->name }}</font> <br>
-        <font  size="12px">&nbsp;&nbsp;&nbsp; {{ $product->qty }} Piezas de {{ $product->thickness }}*{{ $product->width }}*{{ $product->length }}</font> <br>
+        @foreach ($productos as $product)
+        <font  size="13px">&nbsp; {{ $product->observations }}</font> <br>
+        @endforeach    
         <font  size="13px";align="left";>&nbsp;Datos de Transferencia: </font> <br>
         <font  size="12px";align="left";>&nbsp;&nbsp;&nbsp;-Nombre del Banco: Banco de Chile. </font> <br>
         <font  size="12px";align="left";>&nbsp;&nbsp;&nbsp;-Tipo de Cuenta: Cuenta corriente. </font> <br>

@@ -22,7 +22,7 @@ class PDFController extends Controller
                         ->join('sold_products', 'sales.id', '=', 'sold_products.sale_id')
                         ->join('products', 'sold_products.product_id', '=', 'products.id')
                         ->select('products.name','products.thickness','products.width','products.length', 'products.type_measure','sold_products.qty',
-                                    'sold_products.price','sold_products.total_amount')
+                                    'sold_products.price','sold_products.total_amount','sold_products.observations')
                         ->where('sales.id', $sale->id)
                         ->get();
 
