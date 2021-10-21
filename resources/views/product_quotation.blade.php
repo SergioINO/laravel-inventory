@@ -78,8 +78,12 @@
                             <td> {{ $product->length }} </td>
                             <td> {{ $product->type_measure }} </td>
                             <td> {{ $product->qty }} </td>
-                            <td> ${{ $product->price }} </td>
-                            <td> ${{ $product->total_amount }} </td>
+                            <!-- <td> ${{ $product->price }} </td> -->
+                            <td> {{ number_format( $product->price , 0 ) }} </td>
+                            <!-- <td> ${{ $product->total_amount }} </td> -->
+                            <td> {{ number_format( $product->total_amount  , 0 ) }} </td>
+                       
+                            
                             </tr>
                         @endforeach
                     
@@ -87,15 +91,22 @@
             </table>
             
             <div align="right"> 
-                <font  size="16px";>Total Productos a Cotizar:${{ $total_products_amount }} </font> <hr> 
+                <!-- <font  size="16px";>Total Productos a Cotizar:${{ $total_products_amount }} </font> <hr>  -->
+                <font  size="16px";>Total Productos a Cotizar:${{ number_format( $total_products_amount , 0 ) }} </font> <hr> 
             </div>
             
             <font  size="15px";align="left";>&nbsp;&nbsp;Observaciones de calidad</font> <br>
 
+            <!-- @foreach ($productos as $obs)
+        <tr><td><font  size="13px">&nbsp;{{ $obs->observations}}</font> <br></td></tr>
+        @endforeach -->
+        <!-- <tr><td><font  size="13px">&nbsp;${{ $sale->observations }}</font> <br></td></tr>  -->
+
 
         <div style=" margin: 10px; border: 1px solid black; float: left; width: 670px; border-radius: 10px;">
-        <font  size="13px">&nbsp; {{ $product->name }}</font> <br>
-        <font  size="12px">&nbsp;&nbsp;&nbsp; {{ $product->qty }} Piezas de {{ $product->thickness }}*{{ $product->width }}*{{ $product->length }}</font> <br>
+        <font  size="13px">&nbsp;{{ $product->observations}}</font> <br>
+        <!-- <font  size="13px">&nbsp; {{ $product->name }}</font> <br>
+        <font  size="12px">&nbsp;&nbsp;&nbsp; {{ $product->qty }} Piezas de {{ $product->thickness }}*{{ $product->width }}*{{ $product->length }}</font> <br> -->
         <font  size="13px";align="left";>&nbsp;Datos de Transferencia: </font> <br>
         <font  size="12px";align="left";>&nbsp;&nbsp;&nbsp;-Nombre del Banco: Banco de Chile. </font> <br>
         <font  size="12px";align="left";>&nbsp;&nbsp;&nbsp;-Tipo de Cuenta: Cuenta corriente. </font> <br>
