@@ -31,7 +31,9 @@
             height: 5cm;
             background-color: #ffffff;
             text-align: center;
-            line-height: 10px;}
+            line-height: 10px;
+        }
+
         footer {
             position: fixed;
             bottom: 0cm;
@@ -40,7 +42,7 @@
             height: 5cm;
             background-color: #ffffff;
             text-align: center;
-            line-height: 10px;}
+        }
 
     </style>
 </head>
@@ -133,10 +135,11 @@
     </main> 
     
     <footer>
-        <img  src="{{ storage_path('app/public/firmamisael.jpg')}} ">
+            <img  src="{{ storage_path('app/public/firmamisael.jpg')}} "> 
+            {{-- <hr style="margin:10px ;width: 25%"> --}}
+            <p><strong>Misael Burgos Alarcon</strong></p>
+            <p style="margin-bottom: 10px"><strong>+56977993047</strong></p> <hr>
         
-        <p><strong>Misael Burgos Alarcon</strong></p>
-        <p><strong>+56977993047</strong></p>
     </footer>
 </body>
 </html>
