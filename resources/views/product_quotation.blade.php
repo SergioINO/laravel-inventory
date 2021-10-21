@@ -41,7 +41,7 @@
             </div><br><br><br><br><br><br><br><br><br><br><br>
     
                     <div style="margin: 10px 0 10px 540px;"> 
-                <font  size="12px";>Fecha Emisión{{ date('d-m-Y') }}</font> 
+                <font  size="12px";>Fecha Emisión:{{ date('d-m-Y') }}</font> 
             </div>
         </header> 
                 <div style="border: 1px solid black; border-radius: 10px;float: center; width: 680px;">
@@ -79,20 +79,17 @@
                             <td> {{ $product->type_measure }} </td>
                             <td> {{ $product->qty }} </td>
                             <!-- <td> ${{ $product->price }} </td> -->
-                            <td> {{ number_format( $product->price , 0 ) }} </td>
+                            <td> {{ number_format( $product->price , 0 , ",", ".") }} </td>
                             <!-- <td> ${{ $product->total_amount }} </td> -->
-                            <td> {{ number_format( $product->total_amount  , 0 ) }} </td>
-                       
-                            
-                            </tr>
+                            <td> {{ number_format( $product->total_amount, 0 , ",", ".") }} </td>
+                        </tr>
                         @endforeach
                     
                 </tbody>
             </table>
             
             <div align="right"> 
-                <!-- <font  size="16px";>Total Productos a Cotizar:${{ $total_products_amount }} </font> <hr>  -->
-                <font  size="16px";>Total Productos a Cotizar:${{ number_format( $total_products_amount , 0 ) }} </font> <hr> 
+                <font  size="16px";>Total Productos a Cotizar:${{ number_format( $total_products_amount , 0 , ",", ".") }} </font> <hr> 
             </div>
             
             <font  size="15px";align="left";>&nbsp;&nbsp;Observaciones de calidad</font> <br>
