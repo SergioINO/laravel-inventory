@@ -6,12 +6,12 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <style>
         .table td, .table th {
-        font-size: 10px;
+        font-size: 9px;
         margin: auto;
         }
 
         p {
-        font-size: 15px;
+        font-size: 13px;
         }
 
         @page {
@@ -57,11 +57,11 @@
             </div><br><br><br><br><br><br><br><br><br><br><br><br>
             
                 <div style=" float: left; margin: 2em 0 10px 10px;"> 
-                    <font  size="15px";> <strong> Cotización: PF-{{ $sale->id }} </strong> </font> 
+                    <font  size="15px";> <strong> COTIZACIÓN: PF-{{ $sale->id }} </strong> </font> 
                 </div>
     
                 <div style="float: right; margin: 2em 80px 10px 400px;"> 
-                    <font  size="15px";> <strong> Fecha: {{ date('d-m-Y') }} </strong> </font> 
+                    <font  size="15px";> <strong> FECHA EMISIÓN: {{ date('d-m-Y') }} </strong> </font> 
                 </div>
 
             
@@ -102,8 +102,8 @@
                             <td> {{ $product->length }} </td>
                             <td> {{ $product->type_measure }} </td>
                             <td> {{ $product->qty }} </td>
-                            <td> ${{ $product->price }} </td>
-                            <td> ${{ $product->total_amount }} </td>
+                            <td> ${{ number_format( $product->price , 0 , ",", ".") }} </td>
+                            <td> ${{ number_format( $product->total_amount, 0 , ",", ".") }} </td>
                             </tr>
                         @endforeach
                     
@@ -111,7 +111,7 @@
             </table>
             
             <div align="right"> 
-                <font size="16px";>Total Productos a Cotizar:${{ $total_products_amount }} </font> <hr> 
+                <font  size="16px";>Total Productos a Cotizar:${{ number_format( $total_products_amount , 0 , ",", ".") }} </font> <hr>
             </div>
             
             <font  size="15px";align="left";>&nbsp;&nbsp;Observaciones de calidad</font> <br>
