@@ -143,19 +143,21 @@ input:checked + .slider .off
                                         </td>
                                         <td>
                                             @if ($sale->confirm_at && !$sale->finalized_at)
-                                                <label class="switch">
+                                            <span class="text-success">RESERVADO</span>
+                                                {{-- <label class="switch">
                                                     <input checked type="checkbox" id="togBtn" disabled>
                                                     <div class="slider round">
-                                                    <!--ADDED HTML -->
-                                                    <span class="on">RESERVADO</span>
-                                                    <span class="off">DESPACHADO</span>
-                                                    <!--END-->
+                                                        <!--ADDED HTML -->
+                                                        <span class="on">RESERVADO</span>
+                                                        <span class="off">DESPACHADO</span>
+                                                        <!--END-->
                                                     </div>
-                                                </label>
+                                                </label> --}}
                                             @elseif($sale->confirm_at == NULL && $sale->finalized_at == NULL)
                                                 <span class="text-danger">COTIZACION</span>
                                             @else
-                                                <label class="switch">
+                                                <span class="text-success">DESPACHADO</span>
+                                                {{-- <label class="switch">
                                                     <input  type="checkbox" id="togBtn" disabled>
                                                     <div class="slider round">
                                                     <!--ADDED HTML -->
@@ -163,7 +165,7 @@ input:checked + .slider .off
                                                     <span class="off">DESPACHADO</span>
                                                     <!--END-->
                                                     </div>
-                                                </label>
+                                                </label> --}}
                                             @endif
                                         </td>
                                         <td class="td-actions text-right">
