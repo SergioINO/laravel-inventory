@@ -38,10 +38,10 @@
                 <font  size="12px";class="text-center">Av. Bernardo O'Higgins 77, Depto.1205, Concepción, Región del Bio Bio, Chile</font><br><br>
                 <font  size="12px";class="text-center">+56-412185630    +56-412185631</font><br><br>
                 <font  size="12px";class="text-center">Concepción, Chile</font>
-            </div><br><br><br><br><br><br><br><br><br><br><br><br>
+            </div><br><br><br><br><br><br><br><br><br><br><br>
     
-                    <div style="margin: 10px 0 10px 600px;"> 
-                <font  size="12px";>{{ date('d-m-Y') }}</font> 
+                    <div style="margin: 10px 0 10px 540px;"> 
+                <font  size="12px";>Fecha Emisión{{ date('d-m-Y') }}</font> 
             </div>
         </header> 
                 <div style="border: 1px solid black; border-radius: 10px;float: center; width: 680px;">
@@ -54,7 +54,7 @@
                     &nbsp;&nbsp;&nbsp;Email : {{ $cliente->email }} </p> 
                  </div><br>
                  <main><br><br><br><br>
-                 
+
             <font  size="16px";align="left";>Producto a Cotizar </font>
             <table class="table users table-hover table-bordered">
                 <thead>
