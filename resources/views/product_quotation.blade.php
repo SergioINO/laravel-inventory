@@ -25,7 +25,7 @@
 
         header {
             position: fixed;
-            top: 0cm;
+            top: 1cm;
             left: 0cm;
             right: 0cm;
             height: 5cm;
@@ -58,11 +58,11 @@
                 <font  size="12px";class="text-center">Concepción, Chile</font>
             </div><br><br><br><br><br><br><br><br><br><br><br><br>
             
-                <div style=" float: left; margin: 2em 0 10px 10px;"> 
+                <div style=" float: left; margin: 1em 0 10px 10px;"> 
                     <font  size="15px";> <strong> COTIZACIÓN: PF-{{ $sale->id }} </strong> </font> 
                 </div>
     
-                <div style="float: right; margin: 2em 80px 10px 400px;"> 
+                <div style="float: right; margin: 1em 80px 10px 400px;"> 
                     <font  size="15px";> <strong> FECHA EMISIÓN: {{ date('d-m-Y') }} </strong> </font> 
                 </div>
 

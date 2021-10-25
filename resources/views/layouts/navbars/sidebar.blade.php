@@ -160,18 +160,22 @@
                                 <p>Mi perfil</p>
                             </a>
                         </li>
-                        <li @if ($pageSlug == 'users-list') class="active " @endif>
-                            <a href="{{ route('users.index')  }}">
-                                <i class="tim-icons icon-notes"></i>
-                                <p>Gestionar usuarios</p>
-                            </a>
-                        </li>
-                        <li @if ($pageSlug == 'users-create') class="active " @endif>
-                            <a href="{{ route('users.create')  }}">
-                                <i class="tim-icons icon-simple-add"></i>
-                                <p>Nuevo Usuario</p>
-                            </a>
-                        </li>
+
+                        @if (Auth::user()->email == 'sergio.inostroza@pacificforest.cl' || Auth::user()->email == 'misael.burgos@pacificforest.cl'|| Auth::user()->email == 'admin@pacfor.cl' )
+                            <li @if ($pageSlug == 'users-list') class="active " @endif>
+                                <a href="{{ route('users.index')  }}">
+                                    <i class="tim-icons icon-notes"></i>
+                                    <p>Gestionar usuarios</p>
+                                </a>
+                            </li>
+                            <li @if ($pageSlug == 'users-create') class="active " @endif>
+                                <a href="{{ route('users.create')  }}">
+                                    <i class="tim-icons icon-simple-add"></i>
+                                    <p>Nuevo Usuario</p>
+                                </a>
+                            </li>
+                        @endif
+                        
                     </ul>
                 </div>
             </li>
