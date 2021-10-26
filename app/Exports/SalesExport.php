@@ -55,6 +55,7 @@ class SalesExport implements FromCollection, WithHeadings, WithColumnWidths, Wit
             'R' => 20,
             'S' => 20,
             'T' => 20,
+            'U' => 20,
         ];
     }
 
@@ -83,11 +84,19 @@ class SalesExport implements FromCollection, WithHeadings, WithColumnWidths, Wit
             foreach ($products as $key => $valueproduct) {
                 
                 // dd($client,$valueproduct,$value);
-                            
+                if ($value->confirm_at && !$value->finalized_at) {
+                    $state = "RESERVADO";
+                } elseif ($value->confirm_at == NULL && $value->finalized_at == NULL) {
+                    $state = "COTIZACION";
+                } else {
+                    $state =  "PARA DESPACHAR";
+                }
+                
                 $collectionTable->push((object)[
 
                     'CLIENTE'          => $client->name,
-                    'FECHA'            => $value->finalized_at,
+                    'ESTADO'           => $state ,
+                    'FECHA'            => Carbon::createFromFormat('Y-m-d H:i:s',$value->created_at )->format('d-m-Y'),
                     'PRODUCTO'         => $valueproduct->name,
                     'ESPESOR'          => $valueproduct->thickness,
                     'ANCHO'            => $valueproduct->width,
@@ -137,6 +146,7 @@ class SalesExport implements FromCollection, WithHeadings, WithColumnWidths, Wit
             ],
             [
                 'CLIENTE'               ,
+                'ESTADO'                ,
                 'FECHA'                 ,
                 'PRODUCTO'              ,
                 'ESPESOR'               ,
