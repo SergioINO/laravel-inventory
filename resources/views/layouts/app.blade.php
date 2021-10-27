@@ -13,7 +13,8 @@
         <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@100;200;300;400;500;600&display=swap" rel="stylesheet"> 
         <link href="https://cdnjs.cloudflare.com/ajax/libs/slim-select/1.23.0/slimselect.min.css" rel="stylesheet">
         
-        
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.0/main.css">
+
         <!-- Icons -->
         <link href="{{ asset('assets') }}/css/nucleo-icons.css" rel="stylesheet" />
         
@@ -65,6 +66,11 @@
 
         <script src="{{ asset('assets') }}/js/white-dashboard.min.js?v=1.0.0"></script>
         <script src="{{ asset('assets') }}/js/theme.js"></script>
+
+        <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.0/main.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.0/locales-all.js"></script>
+        <script src="{{ asset('assets') }}/js/agenda.js"></script>
+
         <script>
             $(document).ready(function() {
                 $().ready(function() {
