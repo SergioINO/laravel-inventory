@@ -28,13 +28,15 @@ Route::group(['middleware' => 'auth'], function () {
         'inventory/categories' => 'ProductCategoryController',
         'transactions/transfer' => 'TransferController',
         'methods' => 'MethodController',
+        'dispatch' => 'DispatchController',
     ]);
     
-
+    /**************Descarga de PDF******************** */
     Route::get('/{sale}/pdf', 'PDFController@PDF')->name('descargarPDF');
     /**************BUSQUEDA PRODUCTOS******************** */
     Route::post('/search', 'ProductController@search')->name('searching');
     Route::post('/searchproduct', 'ProductController@search_product')->name('searching_product');
+
     /***********************************TRANSACCIONES*********************************************************************************** */
     Route::resource('transactions', 'TransactionController')->except(['create', 'show']);
     Route::get('transactions/stats/{year?}/{month?}/{day?}', ['as' => 'transactions.stats', 'uses' => 'TransactionController@stats']);
