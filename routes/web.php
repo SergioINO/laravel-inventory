@@ -32,6 +32,7 @@ Route::group(['middleware' => 'auth'], function () {
     ]);
     
     /**************Descarga de PDF******************** */
+    /**************PDF IMPRIMIR COTIZACION PRODUCTOS******************** */
     Route::get('/{sale}/pdf', 'PDFController@PDF')->name('descargarPDF');
     /**************BUSQUEDA PRODUCTOS******************** */
     Route::post('/search', 'ProductController@search')->name('searching');
@@ -56,9 +57,13 @@ Route::group(['middleware' => 'auth'], function () {
     Route::delete('inventory/receipts/{receipt}/product/{receivedproduct}', ['as' => 'receipts.product.destroy', 'uses' => 'ReceiptController@destroyproduct']);
     /*************************************************************************************************************************************** */
     
+    //EXPORTAR EXCEL ******************************************************************************************
+    Route::get('/sales/export/excel', 'SaleController@exportExcel')->name('export_excel');
+    // ****************************************************************************************************** */
     /******************************************VENTAS*************************************************************************************** */
     Route::resource('sales', 'SaleController')->except(['edit', 'update']);
     Route::get('sales/{sale}/finalize', ['as' => 'sales.finalize', 'uses' => 'SaleController@finalize']);
+    Route::get('sales/{sale}/confirm', ['as' => 'sales.confirm', 'uses' => 'SaleController@confirm']);
     Route::get('sales/{sale}/product/add', ['as' => 'sales.product.add', 'uses' => 'SaleController@addproduct']);
     Route::get('sales/{sale}/product/{soldproduct}/edit', ['as' => 'sales.product.edit', 'uses' => 'SaleController@editproduct']);
     Route::post('sales/{sale}/product', ['as' => 'sales.product.store', 'uses' => 'SaleController@storeproduct']);

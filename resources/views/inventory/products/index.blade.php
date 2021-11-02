@@ -141,7 +141,7 @@
                                 <th scope="col">M2</th>
                                 <th scope="col">M3</th>
                                 <th scope="col">N piezas</th>
-                                <th scope="col">N piezas Defectuosas</th>
+                                <th scope="col">N piezas Reservadas </th>
                                 <th scope="col">Precio Venta</th>
                                 <th scope="col">Total vendido</th>
                                 <th scope="col"></th>
@@ -158,9 +158,9 @@
                                             <td>{{ $product->m2}}</td>
                                             <td>{{ $product->m3}}</td>
                                             <td>{{ $product->stock }}</td>
-                                            <td>{{ $product->stock_defective }}</td>
+                                            <td>{{ $product->PT }}</td>
                                             <td>{{ format_money($product->selling_price) }}</td>
-                                            <td>{{ $product->solds->sum('qty') }}</td>
+                                            <td>{{ $product->solds->sum('qty') }} {{ $product->type_measure}}</td>
                                             <td class="td-actions text-right">
                                                 <a href="{{ route('products.show', $product) }}" class="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="Detalles">
                                                     <i class="tim-icons icon-zoom-split"></i>
@@ -234,7 +234,7 @@
                                             <td>{{ $product->pulg_total}}</td>
                                             <td>{{ $product->stock }}</td>
                                             <td>{{ format_money($product->selling_price) }}</td>
-                                            <td>{{ $product->solds->sum('qty') }}</td>
+                                            <td>{{ $product->solds->sum('qty') }} {{ $product->type_measure}}</td>
                                             <td class="td-actions text-right">
                                                 <a href="{{ route('products.show', $product) }}" class="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="Detalles">
                                                     <i class="tim-icons icon-zoom-split"></i>

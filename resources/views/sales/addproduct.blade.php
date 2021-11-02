@@ -186,10 +186,10 @@
                                             @if($product->type_measure == 'PIEZA')  
                                             
                                                 @if($product['id'] == old('product_id'))
-                                                    <option value="{{$product['id']}}" selected>[{{ $product->category->name }}] {{ $product->name }} |
+                                                    <option value="{{$product['id']}}" selected>[{{ $product->category->name }}] {{ $product->name }} | Espesor: {{ $product->thickness }}(mm) |
                                                                         Precio Venta: ${{ $product->selling_price }} |  Stock: {{ $product->stock }}</option>
                                                 @else
-                                                    <option value="{{$product['id']}}">[{{ $product->category->name }}] {{ $product->name }} |
+                                                    <option value="{{$product['id']}}">[{{ $product->category->name }}] {{ $product->name }} | Espesor: {{ $product->thickness }}(mm) |
                                                                         Precio Venta: ${{ $product->selling_price }} |  Stock: {{ $product->stock }}</option>
                                                     
                                                 @endif
@@ -218,6 +218,13 @@
                                     <label class="form-control-label" for="input-total">Precio Total + IVA</label>
                                     <input  placeholder= "0" readonly= "readonly" type="number" step="0.001" name="total_amount" id="input-total" class="form-control form-control-alternative{{ $errors->has('product_id') ? ' is-invalid' : '' }}" value="0$" >
                                     @include('alerts.feedback', ['field' => 'product_id'])
+                                </div>
+
+                                <div class="form-group{{ $errors->has('observations') ? ' has-danger' : '' }}">
+                                    <label class="form-control-label" for="input-observations">Observaciones</label>
+                                    {{-- <input type="text" name="observations" id="input-observations" class="form-control form-control-alternative" placeholder="Observations" value="{{ old('observations') }}"> --}}
+                                    <textarea  id="input-observations" class="form-control form-control-alternative" name="observations" rows="10" cols="40" value="{{ old('observations') }}">Escribe aquí tus observaciones</textarea>
+                                    @include('alerts.feedback', ['field' => 'observations'])
                                 </div>
 
                                 <div class="text-center">

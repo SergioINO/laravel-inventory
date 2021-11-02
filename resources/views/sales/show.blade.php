@@ -11,8 +11,11 @@
                         <div class="col-8">
                             <h4 class="card-title">Resumen de la venta</h4>
                         </div>
+                        <div class="col-4 text-right">
+                            <a href="{{ route('sales.index') }}" class="btn btn-sm btn-primary">Atrás</a>
+                        </div>
                         @if (!$sale->finalized_at)
-                            <div class="col-4 text-right">
+                            <div class="col text-right">
                                 @if ($sale->products->count() == 0)
                                     <form action="{{ route('sales.destroy', $sale) }}" method="post" class="d-inline">
                                         @csrf
@@ -22,9 +25,18 @@
                                         </button>
                                     </form>
                                 @else
+                                    
+                                    <button type="button" class="btn btn-sm btn-primary" 
+                                            onclick="confirm('ATENCIÓN: Las transacciones de esta venta no podran ser modificados, ¿quieres finalizarla? Sus registros no podrán ser modificados a partir de ahora.') ? window.location.replace('{{ route('sales.index', $sale) }}') : ''">
+                                            Por Finalizar
+                                    </button>
+                                    <button type="button" class="btn btn-sm btn-primary" 
+                                            onclick="confirm('ATENCIÓN: Las transacciones de esta venta no podran ser modificados, ¿quieres finalizarla? Sus registros no podrán ser modificados a partir de ahora.') ? window.location.replace('{{ route('sales.confirm', $sale) }}') : ''">
+                                            Confirmado
+                                    </button>
                                     <button type="button" class="btn btn-sm btn-primary" 
                                             onclick="confirm('ATENCIÓN: Las transacciones de esta venta no podran ser modificados, ¿quieres finalizarla? Sus registros no podrán ser modificados a partir de ahora.') ? window.location.replace('{{ route('sales.finalize', $sale) }}') : ''">
-                                            Por Finalizar
+                                            Finalizar
                                     </button>
                                 @endif
                             </div>
