@@ -58,7 +58,7 @@
                                                                         <form action="{{ route('sales.finalize', $sale) }}" method="post" class="d-inline">
                                                                                         @csrf
                                                                         <div class="form-group row">
-                                                                            <label for="example-date-input" class="col-3 col-form-label">Fecha:</label>
+                                                                            <!-- <label for="example-date-input" class="col-3 col-form-label">Fecha:</label> -->
                                                                             <div class="col-9">
                                                                                 <input class="form-control datepicker" type="date" id="date_of_delivery" name="date_of_delivery" required>
                                                                             </div>
