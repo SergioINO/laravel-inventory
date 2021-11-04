@@ -62,7 +62,8 @@ Route::group(['middleware' => 'auth'], function () {
     // ****************************************************************************************************** */
     /******************************************VENTAS*************************************************************************************** */
     Route::resource('sales', 'SaleController')->except(['edit', 'update']);
-    Route::get('sales/{sale}/finalize', ['as' => 'sales.finalize', 'uses' => 'SaleController@finalize']);
+    Route::post('sales/{sale}/finalize', ['as' => 'sales.finalize', 'uses' => 'SaleController@finalize']);
+    //Route::get('sales/{sale}/finalize', ['as' => 'sales.finalize', 'uses' => 'SaleController@finalize']);
     Route::get('sales/{sale}/confirm', ['as' => 'sales.confirm', 'uses' => 'SaleController@confirm']);
     Route::get('sales/{sale}/product/add', ['as' => 'sales.product.add', 'uses' => 'SaleController@addproduct']);
     Route::get('sales/{sale}/product/{soldproduct}/edit', ['as' => 'sales.product.edit', 'uses' => 'SaleController@editproduct']);
