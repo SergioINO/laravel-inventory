@@ -34,10 +34,60 @@
                                             onclick="confirm('ATENCIÓN: Las transacciones de esta venta no podran ser modificados, ¿quieres finalizarla? Sus registros no podrán ser modificados a partir de ahora.') ? window.location.replace('{{ route('sales.confirm', $sale) }}') : ''">
                                             Confirmado
                                     </button>
-                                    <button type="button" class="btn btn-sm btn-primary" 
-                                            onclick="confirm('ATENCIÓN: Las transacciones de esta venta no podran ser modificados, ¿quieres finalizarla? Sus registros no podrán ser modificados a partir de ahora.') ? window.location.replace('{{ route('sales.finalize', $sale) }}') : ''">
-                                            Finalizar
-                                    </button>
+
+                                            <!-- <button type="button" class="btn btn-sm btn-primary" 
+                                    onclick="confirm('ATENCIÓN: Las transacciones de esta venta no podran ser modificados, ¿quieres finalizarla? Sus registros no podrán ser modificados a partir de ahora.') ? window.location.replace('{{ route('sales.finalize', $sale) }}') : ''"> -->
+                                    
+                                            
+                                            
+                                            <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#exampleModal">Finalizar</button>
+                                             <! - Caja modal ->
+                                            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h3 class="modal-title" id="exampleModalLabel">Fecha estimada de entrega</h3>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                
+                                                                    <div id="response"></div>
+                                                                    <div class="form-group">
+                                                                        <h5 align="center"> Seleccione Fecha:<br></h5>
+                                                                        <form action="{{ route('sales.finalize', $sale) }}" method="post" class="d-inline">
+                                                                                        @csrf
+                                                                        <div class="form-group row">
+                                                                            <label for="example-date-input" class="col-3 col-form-label">Fecha:</label>
+                                                                            <div class="col-9">
+                                                                                <input class="form-control datepicker" type="date" id="date_of_delivery" name="date_of_delivery" required>
+                                                                            </div>
+                                                                            <button type="submit" class="btn btn-sm btn-primary">
+                                                                                ACEPTA
+                                                                            </button>
+                                                                        </form>
+
+
+                                                                            
+                                                                        </div>
+                                                                    </div>
+                                                                    <h5 align="center">  ATENCIÓN:</h5>
+                                                                    <h6 align="center">
+                                                                        Las transacciones de esta venta no podran ser modificados.
+                                                                        ¿quieres finalizarla?<br>
+                                                                        Sus registros no podrán ser modificados a partir de ahora.
+                                                                    </h6>
+                                                                        <div style="text-align: center; class="modal-footer>
+                                                                        <!-- <button type="button"  class="btn btn-danger"                                  
+                                                                            onclick="confirm('¿Desea Continuar?') ? window.location.replace('{{ route('sales.finalize', $sale) }}') : ''">Aceptar
+                                                                        </button> -->
+                                                                    </div>
+                                                                 </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </button>
+                                                         
                                 @endif
                             </div>
                         @endif
@@ -134,5 +184,13 @@
 @endsection
 
 @push('js')
-    <script src="{{ asset('assets') }}/js/sweetalerts2.js"></script>
+<script src="{{ asset('assets') }}/js/sweetalerts2.js"></script>
+
+<script>
+    $('.datepicker').datepicker({
+        format: "yyyy/mm/dd",
+        language: "es",
+        autoclose: true
+    });
+</script>
 @endpush
