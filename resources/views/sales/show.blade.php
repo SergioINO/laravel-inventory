@@ -66,10 +66,7 @@
                                                                                 ACEPTA
                                                                             </button>
                                                                         </form>
-
-
-                                                                            
-                                                                        </div>
+                                                                     </div>
                                                                     </div>
                                                                     <h5 align="center">  ATENCIÓN:</h5>
                                                                     <h6 align="center">
@@ -77,11 +74,7 @@
                                                                         ¿quieres finalizarla?<br>
                                                                         Sus registros no podrán ser modificados a partir de ahora.
                                                                     </h6>
-                                                                        <div style="text-align: center; class="modal-footer>
-                                                                        <!-- <button type="button"  class="btn btn-danger"                                  
-                                                                            onclick="confirm('¿Desea Continuar?') ? window.location.replace('{{ route('sales.finalize', $sale) }}') : ''">Aceptar
-                                                                        </button> -->
-                                                                    </div>
+                                                                        
                                                                  </div>
                                                             </div>
                                                         </div>
