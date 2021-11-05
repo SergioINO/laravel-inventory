@@ -1,7 +1,11 @@
 <?php
+namespace App\Http\Controllers;
 
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
+use App\Client;
+use DB;
+
 
 
 class DispatchController extends Controller
@@ -13,10 +17,13 @@ class DispatchController extends Controller
      */
     public function index()
     {
+        $date = DB::connection(session()->get('database'))
+            ->table('sales')
+            ->join('clients', 'sales.client_id', '=', 'clients.id')
+            ->select('clients.name','clients.email','clients.phone','clients.address','sales.date_of_delivery')
+            ->get();
 
-       // return view('dispatch.index', compact('dispatch'));
-       //return redirect()->route('dispatch.index');
-       return view('dispatch.index');
+        return view('dispatch.index', compact('date'));
     }
 
     /**
