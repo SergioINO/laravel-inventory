@@ -108,8 +108,8 @@
 
             <li @if ($pageSlug == 'dispatch') class="active " @endif>
                 <a href="{{ route('dispatch.index') }}">
-                    <i class="tim-icons icon-single-02"></i>
-                    <p>Dispatch</p>
+                    <i class="tim-icons icon-app"></i>
+                    <p>Despacho</p>
                 </a>
             </li>
 
