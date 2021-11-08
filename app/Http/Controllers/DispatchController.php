@@ -2,8 +2,10 @@
 namespace App\Http\Controllers;
 
 namespace App\Http\Controllers;
-use Illuminate\Http\Request;
+use App\Sale;
 use App\Client;
+use App\Transaction;
+use Illuminate\Http\Request;
 use DB;
 
 
@@ -24,6 +26,12 @@ class DispatchController extends Controller
             ->get();
 
         return view('dispatch.index', compact('date'));
+    }
+
+
+    public function show(Client $client)
+    {
+        return view('clients.show', compact('client'));
     }
 
     /**
