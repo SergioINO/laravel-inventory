@@ -9,16 +9,12 @@
                             <div class="col-8">
                                 <h3 class="mb-0">Listado de despachos </h3>
                             </div>
-
-                                <div class="form-group"> 
-                                    <label class="control-label" for="date">Fecha inicial</label>
-                                    <input class="form-control" id="fechaInicial" name="fechaInicial"  placeholder="AA/MM/DD" value="" type="text"/>
-                                </div>
-                                <div class="form-group">
-                                    <label class="control-label" for="date">Fecha De Expiracion</label>
-                                    <input class="form-control" id="fechaFinal" name="fechaFinal" placeholder="AA/MM/DD" value="" type="text"/>
-                                </div>  
-                     </div>
+                                    <form  action="{{ route('dispatch.index')}}" method="get" >
+                                     @csrf
+                                        <input class="form-control mr-sm-2" name="texto"  type="text" value={{$texto}} required>
+                                    
+                                     <input class="btn btn-outline-light my-2 my-sm-0" type="submit" value="Buscar"></input>
+                                    </form></div>
                 </div>
                 
                 <div class="card-body">
@@ -33,6 +29,13 @@
                                 <th>Fecha estimada</th>  
                             </thead>
                             <body>
+
+                                @if(count($date)<=0)
+                                <tr>
+                                    <td colspan ="8">No hay resultados</td>
+                                </tr>
+                                @else
+                                
                                 @foreach($date as $clients)
                                 <tr>
                                     <td>{{ $clients->name}}</td>
@@ -54,9 +57,11 @@
                                 </tr>
 
                                 @endforeach
+                                @endif
                             </body>
                            
                         </table>
+                        
                     </div>
                 </div>
 
