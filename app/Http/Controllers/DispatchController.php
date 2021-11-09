@@ -17,16 +17,20 @@ class DispatchController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        $texto= trim($request->get('texto'));
         $date = DB::connection(session()->get('database'))
-            ->table('sales')
-            ->join('clients', 'sales.client_id', '=', 'clients.id')
-            // ->join('products','sales.client_id','=','products.id')
-            ->select('clients.name','clients.email','clients.phone','clients.address','sales.date_of_delivery', 'clients.id')
-            ->get();
+                ->table('sales')
+                    ->join('clients', 'sales.client_id', '=', 'clients.id')
+                    ->select('clients.name','clients.email','clients.phone','clients.address','sales.date_of_delivery', 'clients.id')
+                    ->Where('sales.date_of_delivery','LIKE','%'.$texto.'%')
+                    ->orderby('clients.name','ASC')
+                    ->paginate(10);
+                 
+                //->get();
 
-        return view('dispatch.index', compact('date'));
+        return view('dispatch.index', compact('date','texto'));
     }
   
     public function show(){
