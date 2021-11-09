@@ -30,7 +30,7 @@ class DispatchController extends Controller
     }
   
     public function show(){
-
+      
         //dd($client);
         // $client = DB::connection(session()->get('database'))
         //     ->table('clients')
@@ -46,17 +46,11 @@ class DispatchController extends Controller
                     ->join('products','sold_products.product_id','=','products.id')
                     ->select('products.category_product','products.name','sold_products.qty','sold_products.price','sold_products.total_amount')
                     ->get();
-         
-            return view('dispatch.ver', compact('watch'));
+    
+            return view('dispatch.ver', compact('watch',));
+         }
 
-            
-
-            
-
-            
-            
-        }
-
+    
 
     
 
