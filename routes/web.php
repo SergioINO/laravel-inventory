@@ -30,6 +30,8 @@ Route::group(['middleware' => 'auth'], function () {
         'methods' => 'MethodController',
         'dispatch' => 'DispatchController',
     ]);
+
+  
     
     /**************Descarga de PDF******************** */
     /**************PDF IMPRIMIR COTIZACION PRODUCTOS******************** */
