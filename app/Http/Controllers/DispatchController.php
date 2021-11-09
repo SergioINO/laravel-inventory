@@ -23,7 +23,7 @@ class DispatchController extends Controller
             ->table('sales')
             ->join('clients', 'sales.client_id', '=', 'clients.id')
             // ->join('products','sales.client_id','=','products.id')
-            ->select('clients.name','clients.email','clients.phone','clients.address','sales.date_of_delivery')
+            ->select('clients.name','clients.email','clients.phone','clients.address','sales.date_of_delivery', 'clients.id')
             ->get();
 
         return view('dispatch.index', compact('date'));
@@ -31,92 +31,27 @@ class DispatchController extends Controller
   
     public function show(){
 
-        return view('dispatch.ver');
-    }
+        //dd($client);
+        // $client = DB::connection(session()->get('database'))
+        //     ->table('clients')
+        //     ->select('clients.name','clients.document_id','clients.phone','clients.email','clients.address')
+        //     ->get();
+        //     return view('dispatch.ver',compact('client'));
+
+
+
+            $watch = DB::connection(session()->get('database'))
+                    ->table('sold_products')
+                    ->join('clients', 'sold_products.id', '=', 'clients.id')
+                    ->join('products','sold_products.product_id','=','products.id')
+                    ->select('products.category_product','products.name','sold_products.qty','sold_products.price','sold_products.total_amount')
+                    ->get();
+         
+            return view('dispatch.ver', compact('watch'));
+            
+        }
 
 
     
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    // public function create()
-    // {
-    //     return view('clients.create');
-    // }
-
-    // /**
-    //  * Store a newly created resource in storage.
-    //  *
-    //  * @param  \App\Http\Request\ClientRequest  $request
-    //  * @return \Illuminate\Http\Response
-    //  */
-    // public function store(ClientRequest $request, Client $client)
-    // {
-    //     $client->create($request->all());
-        
-    //     return redirect()->route('clients.index')->withStatus('Cliente registrado exitosamente!');
-    // }
-
-    // /**
-    //  * Display the specified resource.
-    //  *
-    //  * @param  int  $id
-    //  * @return \Illuminate\Http\Response
-    //  */
-    // public function show(Client $client)
-    // {
-    //     return view('clients.show', compact('client'));
-    // }
-
-    // /**
-    //  * Show the form for editing the specified resource.
-    //  *
-    //  * @param  int  $id
-    //  * @return \Illuminate\Http\Response
-    //  */
-    // public function edit(Client $client)
-    // {
-    //     return view('clients.edit', compact('client'));
-    // }
-
-    // /**
-    //  * Update the specified resource in storage.
-    //  *
-    //  * @param  \App\Http\Request\ClientRequest  $request
-    //  * @param  int  $id
-    //  * @return \Illuminate\Http\Response
-    //  */
-    // public function update(ClientRequest $request, Client $client)
-    // {
-    //     $client->update($request->all());
-
-    //     return redirect()
-    //         ->route('clients.index')
-    //         ->withStatus('Cliente modificado exitosamente.');
-    // }
-
-    // /**
-    //  * Remove the specified resource from storage.
-    //  *
-    //  * @param  int  $id
-    //  * @return \Illuminate\Http\Response
-    //  */
-    // public function destroy(Client $client)
-    // {
-    //     $client->delete();
-
-    //     return redirect()
-    //         ->route('clients.index')
-    //         ->withStatus('Cliente removido exitosamente!.');
-    // }
-
-    // public function addtransaction(Client $client)
-    // {
-    //     $payment_methods = PaymentMethod::all();
-
-    //     return view('clients.transactions.add', compact('client','payment_methods'));
-    // }
 } 
