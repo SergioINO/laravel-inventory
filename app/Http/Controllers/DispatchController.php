@@ -1,7 +1,7 @@
 <?php
 namespace App\Http\Controllers;
 
-namespace App\Http\Controllers;
+use App\dispatch\ver;
 use App\Sale;
 use App\Client;
 use App\Transaction;
@@ -22,17 +22,20 @@ class DispatchController extends Controller
         $date = DB::connection(session()->get('database'))
             ->table('sales')
             ->join('clients', 'sales.client_id', '=', 'clients.id')
+            // ->join('products','sales.client_id','=','products.id')
             ->select('clients.name','clients.email','clients.phone','clients.address','sales.date_of_delivery')
             ->get();
 
         return view('dispatch.index', compact('date'));
     }
+  
+    public function show(){
 
-
-    public function show(Client $client)
-    {
-        return view('clients.show', compact('client'));
+        return view('dispatch.ver');
     }
+
+
+    
 
     /**
      * Show the form for creating a new resource.
