@@ -86,6 +86,8 @@
                         @endif
                     </div>
                 </div>
+
+                
                 <div class="card-body">
                     <table class="table">
                         <thead>
@@ -154,9 +156,16 @@
                                     <td>{{ format_money($sold_product->total_amount) }}</td>
                                     <td class="td-actions text-right">
                                         @if(!$sale->finalized_at)
+
+
+                                        
                                             <a href="{{ route('sales.product.edit', ['sale' => $sale, 'soldproduct' => $sold_product]) }}" class="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="Editar Pedido">
                                                 <i class="tim-icons icon-pencil"></i>
                                             </a>
+
+
+
+
                                             <form action="{{ route('sales.product.destroy', ['sale' => $sale, 'soldproduct' => $sold_product]) }}" method="post" class="d-inline">
                                                 @csrf
                                                 @method('delete')
