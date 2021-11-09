@@ -7,7 +7,8 @@
                 <div class="card-header">
                 <div class="row">
                         <div class="col-8">
-                            <h4 class="card-title">Listado de despachos</h4>
+                         
+                            <h3 class="mb-0">Listado de despachos </h3>
                         </div>
                     </div>
                 </div>
@@ -33,10 +34,12 @@
                                     <!-- <td>{{ $clients->address}}</td> -->
                                     <td>{{ $clients->date_of_delivery}}</td>
                                     <td class="td-actions text-right">
-                                    <a href="" class="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="Ver mas detalle">
+                        
+                                        
+                                    <a href="{{ route('dispatch.show', $clients->id) }}" class="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="Ver mas detalle">
                                                 <i class="tim-icons icon-zoom-split"></i>
                                             </a>
-                                        
+                                     
                                             <form action="" method="post" class="d-inline">
                                                 @csrf
                                                 @method('delete')
