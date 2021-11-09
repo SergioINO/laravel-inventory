@@ -5,12 +5,20 @@
         <div class="col-md-12">
             <div class="card ">
                 <div class="card-header">
-                <div class="row">
-                        <div class="col-8">
-                         
-                            <h3 class="mb-0">Listado de despachos </h3>
-                        </div>
-                    </div>
+                    <div class="row">
+                            <div class="col-8">
+                                <h3 class="mb-0">Listado de despachos </h3>
+                            </div>
+
+                                <div class="form-group"> 
+                                    <label class="control-label" for="date">Fecha inicial</label>
+                                    <input class="form-control" id="fechaInicial" name="fechaInicial"  placeholder="AA/MM/DD" value="" type="text"/>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label" for="date">Fecha De Expiracion</label>
+                                    <input class="form-control" id="fechaFinal" name="fechaFinal" placeholder="AA/MM/DD" value="" type="text"/>
+                                </div>  
+                     </div>
                 </div>
                 
                 <div class="card-body">
@@ -36,16 +44,11 @@
                                     <td class="td-actions text-right">
                         
                                         
-                                    <a href="{{ route('dispatch.show', $clients->id) }}" class="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="Ver mas detalle">
+                                    <a href="{{ route('dispatch.show', $clients->name) }}" class="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="Ver mas detalle">
                                                 <i class="tim-icons icon-zoom-split"></i>
                                             </a>
-                                     
-                                            <form action="" method="post" class="d-inline">
-                                                @csrf
-                                                @method('delete')
-                                                <button type="button" class="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="Eliminar " onclick="confirm('Estás seguro que quieres eliminar a este Cliente? Los registros de sus compras y Transacciones no serán eliminados.') ? this.parentElement.submit() : ''">
-                                                    <i class="tim-icons icon-simple-remove"></i>
-                                                </button>
+                             
+                                           
                                     </td>
                                    
                                 </tr>
