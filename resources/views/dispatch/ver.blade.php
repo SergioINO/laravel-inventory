@@ -19,30 +19,39 @@
                     <div class="card-body">
                     <table class="table">
                         <thead>
-                            <th>ID</th>
+                           
                             <th>Nombre</th>
                             <th>Rut</th>
                             <th>Telefono</th>
                             <th>Email</th>
                             <th>Dirección</th>
-                            {{-- <th>Balance</th> --}}
+                            <!-- {{-- <th>Balance</th> --}}
                             <th>Compras</th>
                             <th>Total Pagos</th>
-                            <th>Últimas Compra</th>
+                            <th>Últimas Compra</th> -->
                         </thead>
                         <tbody>
-                            <tr>
-                            </tr>
+                        
                         </tbody>
                     </table>
-
-
-                    
-                </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     {{-- TABLA INFORMACION DEL CLIENTE --}}
@@ -57,10 +66,9 @@
                          
                     </div>
                     <div class="card-body">
-                    {{-- TABLA INFORMACION DEL CLIENTE --}}
+                    
                     <table class="table">
                         <thead>
-                            <th>ID</th>
                             <th>Categoría</th>
                             <th>Producto</th>
                             <th>Cantidad</th>
@@ -69,12 +77,20 @@
                             <th></th>
                         </thead>
                         <tbody>
-                        
+                             @foreach($watch as $watch)
                                 <tr>
-                             
+                                     <td>{{ $watch->category_product}}</td>
+                                     <td>{{ $watch->name}}</td>
+                                     <td>{{ $watch->qty}}</td>
+                                     <td>{{ $watch->price}}</td>
+                                     <td>{{ $watch->total_amount}}</td>
+                                     </td>
+                                   
                                 </tr>
-                     
+
+                                @endforeach
                         </tbody>
+                       
                     </table>
                    
 
@@ -84,26 +100,4 @@
             </div>
         </div>
     </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-
-
-
-
-
-
-   
-@endsection
+    @endsection
