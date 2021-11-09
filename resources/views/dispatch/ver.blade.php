@@ -31,6 +31,11 @@
                             <th>Últimas Compra</th> -->
                         </thead>
                         <tbody>
+                            <tr>
+                            <td></td>
+                            </tr>
+                           
+                            
                         
                         </tbody>
                     </table>
@@ -40,22 +45,7 @@
     </div>
 </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    {{-- TABLA INFORMACION DEL CLIENTE --}}
-    <div class="container-fluid mt--7">
+<div class="container-fluid mt--7">
         <div class="row">
             <div class="col-xl-12 order-xl-1">
                 <div class="card">
@@ -77,7 +67,7 @@
                             <th></th>
                         </thead>
                         <tbody>
-                             @foreach($watch as $watch)
+                        @foreach($watch as $watch)
                                 <tr>
                                      <td>{{ $watch->category_product}}</td>
                                      <td>{{ $watch->name}}</td>
@@ -88,16 +78,12 @@
                                    
                                 </tr>
 
-                                @endforeach
-                        </tbody>
-                       
-                    </table>
-                   
-
-
-                </div>
+                            @endforeach
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    @endsection
+@endsection
