@@ -25,15 +25,14 @@
                             <th>Telefono</th>
                             <th>Email</th>
                             <th>Dirección</th>
-                            <!-- {{-- <th>Balance</th> --}}
-                            <th>Compras</th>
-                            <th>Total Pagos</th>
-                            <th>Últimas Compra</th> -->
+                            
                         </thead>
                         <tbody>
-                            <tr>
-                            <td></td>
-                            </tr>
+                        <tr>
+                                    
+                                    </td>
+                                   
+                                </tr>
                            
                             
                         
@@ -44,6 +43,9 @@
         </div>
     </div>
 </div>
+
+
+
 
 <div class="container-fluid mt--7">
         <div class="row">
@@ -67,18 +69,7 @@
                             <th></th>
                         </thead>
                         <tbody>
-                        @foreach($watch as $watch)
-                                <tr>
-                                     <td>{{ $watch->category_product}}</td>
-                                     <td>{{ $watch->name}}</td>
-                                     <td>{{ $watch->qty}}</td>
-                                     <td>{{ $watch->price}}</td>
-                                     <td>{{ $watch->total_amount}}</td>
-                                     </td>
-                                   
-                                </tr>
-
-                            @endforeach
+                      
                             </tbody>
                         </table>
                     </div>
