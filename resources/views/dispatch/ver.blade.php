@@ -69,6 +69,18 @@
                             <th></th>
                         </thead>
                         <tbody>
+                        @foreach($watch as $watch)
+                                <tr>
+                                     <td>{{ $watch->category_product}}</td>
+                                     <td>{{ $watch->name}}</td>
+                                     <td>{{ $watch->qty}}</td>
+                                     <td>{{ $watch->price}}</td>
+                                     <td>{{ $watch->total_amount}}</td>
+                                     </td>
+                                   
+                                </tr>
+
+                                @endforeach
                       
                             </tbody>
                         </table>
