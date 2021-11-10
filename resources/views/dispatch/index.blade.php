@@ -15,6 +15,7 @@
                                         @csrf
                                         <label>Ingrese fecha</label>
                                         <div class="input-group">
+                                            
                                         <input form-control mr-sm-2 name="texto"  type="text" value={{$texto}}>
                                         
                                         <input class="btn btn-outline-light my-5 my-sm-0 " type="submit" value="Buscar"  placeholder="Buscar Productos"></input>
