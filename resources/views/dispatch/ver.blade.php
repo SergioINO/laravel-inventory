@@ -28,12 +28,18 @@
                             
                         </thead>
                         <tbody>
-                        <tr>
-                                    
-                                    </td>
+                        @foreach($client as $clients)
+                                <tr>
+                                     <td>{{ $clients->name}}</td>
+                                     <td>{{ $clients->document_id}}</td>
+                                     <td>{{ $clients->phone}}</td>
+                                     <td>{{ $clients->email}}</td>
+                                     <td>{{ $clients->address}}</td>
+                                     </td>
                                    
                                 </tr>
-                           
+
+                                @endforeach
                             
                         
                         </tbody>
