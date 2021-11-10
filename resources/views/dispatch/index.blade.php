@@ -6,16 +6,23 @@
             <div class="card ">
                 <div class="card-header">
                     <div class="row">
-                            <div class="col-8">
-                                <h3 class="mb-0">Listado de despachos </h3>
-                            </div>
+                                <div class="col-8">
+                                    <h3 class="mb-0">Listado de despachos </h3>
+                                </div>
+
+            
                                     <form  action="{{ route('dispatch.index')}}" method="get" >
-                                     @csrf
-                                        <input class="form-control mr-sm-2" name="texto"  type="text" value={{$texto}} required>
+                                        @csrf
+                                        <label>Ingrese fecha</label>
+                                        <div class="input-group">
+                                        <input form-control mr-sm-2 name="texto"  type="text" value={{$texto}}>
+                                        
+                                        <input class="btn btn-outline-light my-5 my-sm-0 " type="submit" value="Buscar"  placeholder="Buscar Productos"></input>
+                                    </form>
                                     
-                                     <input class="btn btn-outline-light my-2 my-sm-0" type="submit" value="Buscar"></input>
-                                    </form></div>
-                </div>
+                                        </div> 
+                                </div> 
+            
                 
                 <div class="card-body">
                     <div class="">
@@ -24,7 +31,8 @@
                                 <th>Nombre</th>
                                 <!-- <th>Email</th> -->
                                 <th>Telefono</th>
-                                <th>Detalle</th>
+                                <th></th>
+                                <!-- <th>Detalle</th> -->
                                 <!-- <th>Dirección</th> -->
                                 <th>Fecha estimada</th>  
                             </thead>
@@ -47,7 +55,7 @@
                                     <td class="td-actions text-right">
                         
                                         
-                                    <a href="{{ route('dispatch.show', $clients->name) }}" class="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="Ver mas detalle">
+                                    <a href="{{ route('dispatch.show', $clients->id) }}" class="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="Ver mas detalle">
                                                 <i class="tim-icons icon-zoom-split"></i>
                                             </a>
                              
