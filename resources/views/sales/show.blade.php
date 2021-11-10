@@ -62,9 +62,13 @@
                                                                             <div class="col-9">
                                                                                 <input class="form-control datepicker" type="date" id="date_of_delivery" name="date_of_delivery" required>
                                                                             </div>
-                                                                            <button type="submit" class="btn btn-sm btn-primary">
-                                                                                ACEPTA
-                                                                            </button>
+
+                                                                                <div style="width:60%; height:100%">
+                                                                                    <button type="submit" class="btn btn-sm btn-primary">
+                                                                                        ACEPTAR
+                                                                                    </button>
+                                                                                </div>
+                                                                            
                                                                         </form>
                                                                      </div>
                                                                     </div>
@@ -158,7 +162,7 @@
                                         @if(!$sale->finalized_at)
 
 
-                                        
+
                                             <a href="{{ route('sales.product.edit', ['sale' => $sale, 'soldproduct' => $sold_product]) }}" class="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="Editar Pedido">
                                                 <i class="tim-icons icon-pencil"></i>
                                             </a>
