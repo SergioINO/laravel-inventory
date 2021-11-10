@@ -8,14 +8,15 @@
                     <div class="row">
                             <div class="col-8">
                                 <h3 class="mb-0">Listado de despachos </h3>
-                            </div>
+                                </div>
                                     <form  action="{{ route('dispatch.index')}}" method="get" >
-                                     @csrf
+                                        @csrf
                                         <input class="form-control mr-sm-2" name="texto"  type="text" value={{$texto}} required>
-                                    
-                                     <input class="btn btn-outline-light my-2 my-sm-0" type="submit" value="Buscar"></input>
-                                    </form></div>
+                                        
+                                        <input class="btn btn-outline-light my-2 my-sm-0" type="submit" value="Buscar"></input>
+                                    </form>
                 </div>
+            
                 
                 <div class="card-body">
                     <div class="">
