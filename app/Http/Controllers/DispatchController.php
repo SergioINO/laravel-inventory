@@ -19,16 +19,19 @@ class DispatchController extends Controller
      */
     public function index(Request $request)
     {
-        $texto= trim($request->get('texto'));
+        $fecha_inicial= trim($request->get('fecha_inicial'));
+        $fecha_final=trim($request->get('fecha_final'));
         $date = DB::connection(session()->get('database'))
                 ->table('sales')
                     ->join('clients', 'sales.client_id', '=', 'clients.id')
                     ->select('clients.name','clients.email','clients.phone','clients.address','sales.date_of_delivery', 'clients.id')
-                    ->Where('sales.date_of_delivery','LIKE','%'.$texto.'%')
+                    ->whereBetween('sales.date_of_delivery',[$fecha_inicial,$fecha_final])
                     ->orderby('sales.date_of_delivery','ASC')
-                     ->get();
+                    ->get();
+                    
 
-        return view('dispatch.index', compact('date','texto'));
+
+        return view('dispatch.index', compact('date','fecha_inicial','fecha_final'));
     }
   
     public function show($id){
@@ -40,10 +43,12 @@ class DispatchController extends Controller
         $watch = DB::connection(session()->get('database'))
                 ->table('sold_products')
                 ->join('products','sold_products.product_id','=','products.id')
-                ->join('clients', 'sold_products.id', '=', 'clients.id')
+                ->join('sales','sold_products.sale_id','sales.id')
+                ->join('clients', 'sales.client_id', '=', 'clients.id')
                 ->select('products.category_product','products.name','sold_products.qty','sold_products.price','sold_products.total_amount')
                 ->where('clients.id',$id)
                 ->get();
+            //dd($watch);
         
         return view('dispatch.ver', compact('watch','client'));
     }
