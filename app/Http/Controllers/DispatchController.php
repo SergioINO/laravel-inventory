@@ -25,7 +25,7 @@ class DispatchController extends Controller
                     ->join('clients', 'sales.client_id', '=', 'clients.id')
                     ->select('clients.name','clients.email','clients.phone','clients.address','sales.date_of_delivery', 'clients.id')
                     ->Where('sales.date_of_delivery','LIKE','%'.$texto.'%')
-                    ->orderby('clients.name','ASC')
+                    ->orderby('sales.date_of_delivery','ASC')
                      ->get();
 
         return view('dispatch.index', compact('date','texto'));
