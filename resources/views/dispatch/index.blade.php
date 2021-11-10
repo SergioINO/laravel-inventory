@@ -15,13 +15,13 @@
                                         @csrf
                                         <label>Ingrese fecha</label>
                                         <div class="input-group">
-                                        <input  name="texto"  type="text" value={{$texto}}>
+                                        <input form-control mr-sm-2 name="texto"  type="text" value={{$texto}}>
                                         
                                         <input class="btn btn-outline-light my-5 my-sm-0 " type="submit" value="Buscar"  placeholder="Buscar Productos"></input>
                                     </form>
                                     
                                         </div> 
-                </div> 
+                                </div> 
             
                 
                 <div class="card-body">
@@ -54,7 +54,7 @@
                                     <td class="td-actions text-right">
                         
                                         
-                                    <a href="{{ route('dispatch.show', $clients->name) }}" class="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="Ver mas detalle">
+                                    <a href="{{ route('dispatch.show', $clients->id) }}" class="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="Ver mas detalle">
                                                 <i class="tim-icons icon-zoom-split"></i>
                                             </a>
                              
