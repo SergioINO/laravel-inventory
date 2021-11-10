@@ -25,6 +25,7 @@ class PDFController extends Controller
                                     'sold_products.price','sold_products.total_amount','sold_products.observations','sold_products.id')
                         ->where('sales.id', $sale->id)
                         ->get();
+                    
 
         // dd( $sale, $productos );
         $total_products_amount = 0;
@@ -32,6 +33,7 @@ class PDFController extends Controller
             $total_products_amount += $product->total_amount;
 
         }
+        
         // dd($total_products_amount);
         $pdf = PDF::loadView('product_quotation', compact('sale','cliente','productos','total_products_amount'));
 

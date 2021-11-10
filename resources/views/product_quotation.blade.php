@@ -118,6 +118,11 @@
             
             <font  size="15px";align="left";>&nbsp;&nbsp;Observaciones de calidad</font> <br>
 
+            <!-- @foreach ($productos as $obs)
+        <tr><td><font  size="13px">&nbsp;{{ $obs->observations}}</font> <br></td></tr>
+        @endforeach -->
+        <!-- <tr><td><font  size="13px">&nbsp;${{ $sale->observations }}</font> <br></td></tr>  -->
+
 
         <div style=" margin: 1em auto; border: 0.5px solid rgb(53, 53, 53); float: left; width: 660px; border-radius: 15px;">
             @foreach ($productos as $product)

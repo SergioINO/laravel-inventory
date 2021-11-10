@@ -221,15 +221,16 @@ class SaleController extends Controller
         // return view('sales.index')->withStatus('La venta se ha completado con éxito!.');
     }
 
-    public function finalize(Sale $sale)
+    public function finalize(Sale $sale, Request $request)
     {
+        
         // dd($sale);
 
         $sale->total_amount = $sale->products->sum('total_amount');
 
         // CONFIRMO SI EXISTE SUFICIENTE STOCK DISPONIBLE
-        foreach ($sale->products as $sold_product) {
-            $product_name = $sold_product->product->name;
+           foreach ($sale->products as $sold_product) {
+           $product_name = $sold_product->product->name;
 
             if ($sold_product->product->type_measure == 'PIEZA') {
                 $product_stock = $sold_product->product->stock;
@@ -250,9 +251,9 @@ class SaleController extends Controller
                 $product_stock = $sold_product->product->m3_total;
                 if($sold_product->qty > $product_stock) return back()->withError("El producto '$product_name' no tiene suficiente stock. Sólo tiene $product_stock unidades.");
             }
-        }
+       }
 
-        // DESCUENTO STOCK
+        //DESCUENTO STOCK
         foreach ($sale->products as $sold_product) {
 
             if ($sold_product->product->type_measure == 'PIEZA') {
@@ -286,6 +287,9 @@ class SaleController extends Controller
             
         }
 
+
+        $request->all();
+        $sale->date_of_delivery = $request->date_of_delivery;
         $sale->finalized_at = Carbon::now()->toDateTimeString();
         $sale->client->balance -= $sale->total_amount;
         $sale->save();
@@ -293,6 +297,18 @@ class SaleController extends Controller
 
         return back()->withStatus('La venta se ha completado con éxito!.');
     }
+    
+    
+    // public function finalize2(Request $request, Sale $sale )
+    // {
+        
+    //     $request->all();
+    //     $sale->date_of_delivery = $request->date_of_delivery;
+    //     $sale->save();
+    //     return back()->withStatus('La venta se ha completado con éxito!.');
+    // }
+
+    
 
     public function addproduct(Sale $sale)
     {

@@ -20,6 +20,7 @@ class CreateSalesTableMigration extends Migration
             $table->integer('total_amount')->nullable();
             $table->timestamp('finalized_at')->nullable();
             $table->timestamp('confirm_at')->nullable();
+            $table->date('date_of_delivery');
             $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('client_id')->references('id')->on('clients');
             $table->timestamps();

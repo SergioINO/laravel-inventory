@@ -106,12 +106,22 @@
                 </a>
             </li>
 
+            <li @if ($pageSlug == 'dispatch') class="active " @endif>
+                <a href="{{ route('dispatch.index') }}">
+                    <i class="tim-icons icon-app"></i>
+                    <p>Despacho</p>
+                </a>
+            </li>
+
+            
+
             <li @if ($pageSlug == 'providers') class="active " @endif>
                 <a href="{{ route('providers.index') }}">
                     <i class="tim-icons icon-delivery-fast"></i>
                     <p>Proveedores</p>
                 </a>
             </li>
+            
 
             <li @if ($pageSlug == 'methods') class="active " @endif>
                 <a href="{{ route('methods.index') }}">

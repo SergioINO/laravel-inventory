@@ -28,9 +28,11 @@ Route::group(['middleware' => 'auth'], function () {
         'inventory/categories' => 'ProductCategoryController',
         'transactions/transfer' => 'TransferController',
         'methods' => 'MethodController',
+        'dispatch' => 'DispatchController',
     ]);
-    
 
+  
+    
     // CALENDARIO
     Route::get('/evento', 'EventController@index');
     /**************PDF IMPRIMIR COTIZACION PRODUCTOS******************** */
@@ -38,6 +40,7 @@ Route::group(['middleware' => 'auth'], function () {
     /**************BUSQUEDA PRODUCTOS******************** */
     Route::post('/search', 'ProductController@search')->name('searching');
     Route::post('/searchproduct', 'ProductController@search_product')->name('searching_product');
+
     /***********************************TRANSACCIONES*********************************************************************************** */
     Route::resource('transactions', 'TransactionController')->except(['create', 'show']);
     Route::get('transactions/stats/{year?}/{month?}/{day?}', ['as' => 'transactions.stats', 'uses' => 'TransactionController@stats']);
@@ -62,7 +65,8 @@ Route::group(['middleware' => 'auth'], function () {
     // ****************************************************************************************************** */
     /******************************************VENTAS*************************************************************************************** */
     Route::resource('sales', 'SaleController')->except(['edit', 'update']);
-    Route::get('sales/{sale}/finalize', ['as' => 'sales.finalize', 'uses' => 'SaleController@finalize']);
+    Route::post('sales/{sale}/finalize', ['as' => 'sales.finalize', 'uses' => 'SaleController@finalize']);
+    //Route::get('sales/{sale}/finalize', ['as' => 'sales.finalize', 'uses' => 'SaleController@finalize']);
     Route::get('sales/{sale}/confirm', ['as' => 'sales.confirm', 'uses' => 'SaleController@confirm']);
     Route::get('sales/{sale}/product/add', ['as' => 'sales.product.add', 'uses' => 'SaleController@addproduct']);
     Route::get('sales/{sale}/product/{soldproduct}/edit', ['as' => 'sales.product.edit', 'uses' => 'SaleController@editproduct']);
