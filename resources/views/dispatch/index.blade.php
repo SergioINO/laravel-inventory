@@ -31,6 +31,7 @@
                                 <th>Nombre</th>
                                 <!-- <th>Email</th> -->
                                 <th>Telefono</th>
+                                <th></th>
                                 <!-- <th>Detalle</th> -->
                                 <!-- <th>Dirección</th> -->
                                 <th>Fecha estimada</th>  
