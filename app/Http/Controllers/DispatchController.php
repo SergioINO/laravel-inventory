@@ -26,33 +26,27 @@ class DispatchController extends Controller
                     ->select('clients.name','clients.email','clients.phone','clients.address','sales.date_of_delivery', 'clients.id')
                     ->Where('sales.date_of_delivery','LIKE','%'.$texto.'%')
                     ->orderby('clients.name','ASC')
-                    ->paginate(10);
-                 
-                //->get();
+                     ->get();
 
         return view('dispatch.index', compact('date','texto'));
     }
   
-    public function show(){
-      
-        //dd($client);
-        // $client = DB::connection(session()->get('database'))
-        //     ->table('clients')
-        //     ->select('clients.name','clients.document_id','clients.phone','clients.email','clients.address')
-        //     ->get();
-        //     return view('dispatch.ver',compact('client'));
-
-
-
-            $watch = DB::connection(session()->get('database'))
-                    ->table('sold_products')
-                    ->join('clients', 'sold_products.id', '=', 'clients.id')
-                    ->join('products','sold_products.product_id','=','products.id')
-                    ->select('products.category_product','products.name','sold_products.qty','sold_products.price','sold_products.total_amount')
-                    ->get();
-    
-            return view('dispatch.ver', compact('watch',));
-         }
+    public function show($id){
+        
+        $client = Client::select('clients.name','clients.document_id','clients.phone','clients.email','clients.address')
+                ->where('clients.id',$id)
+                ->get();
+        
+        $watch = DB::connection(session()->get('database'))
+                ->table('sold_products')
+                ->join('products','sold_products.product_id','=','products.id')
+                ->join('clients', 'sold_products.id', '=', 'clients.id')
+                ->select('products.category_product','products.name','sold_products.qty','sold_products.price','sold_products.total_amount')
+                ->where('clients.id',$id)
+                ->get();
+        
+        return view('dispatch.ver', compact('watch','client'));
+    }
 
     
 
