@@ -24,17 +24,7 @@
                                                     <input class="btn btn-outline-light my-5 my-sm-0 " type="submit" value="Buscar" ></input>
 
                                                 </div>
-                                        
-
-                                            
-                                                                            
                                 </form>
-
-
-
-
-
-
                         </div> 
                 </div> 
             
@@ -53,9 +43,9 @@
                             </thead>
                             <body>
 
-                                @if(count($date)<=0)
+                                @if(count($date)<= 0)
                                     <tr>
-                                        <td colspan ="8">No hay resultados</td>
+                                        <td colspan ="4">No hay resultados</td>
                                     </tr>
                                 @else
                                 
