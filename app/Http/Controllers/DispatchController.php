@@ -28,8 +28,6 @@ class DispatchController extends Controller
                     ->whereBetween('sales.date_of_delivery',[$fecha_inicial,$fecha_final])
                     ->orderby('sales.date_of_delivery','ASC')
                     ->get();
-                    
-
 
         return view('dispatch.index', compact('date','fecha_inicial','fecha_final'));
     }
