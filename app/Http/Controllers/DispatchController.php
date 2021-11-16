@@ -7,6 +7,7 @@ use App\Client;
 use App\Transaction;
 use Illuminate\Http\Request;
 use DB;
+use Carbon\Carbon;
 
 
 
@@ -25,7 +26,9 @@ class DispatchController extends Controller
                 ->table('sales')
                     ->join('clients', 'sales.client_id', '=', 'clients.id')
                     ->select('clients.name','clients.email','clients.phone','clients.address','sales.date_of_delivery', 'clients.id')
+                    ->where('sales.date_of_delivery','>', '00-00-0000')
                     ->whereBetween('sales.date_of_delivery',[$fecha_inicial,$fecha_final])
+                    
                     ->orderby('sales.date_of_delivery','ASC')
                     ->get();
 
@@ -44,6 +47,7 @@ class DispatchController extends Controller
                 ->join('sales','sold_products.sale_id','sales.id')
                 ->join('clients', 'sales.client_id', '=', 'clients.id')
                 ->select('products.category_product','products.name','sold_products.qty','sold_products.price','sold_products.total_amount')
+                ->where('sales.date_of_delivery','<>', '00-00-0000')
                 ->where('clients.id',$id)
                 ->get();
             //dd($watch);
