@@ -26,10 +26,9 @@ class DispatchController extends Controller
                 ->table('sales')
                     ->join('clients', 'sales.client_id', '=', 'clients.id')
                     ->select('clients.name','clients.email','clients.phone','clients.address','sales.date_of_delivery', 'clients.id')
-                    ->where('sales.date_of_delivery','>', '00-00-0000')
+                    ->where('sales.date_of_delivery','>', '00-00-0000') 
                     ->whereBetween('sales.date_of_delivery',[$fecha_inicial,$fecha_final])
-                    
-                    ->orderby('sales.date_of_delivery','ASC')
+                    ->orderBy('sales.date_of_delivery','ASC')
                     ->get();
 
         return view('dispatch.index', compact('date','fecha_inicial','fecha_final'));
@@ -49,7 +48,9 @@ class DispatchController extends Controller
                 ->select('products.category_product','products.name','sold_products.qty','sold_products.price','sold_products.total_amount')
                 ->where('sales.date_of_delivery','<>', '00-00-0000')
                 ->where('clients.id',$id)
-                ->get();
+                ->orderBy('sales.date_of_delivery', 'DESC')->take(1)->get();
+
+               
             //dd($watch);
         
         return view('dispatch.ver', compact('watch','client'));
