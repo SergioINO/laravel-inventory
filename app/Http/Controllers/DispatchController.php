@@ -49,9 +49,8 @@ class DispatchController extends Controller
                 ->where('sales.date_of_delivery','<>', '00-00-0000')
                 ->where('clients.id',$id)
                 ->orderBy('sales.date_of_delivery', 'DESC')->take(1)->get();
-
-               
-            //dd($watch);
+ 
+        //dd($watch);
         
         return view('dispatch.ver', compact('watch','client'));
     }
