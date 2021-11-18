@@ -32,7 +32,6 @@ Route::group(['middleware' => 'auth'], function () {
     ]);
 
   
-    
     // CALENDARIO
     Route::get('/evento', 'EventController@index');
     /**************PDF IMPRIMIR COTIZACION PRODUCTOS******************** */
