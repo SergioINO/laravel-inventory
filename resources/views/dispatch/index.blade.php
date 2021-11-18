@@ -59,8 +59,8 @@
                                         <td>{{ $clients->date_of_delivery}}</td>
                                         <td class="td-actions text-right">
                         
-                                        
-                                            <a href="{{ route('dispatch.show', $clients->id) }}" class="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="Ver mas detalle">
+                            
+                                            <a href="{{ route('dispatch.show', $clients->sale) }}" class="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="Ver mas detalle">
                                                 <i class="tim-icons icon-zoom-split"></i>
                                             </a>
                              
