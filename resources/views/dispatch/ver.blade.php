@@ -72,7 +72,7 @@
                             <th>Cantidad</th>
                             <th>Precio C/U</th>
                             <th>Total + IVA</th>
-                            <th></th>
+                            <!-- <th>fecha de entrega</th> -->
                         </thead>
                         <tbody>
                         @foreach($watch as $watch)
@@ -82,7 +82,7 @@
                                      <td>{{ $watch->qty}}</td>
                                      <td>{{ $watch->price}}</td>
                                      <td>{{ $watch->total_amount}}</td>
-                                     </td>
+                                     <!-- <td>{{ $watch->date_of_delivery}}</td> -->
                                    
                                 </tr>
 
