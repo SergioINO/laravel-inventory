@@ -53,10 +53,9 @@ class DispatchController extends Controller
                 ->where('sales.id',$sale)
                 ->where('sales.date_of_delivery', '>=', Carbon::now())
                 ->get();
-                
+
                 //->orderBy('sales.date_of_delivery', 'DESC')->take(1)->get();
                 //dd($watch);
-        
         return view('dispatch.ver', compact('watch','client'));
     }
 
