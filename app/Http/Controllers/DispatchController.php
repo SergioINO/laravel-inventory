@@ -34,6 +34,9 @@ class DispatchController extends Controller
 
         return view('dispatch.index', compact('date','fecha_inicial','fecha_final'));
     }
+
+
+    
   
     public function show($sale){
         $client =DB::connection(session()->get('database'))
