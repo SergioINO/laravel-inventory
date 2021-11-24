@@ -12,7 +12,7 @@
                             <h3 class="mb-0">Detalle cliente </h3>
                             </div>
                             <div class="col-4 text-right">
-                                <a href="{{ route('dispatch.index') }}" class="btn btn-sm btn-primary">Atrás </a>
+                                <a href="{{ URL::previous() }}" class="btn btn-sm btn-primary">Atrás </a>
                             </div>
                         </div>
                     </div>
