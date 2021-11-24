@@ -47,10 +47,10 @@
                                     <tr>
                                         <td colspan ="4">No hay resultados</td>
                                     </tr>
-                                @else
+                                   @else
                                 
-                                @foreach($date as $clients)
-                                    <tr>
+                                 @foreach($date as $clients)
+                                     <tr>
                                         <td>{{ $clients->name}}</td>
                                         <!-- <td>{{ $clients->email}}</td> -->
                                         <td>{{ $clients->phone}}</td>
@@ -67,7 +67,7 @@
                                            
                                     
                                    
-                                    </tr>
+                                     </tr>
 
                                 @endforeach
                                 @endif
