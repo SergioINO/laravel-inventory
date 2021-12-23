@@ -58,19 +58,21 @@
                                                                         <form action="{{ route('sales.finalize', $sale) }}" method="post" class="d-inline">
                                                                                         @csrf
                                                                         <div class="form-group row">
-                                                                            <label for="example-date-input" class="col-3 col-form-label">Fecha:</label>
+                                                                            <label for="example-date-input" class="col-3 col-form-label">
+                                                                                Fecha:
+                                                                            </label>
                                                                             <div class="col-9">
                                                                                 <input class="form-control datepicker" min="{{Carbon\Carbon::now()->format('Y-m-d')}}" type="date" id="date_of_delivery" name="date_of_delivery" required>
                                                                             </div>
 
-                                                                                <div style="width:60%; height:100%">
-                                                                                    <button type="submit" class="btn btn-sm btn-primary">
-                                                                                        ACEPTAR
-                                                                                    </button>
-                                                                                </div>
-                                                                            
+                                                                            <div style="width:60%; height:100%">
+                                                                                <button type="submit" class="btn btn-sm btn-primary">
+                                                                                    ACEPTAR
+                                                                                </button>
+                                                                            </div>
+                                                                          
                                                                         </form>
-                                                                     </div>
+                                                                    </div>
                                                                     </div>
                                                                     <h5 align="center">  ATENCIÓN:</h5>
                                                                     <h6 align="center">
