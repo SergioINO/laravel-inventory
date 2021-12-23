@@ -83,6 +83,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::match(['put', 'patch'], 'profile', ['as' => 'profile.update', 'uses' => 'ProfileController@update']);
     Route::match(['put', 'patch'], 'profile/password', ['as' => 'profile.password', 'uses' => 'ProfileController@password']);
     /********************************************************************************************************************************************** */
+
 });
 
 Route::group(['middleware' => 'auth'], function () {
