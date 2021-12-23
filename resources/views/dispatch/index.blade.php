@@ -47,29 +47,77 @@
                                     <tr>
                                         <td colspan ="4">No hay resultados</td>
                                     </tr>
-                                   @else
+                                @else
                                 
-                                 @foreach($date as $clients)
-                                     <tr>
-                                        <td>{{ $clients->name}}</td>
-                                        <!-- <td>{{ $clients->email}}</td> -->
-                                        <td>{{ $clients->phone}}</td>
-                                        <td></td>
-                                        <!-- <td>{{ $clients->address}}</td> -->
-                                        <td>{{ $clients->date_of_delivery}}</td>
-                                        <td class="td-actions text-right">
-                        
-                            
-                                            <a href="{{ route('dispatch.show', $clients->sale) }}" class="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="Ver mas detalle">
-                                                <i class="tim-icons icon-zoom-split"></i>
-                                            </a>
-                             
-                                           
-                                    
-                                   
-                                     </tr>
+                                    @foreach($date as $clients)
+                                        <tr>
+                                            <td>{{ $clients->name}}</td>
+                                            <!-- <td>{{ $clients->email}}</td> -->
+                                            <td>{{ $clients->phone}}</td>
+                                            <td></td>
+                                            <!-- <td>{{ $clients->address}}</td> -->
+                                            <td>{{ $clients->date_of_delivery}}</td>
+                                            <td class="td-actions text-right">                                             
+                                                <a href="{{ route('dispatch.show', $clients->sale) }}" class="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="Ver mas detalle">
+                                                    <i class="tim-icons icon-zoom-split"></i>
+                                                </a>                                    
+                                                <!-- <a href="#updateUser {{$clients->sale}}" class="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="Modificar fecha">
+                                                    <i class="tim-icons icon-pencil"></i><h1>{{$clients->sale}}</h1>
+                                                </a>                                            -->
+                                                <a data-toggle="modal" data-target="#exampleModalEdit_{{$clients->sale}}" class="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="Modificar fecha de entrega">
+                                                    <i class="tim-icons icon-pencil"></i> <h1>{{$clients->sale}}</h1></a>
+                                            </td>
+                                            <!-- Modal -->
+                                            <!-- <div class="modal fade" id="exampleModalEdit_{{$clients->sale}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabelEdit" aria-hidden="true"> -->
+                                            <div class="modal fade" id="exampleModalEdit_{{$clients->sale}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalEdit" aria-hidden="true">
+                                                <div class="modal-dialog" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h3 class="modal-title" id="exampleModalLabel">Fecha estimada de entrega</h3>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            
+                                                            <div id="response"></div>
+                                                            <div class="form-group">
+                                                                <h5 align="center"> Seleccione Fecha:<br></h5>
+                                                                <form action="" method="post" class="d-inline">
+                                                                                @csrf
+                                                                    <div class="form-group row">
+                                                                        <label for="example-date-input" class="col-3 col-form-label">
+                                                                            Fecha:
+                                                                        </label>
+                                                                        <div class="col-9">
+                                                                            <input class="form-control datepicker" min="{{Carbon\Carbon::now()->format('Y-m-d')}}" type="date" id="date_of_delivery" name="date_of_delivery" required>
+                                                                        </div>
 
-                                @endforeach
+                                                                        <h5 align="center">  ATENCIÓN:</h5>
+                                                                            <h6 align="center"><br><br>
+                                                                            ¿Desea modificara la fecha de entrega.?<br><br>
+                                                                            </h6>    
+
+                                                                        <div  style="text-align: center; width:60%; height:100%">
+                                                              
+                                                                        <button type="submit" class="btn btn-sm btn-primary">
+                                                                                    ACEPTAR
+                                                                            </button>
+                                                                            <!-- <h1>{{$clients->sale}}</h1> -->
+                                                                        </div>
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+                                                            </div>
+                                                                                                                                
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </tr>
+               
+                                    @endforeach
                                 @endif
                             </body>
                            
