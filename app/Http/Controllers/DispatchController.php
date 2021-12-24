@@ -58,40 +58,13 @@ class DispatchController extends Controller
         return view('dispatch.ver', compact('watch','client'));
     }
 
-    // public function update(Request $request){
-
-
-    //     $client->update($request->all());
-
-    //     $update_fecha= trim($request->get('update_fecha'));
-    //     $date = DB::connection(session()->get('database'))
-    //             ->table('sales')
-    //                 ->join('clients', 'sales.client_id', '=', 'clients.id')
-    //                 ->select('clients.name','clients.email','clients.phone','clients.address','sales.date_of_delivery','sales.id as sale')
-    //                 ->where('sales.date_of_delivery','>', '00-00-0000') 
-    //                 ->whereBetween('sales.date_of_delivery',[$fecha_inicial,$fecha_final])
-    //                 ->orderBy('sales.date_of_delivery','ASC')
-                   
-    //                 ->get();
-
-    //     return view('dispatch.index', compact('date','fecha_inicial','fecha_final'));
-
-
-
-    // }
-
-
-    // public function finalize( Request $request)
-    // {
-
-    //    dd($clients);
-    //     $request->all();
-    //     $sale->date_of_delivery = $request->date_of_delivery;
-    //     $sale->save();
-
-    //     return back()->withStatus('Fecha modificada.');
-    // }
-
+    public function edit (Request $request, $id)
+    {
+        $sale = Sale::find($id);
+        $sale->date_of_delivery = $request->date_of_delivery;
+        $sale->save();
+        return back()->withStatus('Fecha modificada.');
+    }
     
 
 } 
