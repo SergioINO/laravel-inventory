@@ -48,6 +48,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('transactions/{transaction}/edit', ['as' => 'transactions.edit', 'uses' => 'TransactionController@edit']);
     /********************************************************************************************************************************** */
 
+    /***********************************DESPACHOS*********************************************************************************** */
+    Route::put('dispatch/edit/{id}', ['as' => 'dispatch.edit', 'uses' => 'DispatchController@edit']);
+
     /****************************************INVENTORY*********************************************************************************** */
     Route::get('inventory/stats/{year?}/{month?}/{day?}', ['as' => 'inventory.stats', 'uses' => 'InventoryController@stats']);
     Route::resource('inventory/receipts', 'ReceiptController')->except(['edit', 'update']);
