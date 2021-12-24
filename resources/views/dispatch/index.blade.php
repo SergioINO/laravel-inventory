@@ -86,8 +86,9 @@
                                                             <div id="response"></div>
                                                             <div class="form-group">
                                                                 <h5 align="center"> Seleccione Fecha:<br></h5>
-                                                                <form action="" method="post" class="d-inline">
-                                                                                @csrf
+                                                                <form action="{{ route('dispatch.edit', ['id' => $clients->sale ]) }}" method="POST" class="d-inline">
+                                                                @method('PUT')
+                                                                @csrf
                                                                     <div class="form-group row">
                                                                         <label for="example-date-input" class="col-3 col-form-label">
                                                                             Fecha:
