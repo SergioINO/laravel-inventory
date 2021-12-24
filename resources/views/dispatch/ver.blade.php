@@ -93,6 +93,29 @@
                     </div>
                 </div>
             </div>
+        </div>   
+
+    <div class="container-fluid mt--7">
+        <div class="row">
+            <div class="col-xl-12 order-xl-1">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="row align-items-center">
+                            <div class="col-8">
+                                <h3 class="mb-0">Observaciones </h3>
+
+                                <div class="card-body">
+                                    <label class="form-control-label" for="input-reference">Observaciones</label>
+                                    <input type="text" name="reference" id="input-reference" class="form-control form-control-alternative">
+
+                                </div>
+                         
+                            </div>   
+                        </div>
+                    </div>
+                </div>  
+            </div>
         </div>
     </div>
+</div>
 @endsection
