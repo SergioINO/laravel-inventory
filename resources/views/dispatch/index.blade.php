@@ -100,6 +100,7 @@
                                                                         <h5 align="center">  ATENCIÓN:</h5>
                                                                             <h6 align="center"><br><br>
                                                                             ¿Desea modificara la fecha de entrega.?<br><br>
+                                                                            
                                                                             </h6>    
 
                                                                         <div  style="text-align: center; width:60%; height:100%">
