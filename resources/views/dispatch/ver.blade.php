@@ -105,9 +105,18 @@
                                 <h3 class="mb-0">Observaciones </h3>
 
                                 <div class="card-body">
-                                    <label class="form-control-label" for="input-reference">Observaciones</label>
-                                    <input type="text" name="reference" id="input-reference" class="form-control form-control-alternative">
+                                    @foreach($observations as $obs)
+                                        <form action="{{ route('dispatch.obs', ['id' => $obs->sale ]) }}" method="post" >
+                                            @csrf
+                                            <label class="form-control-label" for="input-reference">Observaciones</label>
 
+                                            <div style="text-align: center; width:100%; height:100%"><br>
+                                                <input class="form-control form-control-alternative" type="text" name="observations" >
+                                                <br>
+                                                <button type="submit" class="btn btn-success mt-4" >Guardar</button>
+                                            </div>
+                                        </form>
+                                    @endforeach
                                 </div>
                          
                             </div>   
