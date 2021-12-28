@@ -50,6 +50,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     /***********************************DESPACHOS*********************************************************************************** */
     Route::put('dispatch/edit/{id}', ['as' => 'dispatch.edit', 'uses' => 'DispatchController@edit']);
+    Route::post('dispatch/observations/{id}', ['as' => 'dispatch.obs', 'uses' => 'DispatchController@observations']);
 
     /****************************************INVENTORY*********************************************************************************** */
     Route::get('inventory/stats/{year?}/{month?}/{day?}', ['as' => 'inventory.stats', 'uses' => 'InventoryController@stats']);
