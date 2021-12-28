@@ -21,6 +21,7 @@ class CreateSalesTableMigration extends Migration
             $table->timestamp('finalized_at')->nullable();
             $table->timestamp('confirm_at')->nullable();
             $table->date('date_of_delivery');
+            $table->varchar('observations');
             $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('client_id')->references('id')->on('clients');
             $table->timestamps();
