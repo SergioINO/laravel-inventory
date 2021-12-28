@@ -53,9 +53,24 @@ class DispatchController extends Controller
                 ->where('sales.date_of_delivery', '>=', Carbon::now())
                 ->get();
 
+
+        $observations = DB::connection(session()->get('database'))
+        
+                ->table('sold_products')
+                ->join('products','sold_products.product_id','=','products.id')
+                ->join('sales','sold_products.sale_id','sales.id')
+                ->join('clients', 'sales.client_id', '=', 'clients.id')
+                ->select('sales.id as sale','sales.observations')
+                ->where('sales.id',$sale)
+                ->get();
+                
+                
+        // $observations = Sale::find($sale);
+        // $observations->observations = $request->observations;
+        // $observations->save();
                 //->orderBy('sales.date_of_delivery', 'DESC')->take(1)->get();
                 //dd($watch);
-        return view('dispatch.ver', compact('watch','client'));
+        return view('dispatch.ver', compact('watch','client','observations'));
     }
 
     public function edit (Request $request, $id)
@@ -63,6 +78,22 @@ class DispatchController extends Controller
         $sale = Sale::find($id);
         $sale->date_of_delivery = $request->date_of_delivery;
         $sale->save();
+        return back()->withStatus('Fecha modificada.');
+    }
+
+    public function observations($sale,Request $request)
+    {
+
+        // $observations= $request->get('observations');
+        // $observations = DB::connection(session()->get('database'))
+        //         ->table('sales')
+        //             ->select('sales.observations')
+        //             ->get();
+        
+        $observations = Sale::find($sale);
+        $observations->observations = $request->observations;
+        $observations->save();
+
         return back()->withStatus('Fecha modificada.');
     }
     
