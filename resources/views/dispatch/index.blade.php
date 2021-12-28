@@ -64,11 +64,8 @@
                                                 <a href="{{ route('dispatch.show', $clients->sale) }}" class="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="Ver mas detalle">
                                                     <i class="tim-icons icon-zoom-split"></i>
                                                 </a>                                    
-                                                <!-- <a href="#updateUser {{$clients->sale}}" class="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="Modificar fecha">
-                                                    <i class="tim-icons icon-pencil"></i><h1>{{$clients->sale}}</h1>
-                                                </a>                                            -->
+                                                                                
                                                 <a data-toggle="modal" data-target="#exampleModalEdit_{{$clients->sale}}" class="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="Modificar fecha de entrega">
-                                                    <!-- <i class="tim-icons icon-pencil"></i> <h1>{{$clients->sale}}</h1></a> -->
                                                     <i class="tim-icons icon-pencil"></i> </a>
                                             </td>
                                             <!-- Modal -->
@@ -77,7 +74,7 @@
                                                 <div class="modal-dialog" role="document">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
-                                                            <h3 class="modal-title" id="exampleModalLabel">Fecha estimada de entrega</h3>
+                                                            <h4 class="modal-title" id="exampleModalLabel">Cambio Fecha de entrega</h4>
                                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                                 <span aria-hidden="true">&times;</span>
                                                             </button>
