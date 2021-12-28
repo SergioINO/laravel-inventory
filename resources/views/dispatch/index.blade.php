@@ -68,7 +68,8 @@
                                                     <i class="tim-icons icon-pencil"></i><h1>{{$clients->sale}}</h1>
                                                 </a>                                            -->
                                                 <a data-toggle="modal" data-target="#exampleModalEdit_{{$clients->sale}}" class="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="Modificar fecha de entrega">
-                                                    <i class="tim-icons icon-pencil"></i> <h1>{{$clients->sale}}</h1></a>
+                                                    <!-- <i class="tim-icons icon-pencil"></i> <h1>{{$clients->sale}}</h1></a> -->
+                                                    <i class="tim-icons icon-pencil"></i> </a>
                                             </td>
                                             <!-- Modal -->
                                             <!-- <div class="modal fade" id="exampleModalEdit_{{$clients->sale}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabelEdit" aria-hidden="true"> -->
@@ -97,18 +98,21 @@
                                                                             <input class="form-control datepicker" min="{{Carbon\Carbon::now()->format('Y-m-d')}}" type="date" id="date_of_delivery" name="date_of_delivery" required>
                                                                         </div>
 
-                                                                        <h5 align="center">  ATENCIÓN:</h5>
-                                                                            <h6 align="center"><br><br>
-                                                                            ¿Desea modificara la fecha de entrega.?<br><br>
-                                                                            
-                                                                            </h6>    
+                                                                            <div style="text-align: center; width:100%; height:100%"><br><br>
 
-                                                                        <div  style="text-align: center; width:60%; height:100%">
+                                                                            <h5 align="center">  ATENCIÓN:</h5>
+                                                                            
+                                                                                <h6 align="center">
+                                                                                ¿Desea modificara la fecha de entrega.?<br><br>
+                                                                                
+                                                                                </h6>   </div> 
+
+                                                                        <div  style="text-align: center; width:100%; height:100%">
                                                               
-                                                                        <button type="submit" class="btn btn-sm btn-primary">
-                                                                                    ACEPTAR
-                                                                            </button>
-                                                                            <!-- <h1>{{$clients->sale}}</h1> -->
+                                                                            <button type="submit" class="btn btn-sm btn-primary">
+                                                                                        ACEPTAR
+                                                                                </button>
+                                                                                <!-- <h1>{{$clients->sale}}</h1> -->
                                                                         </div>
                                                                     </div>
                                                                 </form>
