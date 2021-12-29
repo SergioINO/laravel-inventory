@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class="container-fluid mt--7">
+<div class="container-fluid mt--5">
         <div class="row">
             <div class="col-xl-12 order-xl-1">
                 <div class="card">
@@ -53,7 +53,7 @@
 
 
 
-<div class="container-fluid mt--7">
+<div class="container-fluid mt--5">
         <div class="row">
             <div class="col-xl-12 order-xl-1">
                 <div class="card">
@@ -72,7 +72,7 @@
                             <th>Cantidad</th>
                             <th>Precio C/U</th>
                             <th>Total + IVA</th>
-                            <!-- <th>fecha de entrega</th> -->
+                            <th>fecha de entrega</th>
                         </thead>
                         <tbody>
                         @foreach($watch as $watch)
@@ -82,7 +82,7 @@
                                      <td>{{ $watch->qty}}</td>
                                      <td>{{ $watch->price}}</td>
                                      <td>{{ $watch->total_amount}}</td>
-                                     <!-- <td>{{ $watch->date_of_delivery}}</td> -->
+                                     <td>{{ $watch->date_of_delivery}}</td>
                                    
                                 </tr>
 
@@ -108,8 +108,8 @@
                                     @foreach($observations as $obs)
                                         <form action="{{ route('dispatch.obs', ['id' => $obs->sale ]) }}" method="post" >
                                             @csrf
-                                            <label class="form-control-label" for="input-reference">Observaciones</label>
-
+                                            <label class="form-control-label" for="input-reference">Observaciones:</label>
+                                            <td>{{ $obs->observations}}</td>
                                             <div style="text-align: center; width:100%; height:100%"><br>
                                                 <input class="form-control form-control-alternative" type="text" name="observations" >
                                                 <br>
