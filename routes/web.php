@@ -65,6 +65,7 @@ Route::group(['middleware' => 'auth'], function () {
     
     //EXPORTAR EXCEL ******************************************************************************************
     Route::get('/sales/export/excel', 'SaleController@exportExcel')->name('export_excel');
+    Route::get('/sales/dispatchexport/excel', ['as' => 'dispatchExcel','uses' => 'dispatchController@dispatchexcel']);
     // ****************************************************************************************************** */
     /******************************************VENTAS*************************************************************************************** */
     Route::resource('sales', 'SaleController')->except(['edit', 'update']);
