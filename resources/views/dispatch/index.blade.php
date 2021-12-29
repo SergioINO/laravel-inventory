@@ -6,11 +6,17 @@
             <div class="card ">
                 <div class="card-header">
                     <div class="row">
-                                <div class="col-8">
-                                    <h3 class="mb-0">Listado de despachos </h3>
-                                </div>
-                                
-                                <form action="{{ route('dispatch.index')}}" method="get" >
+                        <div class="col-8">
+                            <h3 class="mb-0">Listado de despachos </h3>
+                            <div class="col-10" >
+                                <form method="GET" action="{{route('dispatchExcel')}}">
+                                    <button type="submit" class="btn btn-sm btn-primary">
+                                        <i class="fas fa-download mr-2"></i> Exportar Listado de despacho
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                        <form action="{{ route('dispatch.index')}}" method="get" >
                                     @csrf
                                         <div class="row">
                                                 <div class="col-xs-6">
