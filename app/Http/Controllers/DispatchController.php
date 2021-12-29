@@ -1,18 +1,45 @@
 <?php
 namespace App\Http\Controllers;
 
+// MATWEBSITE
+use Response;
+use DataTables;
+use Excel;
+use App\Exports\DispatchExcel;
+
+
+use DB;
 use App\dispatch\ver;
 use App\Sale;
 use App\Client;
 use App\Transaction;
 use Illuminate\Http\Request;
-use DB;
 use Carbon\Carbon;
 
 
 
 class DispatchController extends Controller
 {
+    private $excel;
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct(Excel $excel)
+    {
+        $this->middleware('auth');
+        $this->excel = $excel;
+    }
+
+    public function dispatchexcel() 
+    {
+        return Excel::download(new DispatchExcel, 'Exportacion listado de despachos '.Carbon::now()->format('dmY').'.xlsx');
+        
+    }
+
+
+
     /**
      * Display a listing of the resource.
      *
