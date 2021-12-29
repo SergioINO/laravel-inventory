@@ -47,7 +47,7 @@ class DispatchController extends Controller
                 ->join('products','sold_products.product_id','=','products.id')
                 ->join('sales','sold_products.sale_id','sales.id')
                 ->join('clients', 'sales.client_id', '=', 'clients.id')
-                ->select('products.category_product','products.name','sold_products.qty','sold_products.price','sold_products.total_amount','sales.date_of_delivery')
+                ->select('products.category_product','products.name','sold_products.qty','sold_products.price','sold_products.total_amount','sales.date_of_delivery','sales.observations')
                 ->where('sales.date_of_delivery','<>', '00-00-0000')
                 ->where('sales.id',$sale)
                 ->where('sales.date_of_delivery', '>=', Carbon::now())
@@ -84,17 +84,11 @@ class DispatchController extends Controller
     public function observations($sale,Request $request)
     {
 
-        // $observations= $request->get('observations');
-        // $observations = DB::connection(session()->get('database'))
-        //         ->table('sales')
-        //             ->select('sales.observations')
-        //             ->get();
-        
         $observations = Sale::find($sale);
         $observations->observations = $request->observations;
         $observations->save();
 
-        return back()->withStatus('Fecha modificada.');
+        return back();
     }
     
 
