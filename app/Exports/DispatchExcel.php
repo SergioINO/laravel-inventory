@@ -95,6 +95,7 @@ class DispatchExcel implements FromCollection, WithHeadings, WithColumnWidths, W
                 $collectionTable->push((object)[
 
                     'CLIENTE'          => $client->name,
+                    'DIRECCION'   => $client->address,
                     'ESTADO'           => $state ,
                     'FECHA'            => Carbon::createFromFormat('Y-m-d H:i:s',$value->created_at )->format('d-m-Y'),
                     'PRODUCTO'         => $valueproduct->name,
@@ -108,13 +109,7 @@ class DispatchExcel implements FromCollection, WithHeadings, WithColumnWidths, W
                     'TOTAL NETO'       => ($valueproduct->price)*($valueproduct->qty),
                     'IVA'              => (($valueproduct->price)*($valueproduct->qty))* 0.19,
                     'TOTAL'            => $value->total_amount,
-                    'ORIGEN CLIENTE'   => $client->address,
-                    'P.COMPRA'         => $valueproduct->purchase_price,
-                    'MGN'              => (($valueproduct->price - $valueproduct->purchase_price) / $valueproduct->purchase_price)* 100 .' %' ,
-                    'TOTAL COSTO'      => ($valueproduct->purchase_price) * ($valueproduct->qty) ,
-                    'UTILIDAD'         => (($valueproduct->price)*($valueproduct->qty)) - (($valueproduct->purchase_price) * ($valueproduct->qty)),
-                    // 'ESTATUS CLIENTE'      => $value->location,
-                    // 'LUGAR DE PROCEDENCIA' => $manufacturing_at,
+                    
                     
                 ]);
             }
@@ -132,7 +127,7 @@ class DispatchExcel implements FromCollection, WithHeadings, WithColumnWidths, W
             [
                 'A1' => ' ',
                 'B1' => ' ',
-                'C1' => 'EXPORTACIÓN RESUMEN VENTAS',
+                'C1' => 'EXPORTACIÓN LISTADO DE DESPACHO',
                 'D1' => ' ',
                 'E1' => ' ',
                 'F1' => 'FECHA: ',
@@ -146,6 +141,7 @@ class DispatchExcel implements FromCollection, WithHeadings, WithColumnWidths, W
             ],
             [
                 'CLIENTE'               ,
+                'DIRECCION'        ,
                 'ESTADO'                ,
                 'FECHA'                 ,
                 'PRODUCTO'              ,
@@ -159,13 +155,8 @@ class DispatchExcel implements FromCollection, WithHeadings, WithColumnWidths, W
                 'TOTAL NETO'            ,
                 'IVA'                   ,
                 'TOTAL'                 ,
-                'ORIGEN CLIENTE'        ,
-                'P.COMPRA',
-                'MGN',
-                'TOTAL COSTO',
-                'UTILIDAD',
-                // 'ESTATUS CLIENTE'       ,
-                // 'LUGAR DE PROCEDENCIA'  ,
+                
+ 
             ],
 
         ];
