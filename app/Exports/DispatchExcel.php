@@ -77,7 +77,7 @@ class DispatchExcel implements FromCollection, WithHeadings, WithColumnWidths, W
                         ->join('products', 'sold_products.product_id', '=', 'products.id')
                         ->select('products.name','products.thickness','products.width','products.length',
                                     'products.type_measure','products.purchase_price','sold_products.qty',
-                                    'sold_products.price','sold_products.total_amount')
+                                    'sold_products.price','sold_products.total_amount','sales.date_of_delivery')
                         ->where('sales.id', $value->id)
                         ->get();
 
@@ -96,6 +96,7 @@ class DispatchExcel implements FromCollection, WithHeadings, WithColumnWidths, W
 
                     'CLIENTE'          => $client->name,
                     'DIRECCION'   => $client->address,
+                    'FECHA ENTRREGA'           => $valueproduct->date_of_delivery ,
                     'ESTADO'           => $state ,
                     'FECHA'            => Carbon::createFromFormat('Y-m-d H:i:s',$value->created_at )->format('d-m-Y'),
                     'PRODUCTO'         => $valueproduct->name,
@@ -142,6 +143,7 @@ class DispatchExcel implements FromCollection, WithHeadings, WithColumnWidths, W
             [
                 'CLIENTE'               ,
                 'DIRECCION'        ,
+                'FECHA DE ENTREGA'                ,
                 'ESTADO'                ,
                 'FECHA'                 ,
                 'PRODUCTO'              ,
