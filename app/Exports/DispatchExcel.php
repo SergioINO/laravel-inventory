@@ -71,19 +71,36 @@ class DispatchExcel implements FromCollection, WithHeadings, WithColumnWidths, W
 
         foreach ($sales as $key => $value) {
             $client = Client::on(session()->get('database'))->find($value->client_id);
+            
+
             $products = DB::connection(session()->get('database'))
                         ->table('sales')
                         ->join('sold_products', 'sales.id', '=', 'sold_products.sale_id')
                         ->join('products', 'sold_products.product_id', '=', 'products.id')
-                        ->select('products.name','products.thickness','products.width','products.length',
+                        ->join('clients', 'sales.client_id', '=', 'clients.id')
+                        ->select('clients.name','products.name','products.thickness','products.width','products.length',
                                     'products.type_measure','products.purchase_price','sold_products.qty',
                                     'sold_products.price','sold_products.total_amount','sales.date_of_delivery')
+                        ->groupBy('clients.name')
                         ->where('sales.id', $value->id)
+                        
+                        
+                       
                         ->get();
 
+            //dd($products);
+            // $cliente = DB::connection(session()->get('database'))
+            
+            //         ->table('clients')
+            //         ->join('sales', 'sales.client_id', '=', 'clients.id')
+            //         ->select ('clients.name')
+            //         ->distinct('sales.date_of_delivery')
+            //         ->get();
+
+            
+
             foreach ($products as $key => $valueproduct) {
-                
-                // dd($client,$valueproduct,$value);
+       
                 if ($value->confirm_at && !$value->finalized_at) {
                     $state = "RESERVADO";
                 } elseif ($value->confirm_at == NULL && $value->finalized_at == NULL) {
@@ -91,18 +108,18 @@ class DispatchExcel implements FromCollection, WithHeadings, WithColumnWidths, W
                 } else {
                     $state =  "PARA DESPACHAR";
                 }
-                
-                $collectionTable->push((object)[
 
+                $collectionTable->push((object)[
+                   
                     'CLIENTE'          => $client->name,
-                    'DIRECCION'   => $client->address,
-                    'FECHA ENTRREGA'           => $valueproduct->date_of_delivery ,
-                    'ESTADO'           => $state ,
+                    'DIRECCION'        => $client->address,
+                    'FECHA ENTRREGA'   => $valueproduct->date_of_delivery,
+                    'ESTADO'           => $state,
                     'FECHA'            => Carbon::createFromFormat('Y-m-d H:i:s',$value->created_at )->format('d-m-Y'),
                     'PRODUCTO'         => $valueproduct->name,
-                    'ESPESOR'          => $valueproduct->thickness,
-                    'ANCHO'            => $valueproduct->width,
-                    'LARGO'            => $valueproduct->length,
+                    'ESPESOR '          => $valueproduct->thickness,
+                    'ANCHO '            => $valueproduct->width,
+                    'LARGO '            => $valueproduct->length, 
                     'CANTIDAD'         => $valueproduct->qty,
                     'VOLUMEN'          => $valueproduct->qty,
                     'UN.MEDIDA'        => $valueproduct->type_measure,
@@ -116,7 +133,7 @@ class DispatchExcel implements FromCollection, WithHeadings, WithColumnWidths, W
             }
             
         } 
-
+       
         return $collectionTable;
     }
 
@@ -128,7 +145,7 @@ class DispatchExcel implements FromCollection, WithHeadings, WithColumnWidths, W
             [
                 'A1' => ' ',
                 'B1' => ' ',
-                'C1' => 'EXPORTACIÓN LISTADO DE DESPACHO',
+                'C1' => 'LISTADO DE DESPACHO',
                 'D1' => ' ',
                 'E1' => ' ',
                 'F1' => 'FECHA: ',
@@ -142,14 +159,14 @@ class DispatchExcel implements FromCollection, WithHeadings, WithColumnWidths, W
             ],
             [
                 'CLIENTE'               ,
-                'DIRECCION'        ,
-                'FECHA DE ENTREGA'                ,
+                'DIRECCION'             ,
+                'FECHA DE ENTREGA'      ,
                 'ESTADO'                ,
                 'FECHA'                 ,
                 'PRODUCTO'              ,
-                'ESPESOR'               ,
-                'ANCHO'                 ,
-                'LARGO'                 ,
+                'ESPESOR Pul'           ,
+                'ANCHO Pul'             ,
+                'LARGO Mtrs'            ,
                 'CANTIDAD'              ,
                 'VOLUMEN'               ,
                 'UN.MEDIDA'             ,
