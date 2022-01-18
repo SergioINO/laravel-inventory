@@ -83,12 +83,10 @@ class DispatchExcel implements FromCollection, WithHeadings, WithColumnWidths, W
                                     'sold_products.price','sold_products.total_amount','sales.date_of_delivery')
                         ->groupBy('clients.name')
                         ->where('sales.id', $value->id)
-                        
-                        
-                       
                         ->get();
 
-            //dd($products);
+
+                          //dd($products);
             // $cliente = DB::connection(session()->get('database'))
             
             //         ->table('clients')
@@ -97,8 +95,7 @@ class DispatchExcel implements FromCollection, WithHeadings, WithColumnWidths, W
             //         ->distinct('sales.date_of_delivery')
             //         ->get();
 
-            
-
+          
             foreach ($products as $key => $valueproduct) {
        
                 if ($value->confirm_at && !$value->finalized_at) {
