@@ -82,6 +82,7 @@ class DispatchExcel implements FromCollection, WithHeadings, WithColumnWidths, W
                                     'products.type_measure','products.purchase_price','sold_products.qty',
                                     'sold_products.price','sold_products.total_amount','sales.date_of_delivery')
                         ->groupBy('clients.name')
+                        ->orderBy('sales.date_of_delivery','ASC')
                         ->where('sales.id', $value->id)
                         ->get();
 
